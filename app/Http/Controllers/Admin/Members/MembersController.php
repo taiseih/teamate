@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\Members;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class MembersController extends Controller
 {
@@ -26,7 +27,7 @@ class MembersController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.members.create');
     }
 
     /**
@@ -37,7 +38,13 @@ class MembersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
+
+        return redirect()->route('admin.members.index');
     }
 
     /**
