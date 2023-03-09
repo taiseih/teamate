@@ -138,7 +138,7 @@
                                         <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">
                                             チームメンバー</h1>
                                     </div>
-                                    <div class="mt-4 w-24 h-8 bg-green-300"><a
+                                    <div class="mt-4 w-24 h-8 bg-green-600 text-white"><a
                                             href="{{ route('admin.members.create') }}">新規登録</a></div>
 
                                     <div class="flex flex-wrap -m-2">
@@ -150,8 +150,9 @@
                                                         class="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4"
                                                         src="https://dummyimage.com/80x80">
                                                     <div class="flex-grow">
-                                                        <h2 class="text-gray-900 title-font font-medium">
+                                                        <h2 class="text-gray-900 text-xl title-font font-medium">
                                                             {{ $user->name }}</h2>
+                                                        <p class="text-gray-500">{{ $user->job }}</p>
                                                         <p class="text-gray-500">{{ $user->email }}</p>
                                                     </div>
                                                 </div>

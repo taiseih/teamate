@@ -41,6 +41,7 @@ class MembersController extends Controller
         User::create([
             'name' => $request->name,
             'email' => $request->email,
+            'job' => $request->job,
             'password' => Hash::make($request->password),
         ]);
 
