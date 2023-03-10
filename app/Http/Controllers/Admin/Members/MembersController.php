@@ -100,6 +100,9 @@ class MembersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        User::findOrFail($id)->delete();
+
+        return redirect()->route('admin.members.index');
+
     }
 }
