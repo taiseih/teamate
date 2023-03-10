@@ -134,12 +134,15 @@
 
                             <section class="text-gray-600 body-font">
                                 <div class="container px-5 py-24 mx-auto">
+                                    <div class="flex justify-end mb-4">
+                                       <button class="mt-4 w-32 h-12 bg-green-400 text-white rounded"
+                                            onclick =" location.href='{{ route('admin.members.create') }}'">メンバー登録</button>
+                                    </div>
                                     <div class="flex flex-col text-center w-full mb-20">
                                         <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">
                                             チームメンバー</h1>
                                     </div>
-                                    <div class="mt-4 w-24 h-8 bg-green-600 text-white"><a
-                                            href="{{ route('admin.members.create') }}">新規登録</a></div>
+                                 
 
                                     <div class="flex flex-wrap -m-2">
                                         @foreach ($users as $user)
