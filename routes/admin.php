@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Admin\Auth\ConfirmablePasswordController;
@@ -26,6 +27,9 @@ use App\Http\Controllers\Admin\Members\MembersController;
 Route::get('/', function () {
     return view('admin.welcome');
 });
+
+Route::resource('profile', AdminController::class)
+->middleware('auth:admin');
 
 Route::resource('members', MembersController::class)
 ->middleware('auth:admin');
