@@ -61,6 +61,9 @@
 
                             <x-slot name="content">
                                 <!-- Authentication -->
+                                <x-dropdown-link :href="route('admin.profile.index')">
+                                        {{ __('プロフィール') }}
+                                    </x-dropdown-link>
                                 <form method="POST" action="{{ route('admin.logout') }}">
                                     @csrf
 
@@ -108,6 +111,9 @@
 
                     <div class="mt-3 space-y-1">
                         <!-- Authentication -->
+                        <x-dropdown-link :href="route('admin.profile.index')">
+                                        {{ __('プロフィール') }}
+                                    </x-dropdown-link>
                         <form method="POST" action="{{ route('admin.logout') }}">
                             @csrf
 
