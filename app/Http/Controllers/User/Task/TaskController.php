@@ -68,7 +68,8 @@ class TaskController extends Controller
      */
     public function edit($id)
     {
-        //
+        $task = Task::findOrFail($id);
+        return view('user.task.edit', compact('task'));
     }
 
     /**
@@ -80,7 +81,12 @@ class TaskController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $tasks = Task::findOrFail($id);
+        $tasks->title = $request->title;
+        $tasks->information = $request->information;
+        $tasks->save();
+
+        return redirect()->route('user.task.index');
     }
 
     /**

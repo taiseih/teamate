@@ -45,28 +45,49 @@
             <div id="navbar-image-2"
                 class="hs-collapse hidden overflow-hidden transition-all duration-300 basis-full grow sm:block">
                 <div class="flex flex-col gap-5 mt-5 sm:flex-row sm:items-center sm:justify-end sm:mt-0 sm:pl-5">
-                    <a class="font-medium text-blue-600 hover:text-blue-400 dark:text-blue-500 dark:hover:text-blue-400" 
-                        href="{{route('user.dashboard')}}">ダッシュボード</a>
-                    <a class="font-medium text-gray-600 hover:text-gray-400 dark:text-gray-400 dark:hover:text-gray-500"
-                        href="{{route('user.task.index')}}">タスク</a>
-                    <a class="font-medium text-gray-600 hover:text-gray-400 dark:text-gray-400 dark:hover:text-gray-500"
+                    <a class="font-medium text-gray-600 hover:text-gray-400 dark:text-white dark:hover:text-gray-500"
+                        href="{{ route('user.dashboard') }}">ダッシュボード</a>
+                    <a class="font-medium text-blue-600 hover:text-blue-400 dark:text-blue-500 dark:hover:text-blue-400"
+                        href="{{ route('user.task.index') }}">タスク</a>
+                    <a class="font-medium text-gray-600 hover:text-gray-400 dark:text-white dark:hover:text-gray-500"
                         href="#">Work</a>
-                    <a class="font-medium text-gray-600 hover:text-gray-400 dark:text-gray-400 dark:hover:text-gray-500"
+                    <a class="font-medium text-gray-600 hover:text-gray-400 dark:text-white dark:hover:text-gray-500"
                         href="#">Blog</a>
                 </div>
             </div>
         </nav>
     </header>
-
-
-    <div class="py-12">
+        <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
-                    <a href="{{route('user.task.create')}}">登録画面</a>
-                </div>
-                 <div class="p-6 bg-white border-b border-gray-200">
-                    <a href="{{route('user.task.index')}}">一覧画面</a>
+                    {{-- tailwind --}}
+
+                    <div class="container px-5 py-24 mx-auto flex">
+                        <div
+                            class="lg:w-1/3 md:w-1/2 bg-white rounded-lg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0 relative z-10 shadow-md mx-auto">
+                            <h2 class="text-gray-900 text-lg mb-1 font-medium title-font">タスク編集</h2>
+                            <form method="POST" action="{{route('user.task.update', ['task' => $task->id])}}">
+                                @csrf
+                                @method('put')
+                                <div class="relative mb-4">
+                                    <label for="title" class="leading-7 text-sm text-gray-600">タスク名</label>
+                                    <input type="title" id="title" name="title" required
+                                       value="{{$task->title}}" class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                                </div>
+                                <div class="relative mb-4">
+                                    <label for="information" class="leading-7 text-sm text-gray-600">タスク詳細</label>
+                                    <textarea id="information" name="information"
+                                       value="{{$task->information}}" class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out">{{$task->information}}</textarea>
+                                </div>
+                                <button
+                                    class="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">更新する</button>
+                            </form>
+                            
+                        </div>
+                    </div>
+
+                    {{-- end --}}
                 </div>
             </div>
         </div>
