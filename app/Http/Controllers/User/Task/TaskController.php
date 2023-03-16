@@ -1,13 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\User\Task;
 
 use App\Http\Controllers\Controller;
-use App\Models\Admin;
+use App\Models\Task;
+use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
-class AdminController extends Controller
+class TaskController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +17,9 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $admin = Admin::first();
-
-        return view('admin.profile.index', compact('admin'));
+        $tasks = Task::all();
+        $users = User::where('id', Auth::id())->get();
+        return view('user.task.index', compact('tasks', 'users'));
     }
 
     /**
@@ -28,7 +29,7 @@ class AdminController extends Controller
      */
     public function create()
     {
-        //
+        return view('user.task.create');
     }
 
     /**
@@ -39,7 +40,13 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Task::create([
+            'user_id' => Auth::id(),
+            'title' => $request->title,
+            'information' => $request->information,
+        ]);
+
+        return redirect()->route('user.task.index');
     }
 
     /**
@@ -61,8 +68,7 @@ class AdminController extends Controller
      */
     public function edit($id)
     {
-        $admin = Admin::findOrFail($id);
-        return view('admin.profile.edit', compact('admin'));
+        //
     }
 
     /**
@@ -74,13 +80,7 @@ class AdminController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $admin = Admin::findOrFail($id);
-        $admin->name = $request->name;
-        $admin->email = $request->email;
-        $admin->password = Hash::make($request->password);
-        $admin->save();
-
-        return redirect()->route('admin.profile.index');
+        //
     }
 
     /**
