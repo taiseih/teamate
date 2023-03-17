@@ -5,8 +5,12 @@ namespace App\Http\Controllers\User\Task;
 use App\Http\Controllers\Controller;
 use App\Models\Task;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+
+
 
 class TaskController extends Controller
 {
@@ -17,8 +21,15 @@ class TaskController extends Controller
      */
     public function index()
     {
-        $tasks = Task::all();
+        $allTasks = Task::all();
+        $now = Carbon::now();
         $users = User::where('id', Auth::id())->get();
+        
+        $tasks = DB::table('tasks')
+        ->whereDate('created_at', $now->toDateString())
+        ->get();
+       
+
         return view('user.task.index', compact('tasks', 'users'));
     }
 
@@ -98,7 +109,7 @@ class TaskController extends Controller
     public function destroy($id)
     {
         Task::findOrFail($id)->delete();
-        
+
         return redirect()->route('user.task.index');
     }
 }
