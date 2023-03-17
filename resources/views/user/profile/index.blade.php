@@ -47,12 +47,12 @@
                 <div class="flex flex-col gap-5 mt-5 sm:flex-row sm:items-center sm:justify-end sm:mt-0 sm:pl-5">
                     <a class="font-medium text-gray-600 hover:text-gray-400 dark:text-white dark:hover:text-gray-500"
                         href="{{ route('user.dashboard') }}">ダッシュボード</a>
-                    <a class="font-medium text-blue-600 hover:text-blue-400 dark:text-blue-500 dark:hover:text-blue-400"
+                    <a class="font-medium text-gray-600 hover:text-gray-400 dark:text-white dark:hover:text-gray-500"
                         href="{{ route('user.task.index') }}">タスク</a>
                     <a class="font-medium text-gray-600 hover:text-gray-400 dark:text-white dark:hover:text-gray-500"
                         href="#">Work</a>
-                    <a class="font-medium text-gray-600 hover:text-gray-400 dark:text-white dark:hover:text-gray-500"
-                        href="{{route('user.profile.index')}}">プロフィール</a>
+                    <a class="font-medium text-blue-600 hover:text-blue-400 dark:text-blue-500 dark:hover:text-blue-400"
+                        href="{{ route('user.profile.index') }}">プロフィール</a>
                 </div>
             </div>
         </nav>
@@ -66,20 +66,26 @@
                     <div class="container px-5 py-24 mx-auto flex">
                         <div
                             class="lg:w-1/3 md:w-1/2 bg-white rounded-lg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0 relative z-10 shadow-md mx-auto">
-                            <h2 class="text-gray-900 text-lg mb-1 font-medium title-font">タスク編集</h2>
-                            <form method="POST" action="{{ route('user.task.update', ['task' => $task->id]) }}">
+                            <h2 class="text-gray-900 text-lg mb-1 font-medium title-font">プロフィール</h2>
+                            <form method="POST" action="{{ route('user.profile.update', ['profile' => $user->id]) }}">
                                 @csrf
                                 @method('put')
                                 <div class="relative mb-4">
-                                    <label for="title" class="leading-7 text-sm text-gray-600">タスク名</label>
-                                    <input type="title" id="title" name="title" required
-                                        value="{{ $task->title }}"
+                                    <label for="name" class="leading-7 text-sm text-gray-600">名前</label>
+                                    <input type="name" id="name" name="name" required
+                                        value="{{ $user->name }}"
                                         class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                                 </div>
                                 <div class="relative mb-4">
-                                    <label for="information" class="leading-7 text-sm text-gray-600">タスク詳細</label>
-                                    <textarea id="information" name="information" value="{{ $task->information }}"
-                                        class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out">{{ $task->information }}</textarea>
+                                    <label for="email" class="leading-7 text-sm text-gray-600">メールアドレス</label>
+                                    <input type="email" id="email" name="email" required
+                                        value="{{ $user->email }}"
+                                        class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                                </div>
+                                <div class="relative mb-4">
+                                    <label for="password" class="leading-7 text-sm text-gray-600">パスワード</label>
+                                    <input type="password" id="password" name="password" required
+                                        class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                                 </div>
                                 <button type="submit"
                                     class="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border-2 border-blue-200 font-semibold text-blue-500 hover:text-white hover:bg-blue-500 hover:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800">
@@ -90,12 +96,15 @@
                         </div>
                     </div>
 
-                    <form action="{{ route('user.task.destroy', ['task' => $task->id]) }}" method="post">
+                    <form action="{{ route('user.logout')}}" method="post">
                         @csrf
-                        @method('delete')
                         <button type="submit"
-                            class="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border-2 border-red-200 font-semibold text-red-500 hover:text-white hover:bg-red-500 hover:border-red-500 focus:outline-none focus:ring-2 focus:ring-red-200 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800">
-                            削除
+                            class="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border-2 border-red-200 font-semibold text-red-500 hover:text-white hover:bg-red-500 hover:border-red-500 focus:outline-none focus:ring-2 focus:ring-red-200 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800"><a
+                                href="route('user.logout')"
+                                onclick="event.preventDefault();
+                                                this.closest('form').submit();">
+                                {{ __('ログアウト') }}</a>
+                            
                         </button>
                     </form>
                     {{-- end --}}

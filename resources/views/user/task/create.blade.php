@@ -52,7 +52,7 @@
                     <a class="font-medium text-gray-600 hover:text-gray-400 dark:text-white dark:hover:text-gray-500"
                         href="#">Work</a>
                     <a class="font-medium text-gray-600 hover:text-gray-400 dark:text-white dark:hover:text-gray-500"
-                        href="#">Blog</a>
+                        href="{{route('user.profile.index')}}">プロフィール</a>
                 </div>
             </div>
         </nav>

@@ -151,33 +151,17 @@
                                                             class="leading-7 text-sm text-gray-600">名前</label>
                                                         <input type="text" id="name" name="name"
                                                             value="{{ $users->name }}"
-                                                            class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-green-500 focus:bg-white focus:ring-2 focus:ring-green-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                                                            required class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-green-500 focus:bg-white focus:ring-2 focus:ring-green-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                                                     </div>
                                                 </div>
-                                                <div class="p-2 w-1/2 mx-auto">
-                                                    <div class="relative">
-                                                        <label for="email"
-                                                            class="leading-7 text-sm text-gray-600">メールアドレス</label>
-                                                        <input type="email" id="email" name="email"
-                                                            value="{{ $users->email }}"
-                                                            class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-green-500 focus:bg-white focus:ring-2 focus:ring-green-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
-                                                    </div>
-                                                </div>
+                                                
                                                 <div class="p-2 w-1/2 mx-auto">
                                                     <div class="relative">
                                                         <label for="job"
                                                             class="leading-7 text-sm text-gray-600">役職</label>
                                                         <input type="job" id="job" name="job"
                                                             value="{{ $users->job }}"
-                                                            class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-green-500 focus:bg-white focus:ring-2 focus:ring-green-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
-                                                    </div>
-                                                </div>
-                                                <div class="p-2 w-1/2 mx-auto">
-                                                    <div class="relative">
-                                                        <label for="password"
-                                                            class="leading-7 text-sm text-gray-600">パスワード</label>
-                                                        <input type="password" id="password" name="password"
-                                                            class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-green-500 focus:bg-white focus:ring-2 focus:ring-green-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                                                            required class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-green-500 focus:bg-white focus:ring-2 focus:ring-green-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                                                     </div>
                                                 </div>
 

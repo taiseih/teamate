@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\User\ProfileController;
 use App\Http\Controllers\User\Task\TaskController;
 use Illuminate\Support\Facades\Route;
 
@@ -13,6 +14,10 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::resource('profile', ProfileController::class)
+->middleware('auth:users');
+
 Route::resource('task',TaskController::class)
 ->middleware('auth:users');
 
