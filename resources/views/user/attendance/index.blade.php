@@ -3,12 +3,12 @@
                             <h2 class="text-gray-900 text-lg mb-1 font-medium title-font">出勤情報</h2>
                                 <div class="relative mb-4">
                                      <label for="condition" class="leading-7 text-sm text-gray-600">出勤時間</label>
-                                     <input type="text" name="text" id="text" value="">
+                                     <input type="text" name="text" id="text" value="{{$at_info->attendance_time}}">
                                 </div>
-                                {{$at_info->attendance_time}}
+                                
                                 <div class="relative mb-4">
                                      <label for="condition" class="leading-7 text-sm text-gray-600">体調</label>
-                                     <input type="text" name="text" id="text">
+                                     <input type="text" name="text" id="text" value="{{$at_info->condition}}">
                                 </div>
                                 <button
                                     class="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">登録する</button>
