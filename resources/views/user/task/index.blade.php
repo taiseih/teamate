@@ -49,10 +49,9 @@
                         href="{{ route('user.dashboard') }}">ダッシュボード</a>
                     <a class="font-medium text-blue-500 hover:text-blue-400 dark:text-blue-500 dark:hover:text-blue-400"
                         href="{{ route('user.task.index') }}">タスク</a>
-                    <a class="font-medium text-gray-600 hover:text-gray-400 dark:text-white dark:hover:text-gray-500"
-                        href="#">Work</a>
-                    <a class="font-medium text-gray-600 hover:text-gray-400 dark:text-white dark:hover:text-gray-500"
-                        href="{{route('user.profile.index')}}">プロフィール</a>
+                     <a
+                        class="font-medium text-gray-600 hover:text-gray-400 dark:text-white dark:hover:text-gray-500"
+                        href="{{ route('user.profile.index') }}">プロフィール</a>
                 </div>
             </div>
         </nav>
@@ -68,9 +67,9 @@
             </div>
             <div
                 class="mx-auto mt-10 grid max-w-2xl grid-cols-1 gap-y-16 gap-x-8 border-t border-gray-200 pt-10 sm:mt-16 sm:pt-16 lg:mx-0 lg:max-w-none lg:grid-cols-3">
-                
-                    
-                
+
+
+
                 @foreach ($tasks as $task)
                     @foreach ($users as $user)
                         <article class="flex max-w-xl flex-col items-start justify-between">
@@ -78,7 +77,7 @@
                             <div class="group relative">
                                 <h3
                                     class="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
-                                    <a href="{{route('user.task.edit', ['task' => $task->id])}}">
+                                    <a href="{{ route('user.task.edit', ['task' => $task->id]) }}">
                                         <span class="absolute inset-0"></span>
                                         {{ $task->title }}
                                     </a>
@@ -90,7 +89,7 @@
                                     alt="" class="h-10 w-10 rounded-full bg-gray-50">
                                 <div class="text-sm leading-6">
                                     <p class="font-semibold text-gray-900">
-                                        <a href="{{route('user.profile.index')}}">
+                                        <a href="{{ route('user.profile.index') }}">
                                             <span class="absolute inset-0"></span>
                                             {{ $user->name }}
                                         </a>
@@ -101,7 +100,7 @@
                         </article>
                     @endforeach
                 @endforeach
-                
+
                 <!-- More posts... -->
             </div>
         </div>

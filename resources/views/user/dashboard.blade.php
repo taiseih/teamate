@@ -50,8 +50,6 @@
                     <a class="font-medium text-gray-600 hover:text-gray-400 dark:text-gray-400 dark:hover:text-gray-500"
                         href="{{route('user.task.index')}}">タスク</a>
                     <a class="font-medium text-gray-600 hover:text-gray-400 dark:text-gray-400 dark:hover:text-gray-500"
-                        href="#">Work</a>
-                    <a class="font-medium text-gray-600 hover:text-gray-400 dark:text-gray-400 dark:hover:text-gray-500"
                         href="{{route('user.profile.index')}}">プロフィール</a>
                 </div>
             </div>
@@ -66,8 +64,11 @@
                     <a href="{{route('user.task.create')}}">登録画面</a>
                 </div>
                  <div class="p-6 bg-white border-b border-gray-200">
-                    <a href="{{route('user.task.index')}}">一覧画面</a>
+                    <a href="{{route('user.attendance.create')}}">出勤情報画面</a>
                 </div>
+                <div class="container px-5 py-24 mx-auto flex">
+                    <a href="{{route('user.attendance.index')}}">出勤情報画面</a>
+                    </div>
             </div>
         </div>
     </div>

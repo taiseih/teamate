@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\User\ProfileController;
 use App\Http\Controllers\User\Task\TaskController;
+use App\Http\Controllers\User\Attendance\AttendanceController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +15,9 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::resource('attendance', AttendanceController::class)
+->middleware('auth:users');
 
 Route::resource('profile', ProfileController::class)
 ->middleware('auth:users');

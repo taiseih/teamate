@@ -45,17 +45,17 @@
             <div id="navbar-image-2"
                 class="hs-collapse hidden overflow-hidden transition-all duration-300 basis-full grow sm:block">
                 <div class="flex flex-col gap-5 mt-5 sm:flex-row sm:items-center sm:justify-end sm:mt-0 sm:pl-5">
-                    <a class="font-medium text-gray-600 hover:text-gray-400 dark:text-white dark:hover:text-gray-500"
-                        href="{{ route('user.dashboard') }}">ダッシュボード</a>
                     <a class="font-medium text-blue-600 hover:text-blue-400 dark:text-blue-500 dark:hover:text-blue-400"
+                        href="{{ route('user.dashboard') }}">ダッシュボード</a>
+                    <a class="font-medium text-gray-600 hover:text-gray-400 dark:text-white dark:hover:text-gray-500"
                         href="{{ route('user.task.index') }}">タスク</a>
-                     <a
-                        class="font-medium text-gray-600 hover:text-gray-400 dark:text-white dark:hover:text-gray-500"
+                    <a class="font-medium text-gray-600 hover:text-gray-400 dark:text-white dark:hover:text-gray-500"
                         href="{{ route('user.profile.index') }}">プロフィール</a>
                 </div>
             </div>
         </nav>
     </header>
+
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
@@ -65,38 +65,41 @@
                     <div class="container px-5 py-24 mx-auto flex">
                         <div
                             class="lg:w-1/3 md:w-1/2 bg-white rounded-lg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0 relative z-10 shadow-md mx-auto">
-                            <h2 class="text-gray-900 text-lg mb-1 font-medium title-font">タスク編集</h2>
-                            <form method="POST" action="{{ route('user.task.update', ['task' => $task->id]) }}">
+                            <h2 class="text-gray-900 text-lg mb-1 font-medium title-font">出勤情報登録</h2>
+                            <p class="leading-relaxed mb-5 text-gray-600">本日の出勤情報を登録してください</p>
+                            <form method="POST" action="{{ route('user.attendance.store') }}">
                                 @csrf
-                                @method('put')
                                 <div class="relative mb-4">
-                                    <label for="title" class="leading-7 text-sm text-gray-600">タスク名</label>
-                                    <input type="title" id="title" name="title" required
-                                        value="{{ $task->title }}"
+                                    <label for="attendance" class="leading-7 text-sm text-gray-600">出勤時間</label>
+                                    <select type="attendance" id="attendance" name="attendance" required
                                         class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                                        <option value="8:30">8:30</option>
+                                        <option value="9:00">9:00</option>
+                                        <option value="9:30">9:30</option>
+                                        <option value="10:00">10:00</option>
+                                        <option value="10:30">10:30</option>
+                                        <option value="11:00">11:00</option>
+                                        <option value="11:30">11:30</option>
+                                        <option value="12:00">12:00</option>
+                                        <option value="12:30">12:30</option>
+                                        <option value="13:00">13:00</option>
+                                    </select>
                                 </div>
                                 <div class="relative mb-4">
-                                    <label for="information" class="leading-7 text-sm text-gray-600">タスク詳細</label>
-                                    <textarea id="information" name="information" value="{{ $task->information }}"
-                                        class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out">{{ $task->information }}</textarea>
+                                    <label for="condition" class="leading-7 text-sm text-gray-600">体調</label>
+                                    <select type="condition" id="condition" name="condition" required
+                                        class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                                        <option value="8:30">良好</option>
+                                        <option value="9:00">普通</option>
+                                        <option value="9:30">不良</option>
+                                    </select>
                                 </div>
-                                <button type="submit"
-                                    class="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border-2 border-blue-200 font-semibold text-blue-500 hover:text-white hover:bg-blue-500 hover:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800">
-                                    更新する
-                                </button>
+                                <button
+                                    class="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">登録する</button>
                             </form>
-
                         </div>
                     </div>
 
-                    <form action="{{ route('user.task.destroy', ['task' => $task->id]) }}" method="post">
-                        @csrf
-                        @method('delete')
-                        <button type="submit"
-                            class="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border-2 border-red-200 font-semibold text-red-500 hover:text-white hover:bg-red-500 hover:border-red-500 focus:outline-none focus:ring-2 focus:ring-red-200 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800">
-                            削除
-                        </button>
-                    </form>
                     {{-- end --}}
                 </div>
             </div>

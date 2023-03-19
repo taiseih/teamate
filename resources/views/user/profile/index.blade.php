@@ -49,8 +49,6 @@
                         href="{{ route('user.dashboard') }}">ダッシュボード</a>
                     <a class="font-medium text-gray-600 hover:text-gray-400 dark:text-white dark:hover:text-gray-500"
                         href="{{ route('user.task.index') }}">タスク</a>
-                    <a class="font-medium text-gray-600 hover:text-gray-400 dark:text-white dark:hover:text-gray-500"
-                        href="#">Work</a>
                     <a class="font-medium text-blue-600 hover:text-blue-400 dark:text-blue-500 dark:hover:text-blue-400"
                         href="{{ route('user.profile.index') }}">プロフィール</a>
                 </div>
