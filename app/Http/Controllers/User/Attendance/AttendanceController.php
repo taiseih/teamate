@@ -20,7 +20,7 @@ class AttendanceController extends Controller
     {
         $at_info = Attendance::first();
         $now = Carbon::now();
-        $users = User::where('id', Auth::id())->get();
+        $users = User::where('id', Auth::id())->first();
         // $at_info = DB::table('attendances')->where('user_id', Auth::id())
         // ->whereDate('created_at', $now->toDateString())
         // ->get();
@@ -51,7 +51,7 @@ class AttendanceController extends Controller
             'condition' => $request->condition,
         ]);
 
-        return redirect()->route('user.dashboard');
+        return redirect()->route('user.attendance.index');
     }
 
     /**
@@ -73,7 +73,7 @@ class AttendanceController extends Controller
      */
     public function edit($id)
     {
-        //
+
     }
 
     /**
@@ -85,7 +85,24 @@ class AttendanceController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user_id = Auth::id();
+        $now = now();
+
+        $attendance = Attendance::where('user_id', $user_id)
+            ->where('id', $id)
+            ->whereNull('leaving_time')
+            ->orderByDesc('id')
+            ->first();
+
+        if ($attendance) {
+            $attendance->update([
+                'leaving_time' => $now,
+            ]);
+        }
+
+        return redirect()->route('user.attendance.index');
+
+
     }
 
     /**

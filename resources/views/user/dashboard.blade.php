@@ -15,62 +15,92 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
 </head>
 
-<body>
-    <header class="flex flex-wrap sm:justify-start sm:flex-nowrap z-50 w-full bg-white text-sm py-4 dark:bg-gray-800">
-        <nav class="max-w-[85rem] w-full mx-auto px-4 sm:flex sm:items-center sm:justify-between" aria-label="Global">
-            <div class="flex items-center justify-between">
-                <div class="shrink-0 flex items-center">
-                    <a href="{{ route('user.dashboard') }}">
-                        <x-application-logo class="block h-10 w-auto fill-current text-gray-600" />
-                    </a>
-                </div>
-                <div class="sm:hidden">
-                    <button type="button"
-                        class="hs-collapse-toggle p-2 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800"
-                        data-hs-collapse="#navbar-image-2" aria-controls="navbar-image-2"
-                        aria-label="Toggle navigation">
-                        <svg class="hs-collapse-open:hidden w-4 h-4" width="16" height="16" fill="currentColor"
-                            viewBox="0 0 16 16">
-                            <path fill-rule="evenodd"
-                                d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
-                        </svg>
-                        <svg class="hs-collapse-open:block hidden w-4 h-4" width="16" height="16"
-                            fill="currentColor" viewBox="0 0 16 16">
-                            <path
-                                d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
-                        </svg>
-                    </button>
+<body class="font-sans antialiased">
+    <div class="min-h-screen">
+        <nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
+            <!-- Primary Navigation Menu -->
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between h-16">
+                    <div class="flex">
+                        <!-- Logo -->
+                        <div class="shrink-0 flex items-center">
+                            <a href="{{ route('user.dashboard') }}">
+                                <x-application-logo class="block h-10 w-auto fill-current text-gray-600" />
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Settings Dropdown -->
+                    <div class="hidden sm:flex sm:items-center sm:ml-6">
+                        <div id="navbar-image-2"
+                            class="hs-collapse hidden overflow-hidden transition-all duration-300 basis-full grow sm:block">
+                            <div
+                                class="flex flex-col gap-5 mt-5 sm:flex-row sm:items-center sm:justify-end sm:mt-0 sm:pl-5">
+                                <a class="font-medium text-blue-600 hover:text-blue-400 dark:text-blue-500 dark:hover:text-blue-400"
+                                    href="{{ route('user.dashboard') }}">ダッシュボード</a>
+                                <a class="font-medium text-gray-600 hover:text-gray-400 dark:text-gray-400 dark:hover:text-gray-500"
+                                    href="{{ route('user.attendance.index') }}">勤怠</a>
+                                    <a class="font-medium text-gray-600 hover:text-gray-400 dark:text-gray-400 dark:hover:text-gray-500"
+                                    href="{{ route('user.task.index') }}">タスク</a>
+                                <a class="font-medium text-gray-600 hover:text-gray-400 dark:text-gray-400 dark:hover:text-gray-500"
+                                    href="{{ route('user.profile.index') }}">プロフィール</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Hamburger -->
+                    <div class="-mr-2 flex items-center sm:hidden">
+                        <button @click="open = ! open"
+                            class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out">
+                            <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                                <path :class="{ 'hidden': open, 'inline-flex': !open }" class="inline-flex"
+                                    stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M4 6h16M4 12h16M4 18h16" />
+                                <path :class="{ 'hidden': !open, 'inline-flex': open }" class="hidden"
+                                    stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </button>
+                    </div>
                 </div>
             </div>
-            <div id="navbar-image-2"
-                class="hs-collapse hidden overflow-hidden transition-all duration-300 basis-full grow sm:block">
-                <div class="flex flex-col gap-5 mt-5 sm:flex-row sm:items-center sm:justify-end sm:mt-0 sm:pl-5">
-                    <a class="font-medium text-blue-600 hover:text-blue-400 dark:text-blue-500 dark:hover:text-blue-400" 
-                        href="{{route('user.dashboard')}}">ダッシュボード</a>
-                    <a class="font-medium text-gray-600 hover:text-gray-400 dark:text-gray-400 dark:hover:text-gray-500"
-                        href="{{route('user.task.index')}}">タスク</a>
-                    <a class="font-medium text-gray-600 hover:text-gray-400 dark:text-gray-400 dark:hover:text-gray-500"
-                        href="{{route('user.profile.index')}}">プロフィール</a>
+
+            <!-- Responsive Navigation Menu -->
+            <div :class="{ 'block': open, 'hidden': !open }" class="hidden sm:hidden">
+                <div class="pt-2 pb-3 space-y-1">
+                    <x-responsive-nav-link :href="route('user.dashboard')" :active="request()->routeIs('user.dashboard')">
+                        {{ __('ダッシュボード') }}
+                    </x-responsive-nav-link>
+                    <x-responsive-nav-link :href="route('user.attendance.index')" :active="request()->routeIs('user.attendance.index')">
+                        {{ __('勤怠') }}
+                    </x-responsive-nav-link>
+                    <x-responsive-nav-link :href="route('user.task.index')" :active="request()->routeIs('user.task.index')">
+                        {{ __('タスク') }}
+                    </x-responsive-nav-link>
+                    <x-responsive-nav-link :href="route('user.profile.index')" :active="request()->routeIs('user.profile.index')">
+                        {{ __('プロフィール') }}
+                    </x-responsive-nav-link>
+                </div>
+
+                <!-- Responsive Settings Options -->
+                <div class="pt-4 pb-1 border-t border-gray-200">
+                    <div class="px-4">
+                        <div class="font-medium text-base text-gray-800">{{ Auth::user()->name }}</div>
+                        <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
+                    </div>
                 </div>
             </div>
         </nav>
-    </header>
 
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 bg-white border-b border-gray-200">
-                    <a href="{{route('user.task.create')}}">登録画面</a>
-                </div>
-                 <div class="p-6 bg-white border-b border-gray-200">
-                    <a href="{{route('user.attendance.create')}}">出勤情報画面</a>
-                </div>
-                <div class="container px-5 py-24 mx-auto flex">
-                    <a href="{{route('user.attendance.index')}}">出勤情報画面</a>
+        <div class="py-12">
+            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                    <div class="p-6 bg-white border-b border-gray-200">
+                        <a href="{{ route('user.task.create') }}">登録画面</a>
                     </div>
+                </div>
             </div>
         </div>
-    </div>
 </body>
 </html>
