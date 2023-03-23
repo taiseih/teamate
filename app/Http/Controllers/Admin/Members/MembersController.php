@@ -82,6 +82,7 @@ class MembersController extends Controller
     public function update(Request $request, $id)
     {
         $users = User::findOrFail($id);
+        $users->name = $request->name;
         $users->job = $request->job;
         $users->save();
 

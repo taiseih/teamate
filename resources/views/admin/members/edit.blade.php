@@ -150,18 +150,18 @@
                                                         <label for="name"
                                                             class="leading-7 text-sm text-gray-600">名前</label>
                                                         <input type="text" id="name" name="name"
-                                                            value="{{ $users->name }}"
-                                                            required class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-green-500 focus:bg-white focus:ring-2 focus:ring-green-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                                                            value="{{ $users->name }}" required
+                                                            class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-green-500 focus:bg-white focus:ring-2 focus:ring-green-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                                                     </div>
                                                 </div>
-                                                
+
                                                 <div class="p-2 w-1/2 mx-auto">
                                                     <div class="relative">
                                                         <label for="job"
                                                             class="leading-7 text-sm text-gray-600">役職</label>
                                                         <input type="job" id="job" name="job"
-                                                            value="{{ $users->job }}"
-                                                            required class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-green-500 focus:bg-white focus:ring-2 focus:ring-green-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                                                            value="{{ $users->job }}" required
+                                                            class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-green-500 focus:bg-white focus:ring-2 focus:ring-green-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                                                     </div>
                                                 </div>
 
@@ -169,30 +169,31 @@
                                                     <button type="submit"
                                                         class="flex mx-auto text-white bg-green-500 border-0 py-2 px-8 focus:outline-none hover:bg-green-600 rounded text-lg">更新</button>
                                                 </div>
-                                                <div class="mt-10">
-                                                    <form method="POST"
-                                                        action="{{ route('admin.members.destroy', ['member' => $users->id]) }}">
-                                                        @csrf
-                                                        @method('delete')
-                                                        <td class="w-28">
-                                                            <button type="submit"
-                                                                class="text-white bg-red-400 border-0 py-2 px-8 hover:bg-red-500 rounded"
-                                                                onclick="return confirm('本当に削除しますか？')">
-                                                                削除</button>
-                                                        </td>
-                                                    </form>
-                                                </div>
-                                            </div>
                                         </form>
+                                        <div class="mt-10">
+                                            <form method="POST"
+                                                action="{{ route('admin.members.destroy', ['member' => $users->id]) }}">
+                                                @csrf
+                                                @method('delete')
+                                                <td class="w-28">
+                                                    <button type="submit"
+                                                        class="text-white bg-red-400 border-0 py-2 px-8 hover:bg-red-500 rounded"
+                                                        onclick="return confirm('本当に削除しますか？')">
+                                                        削除</button>
+                                                </td>
+                                            </form>
+                                        </div>
                                     </div>
+
                                 </div>
-                            </section>
-                            {{-- end tailblocks --}}
                         </div>
+                        </section>
+                        {{-- end tailblocks --}}
                     </div>
                 </div>
             </div>
-        </main>
+    </div>
+    </main>
     </div>
 
 </body>
