@@ -3,6 +3,7 @@
 use App\Http\Controllers\User\ProfileController;
 use App\Http\Controllers\User\Task\TaskController;
 use App\Http\Controllers\User\Attendance\AttendanceController;
+use App\Http\Controllers\User\Top\TopPageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,12 +26,15 @@ Route::resource('profile', ProfileController::class)
 Route::resource('task',TaskController::class)
 ->middleware('auth:users');
 
+Route::resource('top', TopPageController::class)
+->middleware('auth:users');
+
 Route::get('/', function () {
     return view('user.welcome');
 });
 
 Route::get('/dashboard', function () {
-    return view('user.dashboard');
+    return abort(404);
 })->middleware(['auth:users'])->name('dashboard');
 
 require __DIR__.'/auth.php';

@@ -1,16 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\User;
+namespace App\Http\Controllers\User\Top;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
 
-
-
-class ProfileController extends Controller
+class TopPageController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,9 +18,19 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        $user = User::where('id', Auth::id())->first();
+        $now = Carbon::now();
+        $users = User::where('id', Auth::id())->first();
 
-        return view('user.profile.index', compact('user'));
+        $tasks = DB::table('tasks')->where('user_id', Auth::id())
+            ->whereDate('created_at', $now->toDateString())
+            ->get();
+
+        $at_info = DB::table('attendances')->where('user_id', Auth::id())
+        ->whereDate('created_at', $now->toDateString())
+        ->whereNull('leaving_time')
+        ->first();
+
+        return view('user.top.index', compact('users', 'tasks', 'at_info'));
     }
 
     /**
@@ -76,14 +85,7 @@ class ProfileController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $user = User::findOrFail($id);
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->password = Hash::make($request->password);
-        $user->save();
-
-        return redirect()->route('user.profile.index')->with('message', 'プロフィール情報を更新しました');
-
+        //
     }
 
     /**

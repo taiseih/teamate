@@ -24,7 +24,7 @@
                     <div class="flex">
                         <!-- Logo -->
                         <div class="shrink-0 flex items-center">
-                            <a href="{{ route('user.dashboard') }}">
+                            <a href="{{ route('user.top.index') }}">
                                 <x-application-logo class="block h-10 w-auto fill-current text-gray-600" />
                             </a>
                         </div>
@@ -36,13 +36,13 @@
                             class="hs-collapse hidden overflow-hidden transition-all duration-300 basis-full grow sm:block">
                             <div
                                 class="flex flex-col gap-5 mt-5 sm:flex-row sm:items-center sm:justify-end sm:mt-0 sm:pl-5">
-                                <a class="font-medium text-gray-600 hover:text-gray-400 dark:text-gray-400 dark:hover:text-gray-500"
-                                    href="{{ route('user.dashboard') }}">ダッシュボード</a>
-                                <a class="font-medium text-gray-600 hover:text-gray-400 dark:text-gray-400 dark:hover:text-gray-500"
+                                <a class="font-medium text-gray-600 hover:text-gray-400"
+                                    href="{{ route('user.top.index') }}">トップページ</a>
+                                <a class="font-medium text-gray-600 hover:text-gray-400"
                                     href="{{ route('user.attendance.index') }}">勤怠</a>
-                                <a class="font-medium text-blue-600 hover:text-blue-400 dark:text-blue-500 dark:hover:text-blue-400"
+                                <a class="font-medium text-blue-600 hover:text-blue-400"
                                     href="{{ route('user.task.index') }}">タスク</a>
-                                <a class="font-medium text-gray-600 hover:text-gray-400 dark:text-gray-400 dark:hover:text-gray-500"
+                                <a class="font-medium text-gray-600 hover:text-gray-400"
                                     href="{{ route('user.profile.index') }}">プロフィール</a>
                             </div>
                         </div>
@@ -68,8 +68,8 @@
             <!-- Responsive Navigation Menu -->
             <div :class="{ 'block': open, 'hidden': !open }" class="hidden sm:hidden">
                 <div class="pt-2 pb-3 space-y-1">
-                    <x-responsive-nav-link :href="route('user.dashboard')" :active="request()->routeIs('user.dashboard')">
-                        {{ __('ダッシュボード') }}
+                    <x-responsive-nav-link :href="route('user.top.index')" :active="request()->routeIs('user.top.index')">
+                        {{ __('トップページ') }}
                     </x-responsive-nav-link>
                     <x-responsive-nav-link :href="route('user.attendance.index')" :active="request()->routeIs('user.attendance.index')">
                         {{ __('勤怠') }}

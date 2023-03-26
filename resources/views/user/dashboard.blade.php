@@ -24,7 +24,7 @@
                     <div class="flex">
                         <!-- Logo -->
                         <div class="shrink-0 flex items-center">
-                            <a href="{{ route('user.dashboard') }}">
+                            <a href="{{ route('user.top.index') }}">
                                 <x-application-logo class="block h-10 w-auto fill-current text-gray-600" />
                             </a>
                         </div>
@@ -36,13 +36,13 @@
                             class="hs-collapse hidden overflow-hidden transition-all duration-300 basis-full grow sm:block">
                             <div
                                 class="flex flex-col gap-5 mt-5 sm:flex-row sm:items-center sm:justify-end sm:mt-0 sm:pl-5">
-                                <a class="font-medium text-blue-600 hover:text-blue-400 dark:text-blue-500 dark:hover:text-blue-400"
+                                <a class="font-medium text-blue-600 hover:text-blue-400"
                                     href="{{ route('user.dashboard') }}">ダッシュボード</a>
-                                <a class="font-medium text-gray-600 hover:text-gray-400 dark:text-gray-400 dark:hover:text-gray-500"
+                                <a class="font-medium text-gray-600 hover:text-gray-400"
                                     href="{{ route('user.attendance.index') }}">勤怠</a>
-                                    <a class="font-medium text-gray-600 hover:text-gray-400 dark:text-gray-400 dark:hover:text-gray-500"
+                                <a class="font-medium text-gray-600 hover:text-gray-400"
                                     href="{{ route('user.task.index') }}">タスク</a>
-                                <a class="font-medium text-gray-600 hover:text-gray-400 dark:text-gray-400 dark:hover:text-gray-500"
+                                <a class="font-medium text-gray-600 hover:text-gray-400"
                                     href="{{ route('user.profile.index') }}">プロフィール</a>
                             </div>
                         </div>
@@ -96,11 +96,10 @@
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                    <div class="p-6 bg-white border-b border-gray-200">
-                        <a href="{{ route('user.task.create') }}">登録画面</a>
-                    </div>
+
                 </div>
             </div>
         </div>
 </body>
+
 </html>

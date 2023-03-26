@@ -8,6 +8,7 @@ use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class AttendanceController extends Controller
 {
@@ -18,12 +19,15 @@ class AttendanceController extends Controller
      */
     public function index()
     {
-        $at_info = Attendance::first();
+        // $at_info = Attendance::first();
         $now = Carbon::now();
         $users = User::where('id', Auth::id())->first();
-        // $at_info = DB::table('attendances')->where('user_id', Auth::id())
-        // ->whereDate('created_at', $now->toDateString())
-        // ->get();
+
+        $at_info = DB::table('attendances')->where('user_id', Auth::id())
+        ->whereDate('created_at', $now->toDateString())
+        ->whereNull('leaving_time')
+        ->first();
+
         return view('user.attendance.index', compact('at_info', 'users'));
     }
 

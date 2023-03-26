@@ -36,9 +36,9 @@
                             class="hs-collapse hidden overflow-hidden transition-all duration-300 basis-full grow sm:block">
                             <div
                                 class="flex flex-col gap-5 mt-5 sm:flex-row sm:items-center sm:justify-end sm:mt-0 sm:pl-5">
-                                <a class="font-medium text-gray-600 hover:text-gray-400"
-                                    href="{{ route('user.top.index') }}">トップページ</a>
                                 <a class="font-medium text-blue-600 hover:text-blue-400"
+                                    href="{{ route('user.top.index') }}">トップページ</a>
+                                <a class="font-medium text-gray-600 hover:text-gray-400"
                                     href="{{ route('user.attendance.index') }}">勤怠</a>
                                 <a class="font-medium text-gray-600 hover:text-gray-400"
                                     href="{{ route('user.task.index') }}">タスク</a>
@@ -96,50 +96,66 @@
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                    <div class="p-6 bg-white border-b border-gray-200">
-                        {{-- tailwind --}}
+                  <div
+                        class="lg:w-1/3 md:w-1/2 bg-white rounded-lg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0 relative z-10 shadow-md mx-auto mb-12">
+                        <article class="flex max-w-xl flex-col items-start justify-between">
 
-                        <div class="container px-5 py-24 mx-auto flex">
-                            <div
-                                class="lg:w-1/3 md:w-1/2 bg-white rounded-lg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0 relative z-10 shadow-md mx-auto">
-                                <h2 class="text-gray-900 text-lg mb-1 font-medium title-font">勤怠登録</h2>
-                                <p class="leading-relaxed mb-5 text-gray-600">本日の勤怠を登録してください</p>
-                                <form method="POST" action="{{ route('user.attendance.store') }}">
-                                    @csrf
-                                    <div class="relative mb-4">
-                                        <label for="attendance" class="leading-7 text-sm text-gray-600">出勤時間</label>
-                                        <select type="attendance" id="attendance" name="attendance" required
-                                            class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
-                                            <option value="8:30">8:30</option>
-                                            <option value="9:00">9:00</option>
-                                            <option value="9:30">9:30</option>
-                                            <option value="10:00">10:00</option>
-                                            <option value="10:30">10:30</option>
-                                            <option value="11:00">11:00</option>
-                                            <option value="11:30">11:30</option>
-                                            <option value="12:00">12:00</option>
-                                            <option value="12:30">12:30</option>
-                                            <option value="13:00">13:00</option>
-                                        </select>
-                                    </div>
-                                    <div class="relative mb-4">
-                                        <label for="condition" class="leading-7 text-sm text-gray-600">体調</label>
-                                        <select type="condition" id="condition" name="condition" required
-                                            class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
-                                            <option value="良好">良好</option>
-                                            <option value="普通">普通</option>
-                                            <option value="不良">不良</option>
-                                        </select>
-                                    </div>
-
-                                    <button
-                                        class="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">登録する</button>
-                                </form>
+                            <div class="group relative">
+                                <h3 class="mt-3 text-lg font-semibold leading-6 text-gray-700">
+                                    <p class="mt-5 text-sm leading-6 text-gray-600 line-clamp-3">就業時刻</p>
+                                    <span class="absolute inset-0 text-gray-700"></span>
+                                    @if ($at_info)
+                                        {{ $at_info->attendance_time }}
+                                    @endif
+                                </h3>
                             </div>
-                        </div>
+                            <div class="group relative">
+                                <h3 class="mt-3 text-lg font-semibold leading-6 text-gray-700">
+                                    <p class="mt-5 text-sm leading-6 text-gray-600 line-clamp-3">体調</p>
+                                    <span class="absolute inset-0 text-gray-700"></span>
+                                    @if ($at_info)
+                                        {{ $at_info->condition }}
+                                    @endif
 
-                        {{-- end --}}
+                                </h3>
+                            </div>
+
+                            <div class="relative mt-8 flex items-center gap-x-4">
+                                <img src="https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                                    alt="" class="h-10 w-10 rounded-full bg-gray-50">
+                                <div class="text-sm leading-6">
+                                    <p class="font-semibold text-gray-900">
+                                        <a href="{{ route('user.profile.index') }}">
+                                            <span class="absolute inset-0"></span>
+                                            {{ $users->name }}
+                                        </a>
+                                    </p>
+                                    <p class="text-gray-600">{{ $users->job }}</p>
+                                </div>
+                            </div>
+                        </article>
                     </div>
+                    @foreach ($tasks as $task)
+                    <div
+                        class="lg:w-1/3 md:w-1/2 bg-white rounded-lg p-8 flex flex-col md:ml-auto w-full mt-12 md:mt-0 relative z-10 shadow-md mx-auto">
+                        <article class="flex max-w-xl flex-col items-start justify-between">
+
+                            <div class="group relative">
+                                 
+                                    <h3
+                                        class="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
+                                        <a href="{{ route('user.task.edit', ['task' => $task->id]) }}">
+                                            <span class="absolute inset-0"></span>
+                                            {{ $task->title }}
+                                        </a>
+                                    </h3>
+                                    <p class="mt-5 text-sm leading-6 text-gray-600 line-clamp-3">{{ $task->information }}
+                                </p>
+                                
+                            </div>
+                        </article>
+                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>
