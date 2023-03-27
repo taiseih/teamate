@@ -1,18 +1,16 @@
 <?php
 
-namespace App\Http\Controllers\User\Task;
+namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
-use App\Models\Task;
 use App\Models\User;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 
 
-class TaskController extends Controller
+class ProfileController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -21,16 +19,9 @@ class TaskController extends Controller
      */
     public function index()
     {
-        $allTasks = Task::all();
-        $now = Carbon::now();
-        $users = User::where('id', Auth::id())->get();
-        
-        $tasks = DB::table('tasks')->where('user_id', Auth::id())
-        ->whereDate('created_at', $now->toDateString())
-        ->get();
-       
+        $user = User::where('id', Auth::id())->first();
 
-        return view('user.task.index', compact('tasks', 'users'));
+        return view('user.profile.index', compact('user'));
     }
 
     /**
@@ -40,7 +31,7 @@ class TaskController extends Controller
      */
     public function create()
     {
-        return view('user.task.create');
+        //
     }
 
     /**
@@ -51,13 +42,7 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        Task::create([
-            'user_id' => Auth::id(),
-            'title' => $request->title,
-            'information' => $request->information,
-        ]);
-
-        return redirect()->route('user.task.index');
+        //
     }
 
     /**
@@ -79,8 +64,7 @@ class TaskController extends Controller
      */
     public function edit($id)
     {
-        $task = Task::findOrFail($id);
-        return view('user.task.edit', compact('task'));
+        //
     }
 
     /**
@@ -92,12 +76,14 @@ class TaskController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $tasks = Task::findOrFail($id);
-        $tasks->title = $request->title;
-        $tasks->information = $request->information;
-        $tasks->save();
+        $user = User::findOrFail($id);
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = Hash::make($request->password);
+        $user->save();
 
-        return redirect()->route('user.task.index');
+        return redirect()->route('user.profile.index')->with('message', 'プロフィール情報を更新しました');
+
     }
 
     /**
@@ -108,8 +94,6 @@ class TaskController extends Controller
      */
     public function destroy($id)
     {
-        Task::findOrFail($id)->delete();
-
-        return redirect()->route('user.task.index');
+        //
     }
 }

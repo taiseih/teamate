@@ -36,11 +36,11 @@
                             class="hs-collapse hidden overflow-hidden transition-all duration-300 basis-full grow sm:block">
                             <div
                                 class="flex flex-col gap-5 mt-5 sm:flex-row sm:items-center sm:justify-end sm:mt-0 sm:pl-5">
-                                <a class="font-medium text-gray-600 hover:text-gray-400"
+                                <a class="font-medium text-blue-600 hover:text-blue-400"
                                     href="{{ route('user.top.index') }}">トップページ</a>
                                 <a class="font-medium text-gray-600 hover:text-gray-400"
                                     href="{{ route('user.attendance.index') }}">勤怠</a>
-                                <a class="font-medium text-blue-600 hover:text-blue-400"
+                                <a class="font-medium text-gray-600 hover:text-gray-400"
                                     href="{{ route('user.task.index') }}">タスク</a>
                                 <a class="font-medium text-gray-600 hover:text-gray-400"
                                     href="{{ route('user.profile.index') }}">プロフィール</a>
@@ -93,27 +93,53 @@
         </nav>
 
 
+        <div class="py-12">
+            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                  <div
+                        class="lg:w-1/3 md:w-1/2 bg-white rounded-lg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0 relative z-10 shadow-md mx-auto mb-12">
+                        <article class="flex max-w-xl flex-col items-start justify-between">
 
-        <div class="bg-white py-24 sm:py-32">
-            <div class="mx-auto max-w-7xl px-6 lg:px-8">
-                <div class="mx-auto max-w-2xl lg:mx-0">
-                    <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">タスク一覧</h2>
-                    <p class="mt-2 text-lg leading-8 text-gray-600">本日のタスクを確認できます
-                    </p>
-                    <button onclick="location.href='{{ route('user.task.create') }}'"
-                        class="h-20 mt-12 text-white bg-green-500 border-0 py-2 px-6 focus:outline-none hover:bg-green-600 rounded text-lg">本日のタスクを登録する</button>
-                </div>
+                            <div class="group relative">
+                                <h3 class="mt-3 text-lg font-semibold leading-6 text-gray-700">
+                                    <p class="mt-5 text-sm leading-6 text-gray-600 line-clamp-3">就業時刻</p>
+                                    <span class="absolute inset-0 text-gray-700"></span>
+                                    @if ($at_info)
+                                        {{ $at_info->attendance_time }}
+                                    @endif
+                                </h3>
+                            </div>
+                            <div class="group relative">
+                                <h3 class="mt-3 text-lg font-semibold leading-6 text-gray-700">
+                                    <p class="mt-5 text-sm leading-6 text-gray-600 line-clamp-3">体調</p>
+                                    <span class="absolute inset-0 text-gray-700"></span>
+                                    @if ($at_info)
+                                        {{ $at_info->condition }}
+                                    @endif
 
-                <div
-                    class="mx-auto mt-10 grid max-w-2xl grid-cols-1 gap-y-16 gap-x-8 border-t border-gray-200 pt-10 sm:mt-16 sm:pt-16 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+                                </h3>
+                            </div>
 
-
-
+                            <div class="relative mt-8 flex items-center gap-x-4">
+                               
+                                <div class="text-sm leading-6">
+                                    <p class="font-semibold text-gray-900 text-lg">
+                                        <a href="{{ route('user.profile.index') }}">
+                                            <span class="absolute inset-0"></span>
+                                            {{ $users->name }}
+                                        </a>
+                                    </p>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
                     @foreach ($tasks as $task)
-                        @foreach ($users as $user)
-                            <article class="flex max-w-xl flex-col items-start justify-between">
+                    <div
+                        class="lg:w-1/3 md:w-1/2 bg-white rounded-lg p-8 flex flex-col md:ml-auto w-full mt-12 md:mt-0 relative z-10 shadow-md mx-auto">
+                        <article class="flex max-w-xl flex-col items-start justify-between">
 
-                                <div class="group relative">
+                            <div class="group relative">
+                                 
                                     <h3
                                         class="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
                                         <a href="{{ route('user.task.edit', ['task' => $task->id]) }}">
@@ -121,31 +147,16 @@
                                             {{ $task->title }}
                                         </a>
                                     </h3>
-                                </div>
-                                <p class="mt-5 text-sm leading-6 text-gray-600 line-clamp-3">{{ $task->information }}
+                                    <p class="mt-5 text-sm leading-6 text-gray-600 line-clamp-3">{{ $task->information }}
                                 </p>
-                                <div class="relative mt-8 flex items-center gap-x-4">
-                                    <img src="https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                                        alt="" class="h-10 w-10 rounded-full bg-gray-50">
-                                    <div class="text-sm leading-6">
-                                        <p class="font-semibold text-gray-900">
-                                            <a href="{{ route('user.profile.index') }}">
-                                                <span class="absolute inset-0"></span>
-                                                {{ $user->name }}
-                                            </a>
-                                        </p>
-                                        <p class="text-gray-600">{{ $user->job }}</p>
-                                    </div>
-                                </div>
-                            </article>
-                        @endforeach
+                                
+                            </div>
+                        </article>
+                    </div>
                     @endforeach
-
-                    <!-- More posts... -->
                 </div>
             </div>
         </div>
-
 </body>
 
 </html>

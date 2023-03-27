@@ -1,18 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\User\Task;
+namespace App\Http\Controllers\User\Top;
 
 use App\Http\Controllers\Controller;
-use App\Models\Task;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
-
-
-class TaskController extends Controller
+class TopPageController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -21,16 +18,19 @@ class TaskController extends Controller
      */
     public function index()
     {
-        $allTasks = Task::all();
         $now = Carbon::now();
-        $users = User::where('id', Auth::id())->get();
-        
-        $tasks = DB::table('tasks')->where('user_id', Auth::id())
-        ->whereDate('created_at', $now->toDateString())
-        ->get();
-       
+        $users = User::where('id', Auth::id())->first();
 
-        return view('user.task.index', compact('tasks', 'users'));
+        $tasks = DB::table('tasks')->where('user_id', Auth::id())
+            ->whereDate('created_at', $now->toDateString())
+            ->get();
+
+        $at_info = DB::table('attendances')->where('user_id', Auth::id())
+        ->whereDate('created_at', $now->toDateString())
+        ->whereNull('leaving_time')
+        ->first();
+
+        return view('user.top.index', compact('users', 'tasks', 'at_info'));
     }
 
     /**
@@ -40,7 +40,7 @@ class TaskController extends Controller
      */
     public function create()
     {
-        return view('user.task.create');
+        //
     }
 
     /**
@@ -51,13 +51,7 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        Task::create([
-            'user_id' => Auth::id(),
-            'title' => $request->title,
-            'information' => $request->information,
-        ]);
-
-        return redirect()->route('user.task.index');
+        //
     }
 
     /**
@@ -79,8 +73,7 @@ class TaskController extends Controller
      */
     public function edit($id)
     {
-        $task = Task::findOrFail($id);
-        return view('user.task.edit', compact('task'));
+        //
     }
 
     /**
@@ -92,12 +85,7 @@ class TaskController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $tasks = Task::findOrFail($id);
-        $tasks->title = $request->title;
-        $tasks->information = $request->information;
-        $tasks->save();
-
-        return redirect()->route('user.task.index');
+        //
     }
 
     /**
@@ -108,8 +96,6 @@ class TaskController extends Controller
      */
     public function destroy($id)
     {
-        Task::findOrFail($id)->delete();
-
-        return redirect()->route('user.task.index');
+        //
     }
 }

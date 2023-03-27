@@ -38,9 +38,9 @@
                                 class="flex flex-col gap-5 mt-5 sm:flex-row sm:items-center sm:justify-end sm:mt-0 sm:pl-5">
                                 <a class="font-medium text-gray-600 hover:text-gray-400"
                                     href="{{ route('user.top.index') }}">トップページ</a>
-                                <a class="font-medium text-gray-600 hover:text-gray-400"
-                                    href="{{ route('user.attendance.index') }}">勤怠</a>
                                 <a class="font-medium text-blue-600 hover:text-blue-400"
+                                    href="{{ route('user.attendance.index') }}">勤怠</a>
+                                <a class="font-medium text-gray-600 hover:text-gray-400"
                                     href="{{ route('user.task.index') }}">タスク</a>
                                 <a class="font-medium text-gray-600 hover:text-gray-400"
                                     href="{{ route('user.profile.index') }}">プロフィール</a>
@@ -93,59 +93,56 @@
         </nav>
 
 
+        <div class="py-12">
+            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                    <div class="p-6 bg-white border-b border-gray-200">
+                        {{-- tailwind --}}
 
-        <div class="bg-white py-24 sm:py-32">
-            <div class="mx-auto max-w-7xl px-6 lg:px-8">
-                <div class="mx-auto max-w-2xl lg:mx-0">
-                    <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">タスク一覧</h2>
-                    <p class="mt-2 text-lg leading-8 text-gray-600">本日のタスクを確認できます
-                    </p>
-                    <button onclick="location.href='{{ route('user.task.create') }}'"
-                        class="h-20 mt-12 text-white bg-green-500 border-0 py-2 px-6 focus:outline-none hover:bg-green-600 rounded text-lg">本日のタスクを登録する</button>
-                </div>
-
-                <div
-                    class="mx-auto mt-10 grid max-w-2xl grid-cols-1 gap-y-16 gap-x-8 border-t border-gray-200 pt-10 sm:mt-16 sm:pt-16 lg:mx-0 lg:max-w-none lg:grid-cols-3">
-
-
-
-                    @foreach ($tasks as $task)
-                        @foreach ($users as $user)
-                            <article class="flex max-w-xl flex-col items-start justify-between">
-
-                                <div class="group relative">
-                                    <h3
-                                        class="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
-                                        <a href="{{ route('user.task.edit', ['task' => $task->id]) }}">
-                                            <span class="absolute inset-0"></span>
-                                            {{ $task->title }}
-                                        </a>
-                                    </h3>
-                                </div>
-                                <p class="mt-5 text-sm leading-6 text-gray-600 line-clamp-3">{{ $task->information }}
-                                </p>
-                                <div class="relative mt-8 flex items-center gap-x-4">
-                                    <img src="https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                                        alt="" class="h-10 w-10 rounded-full bg-gray-50">
-                                    <div class="text-sm leading-6">
-                                        <p class="font-semibold text-gray-900">
-                                            <a href="{{ route('user.profile.index') }}">
-                                                <span class="absolute inset-0"></span>
-                                                {{ $user->name }}
-                                            </a>
-                                        </p>
-                                        <p class="text-gray-600">{{ $user->job }}</p>
+                        <div class="container px-5 py-24 mx-auto flex">
+                            <div
+                                class="lg:w-1/3 md:w-1/2 bg-white rounded-lg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0 relative z-10 shadow-md mx-auto">
+                                <h2 class="text-gray-900 text-lg mb-1 font-medium title-font">勤怠登録</h2>
+                                <p class="leading-relaxed mb-5 text-gray-600">本日の勤怠を登録してください</p>
+                                <form method="POST" action="{{ route('user.attendance.store') }}">
+                                    @csrf
+                                    <div class="relative mb-4">
+                                        <label for="attendance" class="leading-7 text-sm text-gray-600">出勤時間</label>
+                                        <select type="attendance" id="attendance" name="attendance" required
+                                            class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                                            <option value="8:30">8:30</option>
+                                            <option value="9:00">9:00</option>
+                                            <option value="9:30">9:30</option>
+                                            <option value="10:00">10:00</option>
+                                            <option value="10:30">10:30</option>
+                                            <option value="11:00">11:00</option>
+                                            <option value="11:30">11:30</option>
+                                            <option value="12:00">12:00</option>
+                                            <option value="12:30">12:30</option>
+                                            <option value="13:00">13:00</option>
+                                        </select>
                                     </div>
-                                </div>
-                            </article>
-                        @endforeach
-                    @endforeach
+                                    <div class="relative mb-4">
+                                        <label for="condition" class="leading-7 text-sm text-gray-600">体調</label>
+                                        <select type="condition" id="condition" name="condition" required
+                                            class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                                            <option value="良好">良好</option>
+                                            <option value="普通">普通</option>
+                                            <option value="不良">不良</option>
+                                        </select>
+                                    </div>
 
-                    <!-- More posts... -->
+                                    <button
+                                        class="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">登録する</button>
+                                </form>
+                            </div>
+                        </div>
+
+                        {{-- end --}}
+                    </div>
                 </div>
             </div>
         </div>
-
 </body>
 
 </html>

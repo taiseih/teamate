@@ -1,18 +1,16 @@
 <?php
 
-namespace App\Http\Controllers\User\Task;
+namespace App\Http\Controllers\User\Attendance;
 
 use App\Http\Controllers\Controller;
-use App\Models\Task;
+use App\Models\Attendance;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
-
-
-class TaskController extends Controller
+class AttendanceController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -21,16 +19,16 @@ class TaskController extends Controller
      */
     public function index()
     {
-        $allTasks = Task::all();
+        // $at_info = Attendance::first();
         $now = Carbon::now();
-        $users = User::where('id', Auth::id())->get();
-        
-        $tasks = DB::table('tasks')->where('user_id', Auth::id())
-        ->whereDate('created_at', $now->toDateString())
-        ->get();
-       
+        $users = User::where('id', Auth::id())->first();
 
-        return view('user.task.index', compact('tasks', 'users'));
+        $at_info = DB::table('attendances')->where('user_id', Auth::id())
+        ->whereDate('created_at', $now->toDateString())
+        ->whereNull('leaving_time')
+        ->first();
+
+        return view('user.attendance.index', compact('at_info', 'users'));
     }
 
     /**
@@ -40,7 +38,7 @@ class TaskController extends Controller
      */
     public function create()
     {
-        return view('user.task.create');
+        return view('user.attendance.create');
     }
 
     /**
@@ -51,13 +49,13 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        Task::create([
+        Attendance::create([
             'user_id' => Auth::id(),
-            'title' => $request->title,
-            'information' => $request->information,
+            'attendance_time' => $request->attendance,
+            'condition' => $request->condition,
         ]);
 
-        return redirect()->route('user.task.index');
+        return redirect()->route('user.attendance.index');
     }
 
     /**
@@ -79,8 +77,7 @@ class TaskController extends Controller
      */
     public function edit($id)
     {
-        $task = Task::findOrFail($id);
-        return view('user.task.edit', compact('task'));
+
     }
 
     /**
@@ -92,12 +89,24 @@ class TaskController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $tasks = Task::findOrFail($id);
-        $tasks->title = $request->title;
-        $tasks->information = $request->information;
-        $tasks->save();
+        $user_id = Auth::id();
+        $now = now();
 
-        return redirect()->route('user.task.index');
+        $attendance = Attendance::where('user_id', $user_id)
+            ->where('id', $id)
+            ->whereNull('leaving_time')
+            ->orderByDesc('id')
+            ->first();
+
+        if ($attendance) {
+            $attendance->update([
+                'leaving_time' => $now,
+            ]);
+        }
+
+        return redirect()->route('user.attendance.index');
+
+
     }
 
     /**
@@ -108,8 +117,6 @@ class TaskController extends Controller
      */
     public function destroy($id)
     {
-        Task::findOrFail($id)->delete();
-
-        return redirect()->route('user.task.index');
+        //
     }
 }
