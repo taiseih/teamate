@@ -140,7 +140,7 @@
                     <div class="grid md:w-1/4 sm:w-full m-10">
                         @if (!$at_info)
                             <button type="button" onclick="location.href='{{ route('user.attendance.create') }}'"
-                                class="mb-8 py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md bg-green-100 border border-transparent font-semibold text-green-500 hover:text-white hover:bg-green-500 focus:outline-none focus:ring-2 ring-offset-white focus:ring-green-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800">
+                                class="mb-8 py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md bg-green-100 border border-transparent font-semibold text-green-500 hover:text-white hover:bg-green-500 focus:outline-none focus:ring-2 ring-offset-white focus:ring-green-500 focus:ring-offset-2 transition-all text-lg dark:focus:ring-offset-gray-800">
                                 出勤登録
                             </button>
                         @endif
@@ -149,7 +149,7 @@
                             {{-- nullかどうかの判定、$at_infoの値がnullで渡っているため --}}
                             <form action="{{ route('user.attendance.update', ['attendance' => $at_info->id]) }}"
                                 method="POST"
-                                class="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md bg-indigo-100 border border-transparent font-semibold text-indigo-500 hover:text-white hover:bg-indigo-500 focus:outline-none focus:ring-2 ring-offset-white focus:ring-indigo-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800">
+                                class=" py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md bg-indigo-100 border border-transparent font-semibold text-indigo-500 hover:text-white hover:bg-indigo-500 focus:outline-none focus:ring-2 ring-offset-white focus:ring-indigo-500 focus:ring-offset-2 transition-all text-lg dark:focus:ring-offset-gray-800">
                                 @csrf
                                 @method('put')
                                 <button type="submit">
