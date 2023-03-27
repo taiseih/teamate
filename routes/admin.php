@@ -11,7 +11,7 @@ use App\Http\Controllers\Admin\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Admin\Auth\RegisteredUserController;
 use App\Http\Controllers\Admin\Auth\VerifyEmailController;
 use App\Http\Controllers\Admin\Members\MembersController;
-
+use App\Http\Controllers\Admin\task\TaskManagerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +27,9 @@ use App\Http\Controllers\Admin\Members\MembersController;
 Route::get('/', function () {
     return view('admin.welcome');
 });
+
+Route::resource('tasks', TaskManagerController::class)
+->middleware('auth:admin');
 
 Route::resource('profile', AdminController::class)
 ->middleware('auth:admin');
