@@ -149,7 +149,6 @@
                                     <div class="flex flex-wrap -m-2">
                                         @foreach ($tasks as $task)
                                                 <div class="p-2 lg:w-1/3 md:w-1/2 w-full">
-                                                    <a href="{{route('admin.members.edit', ['member' => $task->user->id])}}">
                                                 <div
                                                     class="h-full flex items-center border-gray-200 border p-4 rounded-lg">
                                                     <div class="flex-grow">
@@ -159,7 +158,6 @@
                                                         <p class="text-gray-500 text-lg mt-8">{{ $task->information }}</p>           
                                                     </div>
                                                 </div>
-                                            </a>
                                             </div>
                                         @endforeach
                                         
