@@ -3,8 +3,12 @@
 namespace App\Http\Controllers\Admin\Members;
 
 use App\Http\Controllers\Controller;
+use App\Models\Attendance;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class MembersController extends Controller
@@ -16,8 +20,15 @@ class MembersController extends Controller
      */
     public function index()
     {
-        $users = User::all();
-        return view('admin.members.index', compact('users'));
+        $users = User::with(['attendance'])->get();
+        $now = Carbon::now();
+
+        $at_info = Attendance::with(['user'])
+            ->whereDate('created_at', $now->toDateString())
+            ->whereNull('leaving_time')
+            ->get();
+
+        return view('admin.members.index', compact('users', 'at_info'));
     }
 
     /**

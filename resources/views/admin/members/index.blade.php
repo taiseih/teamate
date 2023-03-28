@@ -55,8 +55,8 @@
                             <x-slot name="content">
                                 <!-- Authentication -->
                                 <x-dropdown-link :href="route('admin.profile.index')">
-                                        {{ __('プロフィール') }}
-                                    </x-dropdown-link>
+                                    {{ __('プロフィール') }}
+                                </x-dropdown-link>
                                 <form method="POST" action="{{ route('admin.logout') }}">
                                     @csrf
 
@@ -105,8 +105,8 @@
                     <div class="mt-3 space-y-1">
                         <!-- Authentication -->
                         <x-dropdown-link :href="route('admin.profile.index')">
-                                        {{ __('プロフィール') }}
-                                    </x-dropdown-link>
+                            {{ __('プロフィール') }}
+                        </x-dropdown-link>
                         <form method="POST" action="{{ route('admin.logout') }}">
                             @csrf
 
@@ -141,33 +141,38 @@
                             <section class="text-gray-600 body-font">
                                 <div class="container px-5 py-24 mx-auto">
                                     <div class="flex justify-end mb-4">
-                                       <button class="mt-4 w-32 h-12 bg-green-400 text-white rounded"
-                                            onclick =" location.href='{{ route('admin.members.create') }}'">メンバー登録</button>
+                                        <button class="mt-4 w-32 h-12 bg-green-400 text-white rounded"
+                                            onclick=" location.href='{{ route('admin.members.create') }}'">メンバー登録</button>
                                     </div>
                                     <div class="flex flex-col text-center w-full mb-20">
                                         <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">
                                             チームメンバー</h1>
                                     </div>
-                                 
+
 
                                     <div class="flex flex-wrap -m-2">
                                         @foreach ($users as $user)
-                                            
-                                                <div class="p-2 lg:w-1/3 md:w-1/2 w-full">
-                                                    <a href="{{route('admin.members.edit', ['member' => $user->id])}}">
-                                                <div
-                                                    class="h-full flex items-center border-gray-200 border p-4 rounded-lg">
-                                                    <img alt="team"
-                                                        class="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4"
-                                                        src="https://dummyimage.com/80x80">
-                                                    <div class="flex-grow">
-                                                        <h2 class="text-gray-900 text-xl title-font font-medium">
-                                                            {{ $user->name }}</h2>
-                                                        <p class="text-gray-500">{{ $user->job }}</p>
-                                                        <p class="text-gray-500">{{ $user->email }}</p>
+                                            <div class="p-2 lg:w-1/3 md:w-1/2 w-full">
+                                                <a href="{{ route('admin.members.edit', ['member' => $user->id]) }}">
+                                                    <div
+                                                        class="h-full flex items-center border-gray-200 border p-4 rounded-lg">
+
+                                                        <div class="flex-grow">
+                                                            <h2 class="text-gray-900 text-xl title-font font-medium">
+                                                                {{ $user->name }}</h2>
+                                                            <p class="text-gray-500">{{ $user->job }}</p>
+                                                            <p class="text-gray-500">{{ $user->email }}</p>
+                                                        </div>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                            viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                                            class="w-6 h-6 @if ($at_info->where('user_id', $user->id)->first() !== null) text-green-500 @else text-red-500 @endif">
+                                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                                d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                        </svg>
+
+
                                                     </div>
-                                                </div>
-                                            </a>
+                                                </a>
                                             </div>
                                         @endforeach
                                     </div>
