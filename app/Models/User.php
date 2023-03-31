@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\Task;
+use App\Models\Attendance;
 
 class User extends Authenticatable
 {
@@ -45,11 +46,11 @@ class User extends Authenticatable
     ];
 
     public function task(){
-        $this->hasMany(Task::class);
+        return $this->hasMany(Task::class);
     }
 
     public function attendance()
     {
-        $this->hasMany(User::class);
+        return $this->hasMany(Attendance::class);
     }
 }

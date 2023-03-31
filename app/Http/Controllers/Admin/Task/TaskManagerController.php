@@ -1,17 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Members;
+namespace App\Http\Controllers\Admin\Task;
 
 use App\Http\Controllers\Controller;
-use App\Models\Attendance;
+use App\Models\Task;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
 
-class MembersController extends Controller
+class TaskManagerController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,15 +17,13 @@ class MembersController extends Controller
      */
     public function index()
     {
-        $users = User::with(['attendance'])->get();
         $now = Carbon::now();
+        $users = User::all();
 
-        $at_info = Attendance::with(['user'])
-            ->whereDate('created_at', $now->toDateString())
-            ->whereNull('leaving_time')
-            ->get();
+        $tasks = Task::with(['user'])->whereDate('created_at', $now->toDateString())->get();
 
-        return view('admin.members.index', compact('users', 'at_info'));
+        
+        return view('admin.task.index', compact('users', 'tasks'));
     }
 
     /**
@@ -38,7 +33,7 @@ class MembersController extends Controller
      */
     public function create()
     {
-        return view('admin.members.create');
+        //
     }
 
     /**
@@ -49,14 +44,7 @@ class MembersController extends Controller
      */
     public function store(Request $request)
     {
-        User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'job' => $request->job,
-            'password' => Hash::make($request->password),
-        ]);
-
-        return redirect()->route('admin.members.index');
+        //
     }
 
     /**
@@ -78,9 +66,7 @@ class MembersController extends Controller
      */
     public function edit($id)
     {
-        $users = User::findOrFail($id);
-
-        return view('admin.members.edit', compact('users'));
+        //
     }
 
     /**
@@ -92,13 +78,7 @@ class MembersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $users = User::findOrFail($id);
-        $users->name = $request->name;
-        $users->job = $request->job;
-        $users->save();
-
-        return redirect()->route('admin.members.index');
-
+        //
     }
 
     /**
@@ -109,9 +89,6 @@ class MembersController extends Controller
      */
     public function destroy($id)
     {
-        User::findOrFail($id)->delete();
-
-        return redirect()->route('admin.members.index');
-
+        //
     }
 }
