@@ -163,13 +163,20 @@
                                                             <p class="text-gray-500">{{ $user->job }}</p>
                                                             <p class="text-gray-500">{{ $user->email }}</p>
                                                         </div>
-                                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                        {{-- <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                                                             viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
                                                             class="w-6 h-6 @if ($at_info->where('user_id', $user->id)->first() !== null) text-green-500 @else text-red-500 @endif">
                                                             <path stroke-linecap="round" stroke-linejoin="round"
                                                                 d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                                        </svg>
-
+                                                        </svg> --}}
+                                                        @if ($at_info->where('user_id', $user->id)->first() !== null)
+                                                            <div class="text-center">
+                                                                <p>{{ $at_info->where('user_id', $user->id)->first()->attendance_time }}</p>
+                                                                <p class="text-green-500 font-bold">出勤</p>
+                                                            </div>
+                                                        @else
+                                                            <p class="text-red-500 font-bold">退勤</p>
+                                                        @endif
 
                                                     </div>
                                                 </a>

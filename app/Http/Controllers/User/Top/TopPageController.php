@@ -30,7 +30,16 @@ class TopPageController extends Controller
         ->whereNull('leaving_time')
         ->first();
 
-        return view('user.top.index', compact('users', 'tasks', 'at_info'));
+        $date = $now->format('m月d日');
+
+        if($at_info)
+        {
+            $message = "出勤中";
+        }else{
+            $message = "退勤中";
+        }
+
+        return view('user.top.index', compact('users', 'tasks', 'at_info', 'date', 'message'));
     }
 
     /**

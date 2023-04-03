@@ -28,7 +28,9 @@ class AttendanceController extends Controller
         ->whereNull('leaving_time')
         ->first();
 
-        return view('user.attendance.index', compact('at_info', 'users'));
+        $date = $now->format('m月d日');
+
+        return view('user.attendance.index', compact('at_info', 'users', 'date'));
     }
 
     /**
