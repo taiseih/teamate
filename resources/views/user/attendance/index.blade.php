@@ -99,9 +99,16 @@
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg md:flex">
                     <div
-                        class="lg:w-1/3 md:w-1/2 bg-white rounded-lg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0 relative z-10 shadow-md mx-auto">
+                        class="lg:w-1/3 md:w-1/2 bg-gray-100 rounded-lg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0 relative z-10 shadow-md mx-auto">
                         <article class="flex max-w-xl flex-col items-start justify-between">
 
+                             <div class="group relative">
+                                <h3 class="mt-3 text-lg font-semibold leading-6 text-gray-700">
+                                    <p class="mt-5 text-sm leading-6 text-gray-600 line-clamp-3">日付</p>
+                                    <span class="absolute inset-0 text-gray-700"></span>
+                                        {{ $date }}
+                                </h3>
+                            </div>
                             <div class="group relative">
                                 <h3 class="mt-3 text-lg font-semibold leading-6 text-gray-700">
                                     <p class="mt-5 text-sm leading-6 text-gray-600 line-clamp-3">就業時刻</p>
