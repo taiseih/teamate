@@ -30,7 +30,8 @@ Route::resource('top', TopPageController::class)
 ->middleware('auth:users');
 
 Route::get('/', function () {
-    return view('user.welcome');
+    // return view('user.welcome');
+    return redirect()->route('user.login');
 });
 
 Route::get('/dashboard', function () {

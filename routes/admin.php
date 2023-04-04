@@ -25,7 +25,8 @@ use App\Http\Controllers\Admin\Task\TaskManagerController;
 */
 
 Route::get('/', function () {
-    return view('admin.welcome');
+    // return view('admin.welcome');
+    return redirect()->route('admin.login');
 });
 
 Route::resource('tasks', TaskManagerController::class)
