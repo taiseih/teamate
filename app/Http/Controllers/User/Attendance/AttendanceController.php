@@ -54,6 +54,7 @@ class AttendanceController extends Controller
         Attendance::create([
             'user_id' => Auth::id(),
             'attendance_time' => $request->attendance,
+            'job_type' => $request->jobType,
             'condition' => $request->condition,
         ]);
 

@@ -140,6 +140,16 @@
 
                                 </h3>
                             </div>
+                            <div class="group relative">
+                                <h3 class="mt-3 text-lg font-semibold leading-6 text-gray-700">
+                                    <p class="mt-5 text-sm leading-6 text-gray-600 line-clamp-3">業務種別</p>
+                                    <span class="absolute inset-0 text-gray-700"></span>
+                                    @if ($at_info)
+                                        {{ $at_info->job_type }}
+                                    @endif
+
+                                </h3>
+                            </div>
 
                             <div class="relative mt-8 flex items-center gap-x-4">
 

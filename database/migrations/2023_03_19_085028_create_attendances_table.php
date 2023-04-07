@@ -17,6 +17,7 @@ class CreateAttendancesTable extends Migration
             $table->id();
             $table->foreignId('user_id');
             $table->string('attendance_time');
+            $table->string('job_type')->nullable();
             $table->string('leaving_time')->nullable();
             $table->string('condition');
             $table->timestamps();
