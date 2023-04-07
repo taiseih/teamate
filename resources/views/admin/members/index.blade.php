@@ -148,8 +148,6 @@
                                         <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">
                                             チームメンバー</h1>
                                     </div>
-
-
                                     <div class="flex flex-wrap -m-2">
                                         @foreach ($users as $user)
                                             <div class="p-2 lg:w-1/3 md:w-1/2 w-full">
@@ -170,14 +168,23 @@
                                                                 d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
                                                         </svg> --}}
                                                         @if ($at_info->where('user_id', $user->id)->first() !== null)
-                                                            <div class="text-center">
-                                                                <p>{{ $at_info->where('user_id', $user->id)->first()->attendance_time }}</p>
-                                                                <p class="text-green-500 font-bold">出勤</p>
-                                                            </div>
+                                                            @if ($at_info->where('user_id', $user->id)->first()->job_type === 1)
+                                                                <div class="text-right">
+                                                                    <p class="text-green-500 font-bold text-xl">出勤</p>
+                                                                    <p>出勤時刻：{{ $at_info->where('user_id', $user->id)->first()->attendance_time }}</p>
+                                                                    <p>体調：{{$at_info->where('user_id', $user->id)->first()->condition}}</p>
+                                                                </div>
+                                                                @elseif ($at_info->where('user_id', $user->id)->first()->job_type === 2)
+                                                                    <div class="text-right">
+                                                                    <p class="text-yellow-500 font-bold text-xl">出勤</p>
+                                                                    <p>{{ $at_info->where('user_id', $user->id)->first()->attendance_time }}</p>
+                                                                    <p>体調：{{$at_info->where('user_id', $user->id)->first()->condition}}</p>
+                                                                </div>
+                                                            @endif
                                                         @else
-                                                            <p class="text-red-500 font-bold">退勤</p>
+                                                            <p class="text-red-500 font-bold text-xl">退勤</p>
+                                                        
                                                         @endif
-
                                                     </div>
                                                 </a>
                                             </div>
