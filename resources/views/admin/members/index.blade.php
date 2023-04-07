@@ -170,14 +170,21 @@
                                                                 d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
                                                         </svg> --}}
                                                         @if ($at_info->where('user_id', $user->id)->first() !== null)
-                                                            <div class="text-center">
-                                                                <p>{{ $at_info->where('user_id', $user->id)->first()->attendance_time }}</p>
-                                                                <p class="text-green-500 font-bold">出勤</p>
-                                                            </div>
+                                                            @if ($at_info->where('user_id', $user->id)->first()->job_type === 1)
+                                                                <div class="text-center">
+                                                                    <p>{{ $at_info->where('user_id', $user->id)->first()->attendance_time }}</p>
+                                                                    <p class="text-green-500 font-bold">出勤</p>
+                                                                </div>
+                                                                @elseif ($at_info->where('user_id', $user->id)->first()->job_type === 2)
+                                                                    <div class="text-center">
+                                                                    <p>{{ $at_info->where('user_id', $user->id)->first()->attendance_time }}</p>
+                                                                    <p class="text-yellow-500 font-bold">出勤</p>
+                                                                </div>
+                                                            @endif
                                                         @else
                                                             <p class="text-red-500 font-bold">退勤</p>
+                                                        
                                                         @endif
-
                                                     </div>
                                                 </a>
                                             </div>
