@@ -3,12 +3,14 @@
 namespace App\Http\Controllers\User\Attendance;
 
 use App\Http\Controllers\Controller;
+use App\Mail\AttendanceMail;
 use App\Models\Attendance;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 
 class AttendanceController extends Controller
 {
@@ -58,6 +60,17 @@ class AttendanceController extends Controller
             'condition' => $request->condition,
         ]);
 
+        $name = User::where('id', Auth::id())->value('name');//valueメソッドでnameカラムから取得している（日本語で採れた〜！）
+        $attendance = $request->attendance;
+        if($request->jobType == 1){
+            $jobType = '自社業務';
+        }elseif($request->jobType == 2){
+            $jobType = '案件業務';
+        }
+        $condition = $request->condition;
+
+        Mail::send(new AttendanceMail($name, $attendance, $jobType, $condition));
+
         return redirect()->route('user.attendance.index');
     }
 
@@ -106,6 +119,13 @@ class AttendanceController extends Controller
                 'leaving_time' => $now,
             ]);
         }
+
+        $name = User::where('id', Auth::id())->value('name'); //valueメソッドでnameカラムから取得している（日本語で採れた〜！）
+        $attendance = $now;
+        $jobType = null;
+        $condition = null;
+
+        Mail::send(new AttendanceMail($name, $attendance, $jobType, $condition));
 
         return redirect()->route('user.attendance.index');
 

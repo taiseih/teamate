@@ -171,14 +171,14 @@
                                                             @if ($at_info->where('user_id', $user->id)->first()->job_type === 1)
                                                                 <div class="text-right">
                                                                     <p class="text-green-500 font-bold text-xl">出勤</p>
-                                                                    <p>出勤時刻：{{ $at_info->where('user_id', $user->id)->first()->attendance_time }}</p>
-                                                                    <p>体調：{{$at_info->where('user_id', $user->id)->first()->condition}}</p>
+                                                                    <p>{{ $at_info->where('user_id', $user->id)->first()->attendance_time }}</p>
+                                                                    <p>{{$at_info->where('user_id', $user->id)->first()->condition}}</p>
                                                                 </div>
                                                                 @elseif ($at_info->where('user_id', $user->id)->first()->job_type === 2)
                                                                     <div class="text-right">
                                                                     <p class="text-yellow-500 font-bold text-xl">出勤</p>
                                                                     <p>{{ $at_info->where('user_id', $user->id)->first()->attendance_time }}</p>
-                                                                    <p>体調：{{$at_info->where('user_id', $user->id)->first()->condition}}</p>
+                                                                    <p>{{$at_info->where('user_id', $user->id)->first()->condition}}</p>
                                                                 </div>
                                                             @endif
                                                         @else
