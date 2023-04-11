@@ -60,7 +60,8 @@ class AttendanceController extends Controller
             'condition' => $request->condition,
         ]);
 
-        $name = User::where('id', Auth::id())->value('name');//valueメソッドでnameカラムから取得している（日本語で採れた〜！）
+        //メール送信部分
+        $name = User::where('id', Auth::id())->value('name');//valueメソッドでnameカラムから取得している（日本語で採れた〜！）データベースからデータを取得したら数列になる
         $attendance = $request->attendance;
         if($request->jobType == 1){
             $jobType = '自社業務';
@@ -72,28 +73,6 @@ class AttendanceController extends Controller
         Mail::send(new AttendanceMail($name, $attendance, $jobType, $condition));
 
         return redirect()->route('user.attendance.index');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-
     }
 
     /**

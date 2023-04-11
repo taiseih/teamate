@@ -143,14 +143,14 @@
                         </article>
                     </div>
                     <div class="grid md:w-1/4 sm:w-full m-10">
-                        @if (!$at_info)
+                        @if (!$at_info){{-- 出勤情報がなかったら表示 --}}
                             <button type="button" onclick="location.href='{{ route('user.attendance.create') }}'"
                                 class="mb-8 py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md bg-green-100 border border-transparent font-semibold text-green-500 hover:text-white hover:bg-green-500 focus:outline-none focus:ring-2 ring-offset-white focus:ring-green-500 focus:ring-offset-2 transition-all text-lg dark:focus:ring-offset-gray-800">
                                 出勤登録
                             </button>
                         @endif
 
-                        @if ($at_info)
+                        @if ($at_info){{-- 出勤情報があったら退勤ボタンを表示 --}}
                             {{-- nullかどうかの判定、$at_infoの値がnullで渡っているため --}}
                             <form action="{{ route('user.attendance.update', ['attendance' => $at_info->id]) }}"
                                 method="POST"
@@ -167,6 +167,7 @@
                 </div>
             </div>
         </div>
+
         <script>
             const btn = document.getElementById("Button");
             function disableButton()  {
