@@ -102,11 +102,11 @@
                         class="lg:w-1/3 md:w-1/2 bg-gray-100 rounded-lg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0 relative z-10 shadow-md mx-auto">
                         <article class="flex max-w-xl flex-col items-start justify-between">
 
-                             <div class="group relative">
+                            <div class="group relative">
                                 <h3 class="mt-3 text-lg font-semibold leading-6 text-gray-700">
                                     <p class="mt-5 text-sm leading-6 text-gray-600 line-clamp-3">日付</p>
                                     <span class="absolute inset-0 text-gray-700"></span>
-                                        {{ $date }}
+                                    {{ $date }}
                                 </h3>
                             </div>
                             <div class="group relative">
@@ -157,17 +157,27 @@
                                 class=" py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md bg-indigo-100 border border-transparent font-semibold text-indigo-500 hover:text-white hover:bg-indigo-500 focus:outline-none focus:ring-2 ring-offset-white focus:ring-indigo-500 focus:ring-offset-2 transition-all text-lg dark:focus:ring-offset-gray-800">
                                 @csrf
                                 @method('put')
-                                <button type="submit">
+                                <button type="submit" onclick="disableButton()" id="Button">
                                     退勤
                                 </button>
                             </form>
                         @endif
 
                     </div>
-
                 </div>
             </div>
         </div>
+        <script>
+            const btn = document.getElementById("Button");
+            function disableButton()  {
+                // ボタンがクリックされたときの処理
+                btn.textContent = '送信中...'; // テキストを変更する
+                // 0.1秒後にボタンを完全に無効化する
+                setTimeout(function() {
+                    btn.disabled = true;
+                }, 100);
+            };
+        </script>
 </body>
 
 </html>

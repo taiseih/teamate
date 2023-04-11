@@ -142,7 +142,7 @@
                                         </select>
                                     </div>
 
-                                    <button
+                                    <button onclick="disableButton()" id="Button"
                                         class="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">登録する</button>
                                 </form>
                             </div>
@@ -153,6 +153,17 @@
                 </div>
             </div>
         </div>
+        <script>
+            const btn = document.getElementById("Button");
+            function disableButton() {
+                // ボタンがクリックされたときの処理
+                btn.textContent = '送信中...'; // テキストを変更する
+                // 0.1秒後にボタンを完全に無効化する
+                setTimeout(function() {
+                    btn.disabled = true;
+                }, 100);
+            };
+        </script>
 </body>
 
 </html>
