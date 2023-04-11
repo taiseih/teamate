@@ -16,6 +16,7 @@ class Attendance extends Model
         'job_type',
         'leaving_time',
         'condition',
+        'information',
     ];
 
     public function user(){

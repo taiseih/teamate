@@ -111,14 +111,16 @@ class AttendanceController extends Controller
 
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+    public function absenceCreate(){
+        return view('user.attendance.absence');
+    }
+
+    public function absenceStore(Request $request){
+        Attendance::create([
+            'user_id' => Auth::id(),
+            'attendance_time' => $request->attendance,
+            'information' => $request->information,
+        ]);
+        return redirect()->route('user.attendance.index');
     }
 }
