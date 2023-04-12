@@ -101,16 +101,16 @@
                         <article class="flex max-w-xl flex-col items-start justify-between">
 
                             <div class="group relative">
-                                
-                                    @if ($message === '出勤中')
+
+                                @if ($message === '出勤中')
                                     <h3 class="mt-3 text-lg font-semibold leading-6 text-green-400">
                                         <span class="absolute inset-0"></span>
                                         {{ $message }}
                                     @else
-                                    <h3 class="mt-3 text-lg font-semibold leading-6 text-red-400">
-                                        <span class="absolute inset-0"></span>
-                                        {{ $message }}
-                                    @endif
+                                        <h3 class="mt-3 text-lg font-semibold leading-6 text-red-400">
+                                            <span class="absolute inset-0"></span>
+                                            {{ $message }}
+                                @endif
 
                                 </h3>
                             </div>
@@ -135,7 +135,7 @@
                                     <p class="mt-5 text-sm leading-6 text-gray-600 line-clamp-3">体調</p>
                                     <span class="absolute inset-0 text-gray-700"></span>
                                     @if ($at_info)
-                                        {{ $at_info->condition }}
+                                        {{ $at_info->status }}
                                     @endif
 
                                 </h3>
@@ -150,7 +150,7 @@
                                         @elseif ($at_info->job_type === 2)
                                             <p>案件先業務</p>
                                         @endif
-                                        
+
                                     @endif
 
                                 </h3>

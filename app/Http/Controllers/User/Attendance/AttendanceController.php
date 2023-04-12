@@ -26,9 +26,9 @@ class AttendanceController extends Controller
         $users = User::where('id', Auth::id())->first();
 
         $at_info = DB::table('attendances')->where('user_id', Auth::id())
-        ->whereDate('created_at', $now->toDateString())
-        ->whereNull('leaving_time')
-        ->first();
+            ->whereDate('created_at', $now->toDateString())
+            ->whereNull('leaving_time')
+            ->first();
 
         $date = $now->format('m月d日');
 
@@ -57,26 +57,27 @@ class AttendanceController extends Controller
             'user_id' => Auth::id(),
             'attendance_time' => $request->attendance,
             'job_type' => $request->jobType,
-            'condition' => $request->condition,
+            'status' => $request->status,
         ]);
 
         //メール送信部分
-        $name = User::where('id', Auth::id())->value('name');//valueメソッドでnameカラムから取得している（日本語で採れた〜！）データベースからデータを取得したら数列になる
+        $name = User::where('id', Auth::id())->value('name'); //valueメソッドでnameカラムから取得している（日本語で採れた〜！）データベースからデータを取得したら数列になる
         $attendance = $request->attendance;
-        if($request->jobType == 1){
+        if ($request->jobType == 1) {
             $jobType = '自社業務';
-        }elseif($request->jobType == 2){
+        } elseif ($request->jobType == 2) {
             $jobType = '案件業務';
         }
-        $condition = $request->condition;
+        $status = $request->status;
         $information = null;
 
-        // Mail::send(new AttendanceMail($name, $attendance,$information, $jobType, $condition));
+        // Mail::send(new AttendanceMail($name, $attendance,$information, $jobType, $status));
 
         return redirect()->route('user.attendance.index');
     }
 
-    public function edit($id){
+    public function edit($id)
+    {
         $now = now();
 
         $at_info = DB::table('attendances')->where('user_id', Auth::id())
@@ -86,7 +87,7 @@ class AttendanceController extends Controller
 
         return view('user.attendance.leaving', compact('at_info'));
     }
-    
+
     public function update(Request $request, $id)
     {
         $user_id = Auth::id();
@@ -109,20 +110,20 @@ class AttendanceController extends Controller
         $attendance = $now;
         $information = null;
         $jobType = null;
-        $condition = null;
+        $status = null;
 
-        // Mail::send(new AttendanceMail($name, $attendance, $information, $jobType, $condition));
+        // Mail::send(new AttendanceMail($name, $attendance, $information, $jobType, $status));
 
         return redirect()->route('user.attendance.index');
-
-
     }
 
-    public function absenceCreate(){
+    public function absenceCreate()
+    {
         return view('user.attendance.absence');
     }
 
-    public function absenceStore(Request $request){
+    public function absenceStore(Request $request)
+    {
         Attendance::create([
             'user_id' => Auth::id(),
             'attendance_time' => $request->attendance,
@@ -133,9 +134,9 @@ class AttendanceController extends Controller
         $attendance = $request->attendance;
         $information = $request->information;
         $jobType = null;
-        $condition = null;
+        $status = null;
 
-        // Mail::send(new AttendanceMail($name, $attendance, $information, $jobType, $condition));
+        // Mail::send(new AttendanceMail($name, $attendance, $information, $jobType, $status));
 
         return redirect()->route('user.attendance.index');
     }

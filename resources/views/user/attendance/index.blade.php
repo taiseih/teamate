@@ -123,7 +123,7 @@
                                     <p class="mt-5 text-sm leading-6 text-gray-600 line-clamp-3">体調</p>
                                     <span class="absolute inset-0 text-gray-700"></span>
                                     @if ($at_info)
-                                        {{ $at_info->condition }}
+                                        {{ $at_info->status }}
                                     @endif
 
                                 </h3>
