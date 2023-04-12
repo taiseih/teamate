@@ -115,7 +115,7 @@
                                     </div>
 
                                     <button onclick="disableButton()" id="Button"
-                                        class="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">登録する</button>
+                                        class="w-full text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">登録する</button>
                                 </form>
                             </div>
                         </div>

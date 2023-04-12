@@ -16,10 +16,11 @@ class AttendanceMail extends Mailable
      *
      * @return void
      */
-    public function __construct($name, $attendance, $jobType, $condition)
+    public function __construct($name, $attendance, $information, $jobType, $condition)
     {
         $this->name = $name;
         $this->attendance = $attendance;
+        $this->information = $information;
         $this->jobType = $jobType;
         $this->condition = $condition;
     }
@@ -38,6 +39,7 @@ class AttendanceMail extends Mailable
             [
                 'name' => $this->name,
                 'attendance' => $this->attendance,
+                'information' => $this->information,
                 'jobType' => $this->jobType,
                 'condition' => $this->condition,
             ]);

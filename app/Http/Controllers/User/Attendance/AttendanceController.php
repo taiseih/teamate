@@ -69,8 +69,9 @@ class AttendanceController extends Controller
             $jobType = '案件業務';
         }
         $condition = $request->condition;
+        $information = null;
 
-        Mail::send(new AttendanceMail($name, $attendance, $jobType, $condition));
+        Mail::send(new AttendanceMail($name, $attendance,$information, $jobType, $condition));
 
         return redirect()->route('user.attendance.index');
     }
@@ -106,10 +107,11 @@ class AttendanceController extends Controller
 
         $name = User::where('id', Auth::id())->value('name'); //valueメソッドでnameカラムから取得している（日本語で採れた〜！）
         $attendance = $now;
+        $information = null;
         $jobType = null;
         $condition = null;
 
-        Mail::send(new AttendanceMail($name, $attendance, $jobType, $condition));
+        Mail::send(new AttendanceMail($name, $attendance, $information, $jobType, $condition));
 
         return redirect()->route('user.attendance.index');
 
@@ -126,6 +128,15 @@ class AttendanceController extends Controller
             'attendance_time' => $request->attendance,
             'information' => $request->information,
         ]);
+
+        $name = User::where('id', Auth::id())->value('name');
+        $attendance = $request->attendance;
+        $information = $request->information;
+        $jobType = null;
+        $condition = null;
+
+        Mail::send(new AttendanceMail($name, $attendance, $information, $jobType, $condition));
+
         return redirect()->route('user.attendance.index');
     }
 }
