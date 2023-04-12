@@ -71,7 +71,7 @@ class AttendanceController extends Controller
         $condition = $request->condition;
         $information = null;
 
-        Mail::send(new AttendanceMail($name, $attendance,$information, $jobType, $condition));
+        // Mail::send(new AttendanceMail($name, $attendance,$information, $jobType, $condition));
 
         return redirect()->route('user.attendance.index');
     }
@@ -111,7 +111,7 @@ class AttendanceController extends Controller
         $jobType = null;
         $condition = null;
 
-        Mail::send(new AttendanceMail($name, $attendance, $information, $jobType, $condition));
+        // Mail::send(new AttendanceMail($name, $attendance, $information, $jobType, $condition));
 
         return redirect()->route('user.attendance.index');
 
@@ -135,7 +135,7 @@ class AttendanceController extends Controller
         $jobType = null;
         $condition = null;
 
-        Mail::send(new AttendanceMail($name, $attendance, $information, $jobType, $condition));
+        // Mail::send(new AttendanceMail($name, $attendance, $information, $jobType, $condition));
 
         return redirect()->route('user.attendance.index');
     }
