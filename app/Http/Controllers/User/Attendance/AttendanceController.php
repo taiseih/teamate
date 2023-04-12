@@ -3,12 +3,14 @@
 namespace App\Http\Controllers\User\Attendance;
 
 use App\Http\Controllers\Controller;
+use App\Mail\AttendanceMail;
 use App\Models\Attendance;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 
 class AttendanceController extends Controller
 {
@@ -58,38 +60,33 @@ class AttendanceController extends Controller
             'condition' => $request->condition,
         ]);
 
+        //メール送信部分
+        $name = User::where('id', Auth::id())->value('name');//valueメソッドでnameカラムから取得している（日本語で採れた〜！）データベースからデータを取得したら数列になる
+        $attendance = $request->attendance;
+        if($request->jobType == 1){
+            $jobType = '自社業務';
+        }elseif($request->jobType == 2){
+            $jobType = '案件業務';
+        }
+        $condition = $request->condition;
+        $information = null;
+
+        // Mail::send(new AttendanceMail($name, $attendance,$information, $jobType, $condition));
+
         return redirect()->route('user.attendance.index');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+    public function edit($id){
+        $now = now();
+
+        $at_info = DB::table('attendances')->where('user_id', Auth::id())
+            ->whereDate('created_at', $now->toDateString())
+            ->whereNull('leaving_time')
+            ->first();
+
+        return view('user.attendance.leaving', compact('at_info'));
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function update(Request $request, $id)
     {
         $user_id = Auth::id();
@@ -104,22 +101,42 @@ class AttendanceController extends Controller
         if ($attendance) {
             $attendance->update([
                 'leaving_time' => $now,
+                'information' => $request->information,
             ]);
         }
+
+        $name = User::where('id', Auth::id())->value('name'); //valueメソッドでnameカラムから取得している（日本語で採れた〜！）
+        $attendance = $now;
+        $information = null;
+        $jobType = null;
+        $condition = null;
+
+        // Mail::send(new AttendanceMail($name, $attendance, $information, $jobType, $condition));
 
         return redirect()->route('user.attendance.index');
 
 
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+    public function absenceCreate(){
+        return view('user.attendance.absence');
+    }
+
+    public function absenceStore(Request $request){
+        Attendance::create([
+            'user_id' => Auth::id(),
+            'attendance_time' => $request->attendance,
+            'information' => $request->information,
+        ]);
+
+        $name = User::where('id', Auth::id())->value('name');
+        $attendance = $request->attendance;
+        $information = $request->information;
+        $jobType = null;
+        $condition = null;
+
+        // Mail::send(new AttendanceMail($name, $attendance, $information, $jobType, $condition));
+
+        return redirect()->route('user.attendance.index');
     }
 }

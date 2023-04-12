@@ -19,7 +19,8 @@ class CreateAttendancesTable extends Migration
             $table->string('attendance_time');
             $table->tinyInteger('job_type')->nullable();
             $table->string('leaving_time')->nullable();
-            $table->string('condition');
+            $table->string('condition')->nullable();
+            $table->string('information')->nullable();
             $table->timestamps();
         });
     }
