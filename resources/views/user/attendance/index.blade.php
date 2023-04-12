@@ -97,7 +97,7 @@
         <div class="py-12">
 
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg md:flex">
+                <div class="bg-white overflow-hidden sm:rounded-lg md:flex">
                     <div
                         class="lg:w-1/3 md:w-1/2 bg-gray-100 rounded-lg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0 relative z-10 shadow-md mx-auto">
                         <article class="flex max-w-xl flex-col items-start justify-between">
@@ -143,18 +143,20 @@
                         </article>
                     </div>
                     <div class="grid md:w-1/4 sm:w-full m-10">
-                        @if (!$at_info){{-- 出勤情報がなかったら表示 --}}
+                        @if (!$at_info)
+                            {{-- 出勤情報がなかったら表示 --}}
                             <button type="button" onclick="location.href='{{ route('user.attendance.create') }}'"
-                                class="mb-8 py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md bg-green-100 border border-transparent font-semibold text-green-500 hover:text-white hover:bg-green-500 focus:outline-none focus:ring-2 ring-offset-white focus:ring-green-500 focus:ring-offset-2 transition-all text-lg dark:focus:ring-offset-gray-800">
+                                class="mb-8 py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md bg-green-100 border border-transparent font-semibold text-green-500 hover:text-white hover:bg-green-500 focus:outline-none focus:ring-2 ring-offset-white focus:ring-green-500 focus:ring-offset-2 transition-all text-lg">
                                 出勤登録
                             </button>
                         @endif
 
-                        @if ($at_info){{-- 出勤情報があったら退勤ボタンを表示 --}}
+                        @if ($at_info)
+                            {{-- 出勤情報があったら退勤ボタンを表示 --}}
                             {{-- nullかどうかの判定、$at_infoの値がnullで渡っているため --}}
                             <form action="{{ route('user.attendance.update', ['attendance' => $at_info->id]) }}"
                                 method="POST"
-                                class=" py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md bg-indigo-100 border border-transparent font-semibold text-indigo-500 hover:text-white hover:bg-indigo-500 focus:outline-none focus:ring-2 ring-offset-white focus:ring-indigo-500 focus:ring-offset-2 transition-all text-lg dark:focus:ring-offset-gray-800">
+                                class=" py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md bg-indigo-100 border border-transparent font-semibold text-indigo-500 hover:text-white hover:bg-indigo-500 focus:outline-none focus:ring-2 ring-offset-white focus:ring-indigo-500 focus:ring-offset-2 transition-all text-lg">
                                 @csrf
                                 @method('put')
                                 <button type="submit" onclick="disableButton()" id="Button">
@@ -167,10 +169,18 @@
                 </div>
             </div>
         </div>
+        <div class="w-full text-center">
+            <button type="button" onclick="location.href='{{ route('user.absence.create') }}'"
+                class="md:w-1/2 w-3/4 py-3 px-4 justify-center items-center rounded-md bg-red-100 border border-transparent font-semibold text-red-500 hover:text-white hover:bg-red-500 focus:outline-none focus:ring-2 ring-offset-white focus:ring-red-500 focus:ring-offset-2 transition-all text-lg">
+                欠勤登録
+            </button>
+        </div>
+
 
         <script>
             const btn = document.getElementById("Button");
-            function disableButton()  {
+
+            function disableButton() {
                 // ボタンがクリックされたときの処理
                 btn.textContent = '送信中...'; // テキストを変更する
                 // 0.1秒後にボタンを完全に無効化する
