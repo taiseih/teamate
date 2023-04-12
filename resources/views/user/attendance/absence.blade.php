@@ -106,10 +106,12 @@
                                 <p class="leading-relaxed mb-5 text-gray-600">欠勤情報を登録してください</p>
                                 <form method="POST" action="{{ route('user.absence.store') }}">
                                     @csrf
-                                        <input name="attendance" type="hidden" value="欠勤">
+                                    <input name="attendance" type="hidden" value="欠勤">
                                     <div class="relative mb-4">
                                         <label for="information" class="leading-7 text-sm text-gray-600">欠勤理由</label>
-                                        <textarea required class="w-full h-48 bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" name="information" id="information"></textarea>
+                                        <textarea required
+                                            class="w-full h-48 bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                                            name="information" id="information"></textarea>
                                     </div>
 
                                     <button onclick="disableButton()" id="Button"
@@ -125,6 +127,7 @@
         </div>
         <script>
             const btn = document.getElementById("Button");
+
             function disableButton() {
                 // ボタンがクリックされたときの処理
                 btn.textContent = '送信中...'; // テキストを変更する

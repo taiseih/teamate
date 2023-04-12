@@ -75,13 +75,17 @@ class AttendanceController extends Controller
         return redirect()->route('user.attendance.index');
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    public function edit($id){
+        $now = now();
+
+        $at_info = DB::table('attendances')->where('user_id', Auth::id())
+            ->whereDate('created_at', $now->toDateString())
+            ->whereNull('leaving_time')
+            ->first();
+
+        return view('user.attendance.leaving', compact('at_info'));
+    }
+    
     public function update(Request $request, $id)
     {
         $user_id = Auth::id();
@@ -96,6 +100,7 @@ class AttendanceController extends Controller
         if ($attendance) {
             $attendance->update([
                 'leaving_time' => $now,
+                'information' => $request->information,
             ]);
         }
 
