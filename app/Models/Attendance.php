@@ -15,11 +15,12 @@ class Attendance extends Model
         'attendance_time',
         'job_type',
         'leaving_time',
-        'condition',
+        'status',
         'information',
     ];
 
-    public function user(){
+    public function user()
+    {
         return $this->belongsTo(User::class);
     }
 }

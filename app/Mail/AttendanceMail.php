@@ -16,13 +16,13 @@ class AttendanceMail extends Mailable
      *
      * @return void
      */
-    public function __construct($name, $attendance, $information, $jobType, $condition)
+    public function __construct($name, $attendance, $information, $jobType, $status)
     {
         $this->name = $name;
         $this->attendance = $attendance;
         $this->information = $information;
         $this->jobType = $jobType;
-        $this->condition = $condition;
+        $this->status = $status;
     }
 
     /**
@@ -33,15 +33,16 @@ class AttendanceMail extends Mailable
     public function build()
     {
         return $this->to('test@example.com')
-        ->subject($this->name.'さんの勤怠が登録されました')
-        ->view('emails.mail')
-        ->with(
-            [
-                'name' => $this->name,
-                'attendance' => $this->attendance,
-                'information' => $this->information,
-                'jobType' => $this->jobType,
-                'condition' => $this->condition,
-            ]);
+            ->subject($this->name . 'さんの勤怠が登録されました')
+            ->view('emails.mail')
+            ->with(
+                [
+                    'name' => $this->name,
+                    'attendance' => $this->attendance,
+                    'information' => $this->information,
+                    'jobType' => $this->jobType,
+                    'status' => $this->status,
+                ]
+            );
     }
 }

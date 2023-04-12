@@ -125,8 +125,8 @@
                                         </select>
                                     </div>
                                     <div class="relative mb-4">
-                                        <label for="condition" class="leading-7 text-sm text-gray-600">体調</label>
-                                        <select type="condition" id="condition" name="condition" required
+                                        <label for="status" class="leading-7 text-sm text-gray-600">体調</label>
+                                        <select type="status" id="status" name="status" required
                                             class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                                             <option value="良好">良好</option>
                                             <option value="普通">普通</option>
@@ -155,6 +155,7 @@
         </div>
         <script>
             const btn = document.getElementById("Button");
+
             function disableButton() {
                 // ボタンがクリックされたときの処理
                 btn.textContent = '送信中...'; // テキストを変更する
