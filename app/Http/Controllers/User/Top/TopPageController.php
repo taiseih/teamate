@@ -34,7 +34,13 @@ class TopPageController extends Controller
 
         if($at_info)
         {
-            $message = "出勤中";
+            if($at_info->attendance_time === "欠勤")
+            {
+                $message = "欠勤";
+            }else{
+                $message = "出勤中";
+            }
+        
         }else{
             $message = "退勤中";
         }

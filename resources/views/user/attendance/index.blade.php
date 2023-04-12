@@ -151,9 +151,9 @@
                             </button>
                         @endif
 
-                        @if (!$at_info === '欠勤'){{-- 欠勤かどうか判定 --}}
-                            {{-- 出勤情報があったら退勤ボタンを表示 --}}
-                            @if ($at_info)
+                        {{-- 出勤情報があったら退勤ボタンを表示 --}}
+                        @if ($at_info)
+                            @if ($at_info->attendance_time !== '欠勤'){{-- 欠勤かどうか判定 --}}
                                 @if ($at_info->job_type === 1)
                                     <button type="button"
                                         onclick="location.href='{{ route('user.attendance.edit', ['attendance' => $at_info->id]) }}'"
