@@ -32,7 +32,7 @@ class AttendanceMail extends Mailable
      */
     public function build()
     {
-        return $this->to('test@example.com')
+        return $this->to('kakatx617@gmail.com')
             ->subject($this->name . 'さんの勤怠が登録されました')
             ->view('emails.mail')
             ->with(
