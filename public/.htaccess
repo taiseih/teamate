@@ -18,6 +18,4 @@
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
-
-    SetEnvIf X-Forwarded-Proto https HTTPS=on
 </IfModule>
