@@ -13,10 +13,9 @@
     <!-- Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
 
-    {{-- <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    <script src="{{ asset('js/app.js') }}" defer></script> --}}
-        <link rel="stylesheet" href="https://www.mng-teamate.com/css/app.css">
-    <script src="https://www.mng-teamate.com/js/app.js" defer></script>
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <script src="{{ asset('js/app.js') }}" defer></script>
+
 </head>
 
 <body class="antialiased">
@@ -39,21 +38,20 @@
     <section class="text-gray-600 body-font">
         <div class="container mx-auto flex px-5 py-24 items-center justify-center flex-col">
             <div class="text-center lg:w-2/3 w-full">
-                    <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text--900">Teamate</h1>
-                    @if (Route::has('user.login'))
-                            @auth('users')
-                                <a href="{{ url('/top') }}"
-                                    class="text-sm text-gray-700 dark:text-gray-500">トップへ</a>
-                            @else
-                                <button onclick="location.href='{{ route('user.login') }}'"
-                                    class="inline-flex text-white bg-green-500 border-0 py-2 px-6 focus:outline-none hover:bg-green-600 rounded text-lg">ログイン</button>
-                                    @endauth
-                        @endif
-                </div>
+                <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text--900">Teamate</h1>
+                @if (Route::has('user.login'))
+                    @auth('users')
+                        <a href="{{ url('/top') }}" class="text-sm text-gray-700 dark:text-gray-500">トップへ</a>
+                    @else
+                        <button onclick="location.href='{{ route('user.login') }}'"
+                            class="inline-flex text-white bg-green-500 border-0 py-2 px-6 focus:outline-none hover:bg-green-600 rounded text-lg">ログイン</button>
+                    @endauth
+                @endif
+            </div>
         </div>
-        </section>
+    </section>
 
 
-    </body>
+</body>
 
-    </html>
+</html>
