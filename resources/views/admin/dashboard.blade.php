@@ -14,10 +14,9 @@
     <!-- Scripts -->
     {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
 
-    {{-- <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    <script src="{{ asset('js/app.js') }}" defer></script> --}}
-        <link rel="stylesheet" href="https://www.mng-teamate.com/css/app.css">
-    <script src="https://www.mng-teamate.com/js/app.js" defer></script>
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <script src="{{ asset('js/app.js') }}" defer></script>
+
 </head>
 
 <body class="font-sans antialiased">
@@ -64,8 +63,8 @@
                             <x-slot name="content">
                                 <!-- Authentication -->
                                 <x-dropdown-link :href="route('admin.profile.index')">
-                                        {{ __('プロフィール') }}
-                                    </x-dropdown-link>
+                                    {{ __('プロフィール') }}
+                                </x-dropdown-link>
                                 <form method="POST" action="{{ route('admin.logout') }}">
                                     @csrf
 
@@ -114,8 +113,8 @@
                     <div class="mt-3 space-y-1">
                         <!-- Authentication -->
                         <x-dropdown-link :href="route('admin.profile.index')">
-                                        {{ __('プロフィール') }}
-                                    </x-dropdown-link>
+                            {{ __('プロフィール') }}
+                        </x-dropdown-link>
                         <form method="POST" action="{{ route('admin.logout') }}">
                             @csrf
 
@@ -149,7 +148,7 @@
                                 <div class="container px-5 py-24">
                                     <div class="flex flex-wrap -m-4">
                                         <div class="p-4 lg:w-1/2 md:w-full">
-                                            <a href="{{route('admin.tasks.index')}}">
+                                            <a href="{{ route('admin.tasks.index') }}">
                                                 <div
                                                     class="flex border-2 rounded-lg border-gray-200 border-opacity-50 p-8 sm:flex-row flex-col">
                                                     <div

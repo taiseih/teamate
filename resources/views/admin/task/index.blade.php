@@ -14,10 +14,9 @@
     <!-- Scripts -->
     {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
 
-    {{-- <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    <script src="{{ asset('js/app.js') }}" defer></script> --}}
-        <link rel="stylesheet" href="https://www.mng-teamate.com/css/app.css">
-    <script src="https://www.mng-teamate.com/js/app.js" defer></script>
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <script src="{{ asset('js/app.js') }}" defer></script>
+
 </head>
 
 <body class="font-sans antialiased">
@@ -57,8 +56,8 @@
                             <x-slot name="content">
                                 <!-- Authentication -->
                                 <x-dropdown-link :href="route('admin.profile.index')">
-                                        {{ __('プロフィール') }}
-                                    </x-dropdown-link>
+                                    {{ __('プロフィール') }}
+                                </x-dropdown-link>
                                 <form method="POST" action="{{ route('admin.logout') }}">
                                     @csrf
 
@@ -107,8 +106,8 @@
                     <div class="mt-3 space-y-1">
                         <!-- Authentication -->
                         <x-dropdown-link :href="route('admin.profile.index')">
-                                        {{ __('プロフィール') }}
-                                    </x-dropdown-link>
+                            {{ __('プロフィール') }}
+                        </x-dropdown-link>
                         <form method="POST" action="{{ route('admin.logout') }}">
                             @csrf
 
@@ -146,23 +145,24 @@
                                         <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">
                                             タスク一覧</h1>
                                     </div>
-                                 
+
 
                                     <div class="flex flex-wrap -m-2">
                                         @foreach ($tasks as $task)
-                                                <div class="p-2 lg:w-1/3 md:w-1/2 w-full">
+                                            <div class="p-2 lg:w-1/3 md:w-1/2 w-full">
                                                 <div
                                                     class="h-full flex items-center border-gray-200 border p-4 rounded-lg">
                                                     <div class="flex-grow">
                                                         <h2 class="text-gray-900 text-xl title-font font-medium">
                                                             {{ $task->user->name }}</h2>
                                                         <p class="text-gray-900 text-2xl mt-12">{{ $task->title }}</p>
-                                                        <p class="text-gray-500 text-lg mt-8">{{ $task->information }}</p>           
+                                                        <p class="text-gray-500 text-lg mt-8">{{ $task->information }}
+                                                        </p>
                                                     </div>
                                                 </div>
                                             </div>
                                         @endforeach
-                                        
+
 
                                     </div>
                                 </div>

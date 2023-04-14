@@ -14,10 +14,9 @@
     <!-- Scripts -->
     {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
 
-    {{-- <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    <script src="{{ asset('js/app.js') }}" defer></script> --}}
-        <link rel="stylesheet" href="https://www.mng-teamate.com/css/app.css">
-    <script src="https://www.mng-teamate.com/js/app.js" defer></script>
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <script src="{{ asset('js/app.js') }}" defer></script>
+
 </head>
 
 <body class="font-sans antialiased">
