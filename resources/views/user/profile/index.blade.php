@@ -13,7 +13,7 @@
 
     {{-- <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <script src="{{ asset('js/app.js') }}" defer></script> --}}
-        <link rel="stylesheet" href="https://www.mng-teamate.com/css/app.css">
+    <link rel="stylesheet" href="https://www.mng-teamate.com/css/app.css">
     <script src="https://www.mng-teamate.com/js/app.js" defer></script>
 </head>
 
