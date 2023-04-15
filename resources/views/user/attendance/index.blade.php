@@ -63,7 +63,7 @@
                                 @if ($at_info->job_type === 1)
                                     <button type="button"
                                         onclick="location.href='{{ route('user.attendance.edit', ['attendance' => $at_info->id]) }}'"
-                                        class=" py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md bg-indigo-100 border border-transparent font-semibold text-indigo-500 hover:text-white hover:bg-indigo-500 focus:outline-none focus:ring-2 ring-offset-white focus:ring-indigo-500 focus:ring-offset-2 transition-all text-lg">
+                                        class="mb-16 py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md bg-indigo-100 border border-transparent font-semibold text-indigo-500 hover:text-white hover:bg-indigo-500 focus:outline-none focus:ring-2 ring-offset-white focus:ring-indigo-500 focus:ring-offset-2 transition-all text-lg">
                                         退勤
                                     </button>
                                     </form>
@@ -71,7 +71,7 @@
                                     <form
                                         action="{{ route('user.attendance.update', ['attendance' => $at_info->id]) }}"
                                         method="POST"
-                                        class=" py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md bg-indigo-100 border border-transparent font-semibold text-indigo-500 hover:text-white hover:bg-indigo-500 focus:outline-none focus:ring-2 ring-offset-white focus:ring-indigo-500 focus:ring-offset-2 transition-all text-lg">
+                                        class="mb-16 py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md bg-indigo-100 border border-transparent font-semibold text-indigo-500 hover:text-white hover:bg-indigo-500 focus:outline-none focus:ring-2 ring-offset-white focus:ring-indigo-500 focus:ring-offset-2 transition-all text-lg">
                                         @csrf
                                         @method('put')
                                         <button type="submit" onclick="disableButton()" id="Button">
