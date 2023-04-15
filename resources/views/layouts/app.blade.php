@@ -15,7 +15,7 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
 
 </head>
-
+{{-- ユーザー用 --}}
 <body class="font-sans antialiased">
     <div class="min-h-screen">
             @include('layouts.user-navigation')
