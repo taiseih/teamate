@@ -15,6 +15,7 @@
                     <div class="hidden sm:flex sm:items-center sm:ml-6">
                         <div id="navbar-image-2"
                             class="hs-collapse hidden overflow-hidden transition-all duration-300 basis-full grow sm:block">
+                            {{-- リクエストされたURLがtopのもの全て、このナビメニューを表示 --}}
                             @if (Request::is('top*'))
                                 <div
                                     class="flex flex-col gap-5 mt-5 sm:flex-row sm:items-center sm:justify-end sm:mt-0 sm:pl-5">
@@ -27,6 +28,7 @@
                                     <a class="font-medium text-gray-500 hover:text-gray-400"
                                         href="{{ route('user.profile.index') }}">プロフィール</a>
                                 </div>
+                                {{-- リクエストされたURLがattendace,absenceのもの全て、このナビメニューを表示 --}}
                             @elseif (Request::is('attendance*', 'absence*'))
                                 <div
                                     class="flex flex-col gap-5 mt-5 sm:flex-row sm:items-center sm:justify-end sm:mt-0 sm:pl-5">
@@ -39,6 +41,7 @@
                                     <a class="font-medium text-gray-500 hover:text-gray-400"
                                         href="{{ route('user.profile.index') }}">プロフィール</a>
                                 </div>
+                                {{-- リクエストされたURLがtaskのもの全て、このナビメニューを表示 --}}
                             @elseif (Request::is('task*'))
                                 <div
                                     class="flex flex-col gap-5 mt-5 sm:flex-row sm:items-center sm:justify-end sm:mt-0 sm:pl-5">
@@ -51,6 +54,7 @@
                                     <a class="font-medium text-gray-500 hover:text-gray-400"
                                         href="{{ route('user.profile.index') }}">プロフィール</a>
                                 </div>
+                                {{-- リクエストされたURLがprofileのもの全て、このナビメニューを表示 --}}
                             @elseif (Request::is('profile*'))
                                 <div
                                     class="flex flex-col gap-5 mt-5 sm:flex-row sm:items-center sm:justify-end sm:mt-0 sm:pl-5">
