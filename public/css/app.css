@@ -637,6 +637,12 @@ select {
 .container {
   width: 100%;
 }
+@media (min-width: 350px) {
+
+  .container {
+    max-width: 350px;
+  }
+}
 @media (min-width: 640px) {
 
   .container {
@@ -653,6 +659,12 @@ select {
 
   .container {
     max-width: 1024px;
+  }
+}
+@media (min-width: 1200px) {
+
+  .container {
+    max-width: 1200px;
   }
 }
 @media (min-width: 1280px) {
@@ -728,6 +740,9 @@ select {
 .mb-12 {
   margin-bottom: 3rem;
 }
+.mb-16 {
+  margin-bottom: 4rem;
+}
 .mb-20 {
   margin-bottom: 5rem;
 }
@@ -787,9 +802,6 @@ select {
 }
 .mt-8 {
   margin-top: 2rem;
-}
-.mb-16 {
-  margin-bottom: 4rem;
 }
 .block {
   display: block;
