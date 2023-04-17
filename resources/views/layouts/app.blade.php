@@ -16,9 +16,11 @@
 
 </head>
 {{-- ユーザー用 --}}
+
+
 <body class="font-sans antialiased">
     <div class="min-h-screen">
-            @include('layouts.user-navigation')
+        @include('layouts.user-navigation')
         <!-- Page Heading -->
         {{-- <header class="bg-white shadow">
                 {{ $header }}
