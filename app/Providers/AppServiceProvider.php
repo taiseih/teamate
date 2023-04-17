@@ -23,6 +23,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-         \Illuminate\Support\Facades\URL::forceScheme(\Str::startsWith(config('app.url'), 'https') ? 'https' : 'http');// 本番環境デプロイ時にはコメントを外す
+         \Illuminate\Support\Facades\URL::forceScheme(\Str::startsWith(config('app.url'), 'https') ? 'https' : 'http');// 本番環境デプロイ時にはコメントを外すことにする
     }
 }
