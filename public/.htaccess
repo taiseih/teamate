@@ -20,5 +20,5 @@
     RewriteRule ^ index.php [L]
 
     SetEnvIf X-Forwarded-Proto https HTTPS=on
-    # これもhtccessで必要
+    # これもhtccessで必要(これだけだと完了しない)
 </IfModule>
