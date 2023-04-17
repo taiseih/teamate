@@ -1760,6 +1760,11 @@ select {
     color: rgb(255 255 255 / var(--tw-text-opacity));
   }
 
+  .dark\:text-blue-500 {
+    --tw-text-opacity: 1;
+    color: rgb(59 130 246 / var(--tw-text-opacity));
+  }
+
   .dark\:focus\:ring-offset-gray-800:focus {
     --tw-ring-offset-color: #1f2937;
   }
