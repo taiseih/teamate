@@ -47,4 +47,5 @@
                 }, 100);
             };
         </script>
+
 </x-app-layout>
