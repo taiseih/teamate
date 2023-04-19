@@ -21,16 +21,16 @@ class TaskController extends Controller
      */
     public function index()
     {
-        $allTasks = Task::all();
-        $now = Carbon::now();
-        $users = User::where('id', Auth::id())->get();
+        // $allTasks = Task::all();
+        // $now = Carbon::now();
+        // $users = User::where('id', Auth::id())->get();
         
-        $tasks = DB::table('tasks')->where('user_id', Auth::id())
-        ->whereDate('created_at', $now->toDateString())
-        ->get();
+        // $tasks = DB::table('tasks')->where('user_id', Auth::id())
+        // ->whereDate('created_at', $now->toDateString())
+        // ->get();
        
-
-        return view('user.task.index', compact('tasks', 'users'));
+        abort(404);
+        // return view('user.task.index', compact('tasks', 'users'));
     }
 
     /**
@@ -57,7 +57,7 @@ class TaskController extends Controller
             'information' => $request->information,
         ]);
 
-        return redirect()->route('user.task.index');
+        return redirect()->route('user.top.index');
     }
 
     /**
@@ -97,7 +97,7 @@ class TaskController extends Controller
         $tasks->information = $request->information;
         $tasks->save();
 
-        return redirect()->route('user.task.index');
+        return redirect()->route('user.top.index');
     }
 
     /**
@@ -110,6 +110,6 @@ class TaskController extends Controller
     {
         Task::findOrFail($id)->delete();
 
-        return redirect()->route('user.task.index');
+        return redirect()->route('user.top.index');
     }
 }

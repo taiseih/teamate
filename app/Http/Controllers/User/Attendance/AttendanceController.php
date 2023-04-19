@@ -30,6 +30,7 @@ class AttendanceController extends Controller
             ->whereNull('leaving_time')
             ->first();
 
+
         $date = $now->format('m月d日');
 
         return view('user.attendance.index', compact('at_info', 'users', 'date'));
@@ -71,7 +72,7 @@ class AttendanceController extends Controller
         $status = $request->status;
         $information = null;
 
-         Mail::send(new AttendanceMail($name, $attendance,$information, $jobType, $status));
+         //Mail::send(new AttendanceMail($name, $attendance,$information, $jobType, $status));
         return redirect()->route('user.attendance.index');
     }
 
@@ -111,7 +112,7 @@ class AttendanceController extends Controller
         $jobType = null;
         $status = null;
 
-         Mail::send(new AttendanceMail($name, $attendance, $information, $jobType, $status));
+         //Mail::send(new AttendanceMail($name, $attendance, $information, $jobType, $status));
         return redirect()->route('user.attendance.index');
     }
 
@@ -134,7 +135,7 @@ class AttendanceController extends Controller
         $jobType = null;
         $status = null;
 
-         Mail::send(new AttendanceMail($name, $attendance, $information, $jobType, $status));
+         //Mail::send(new AttendanceMail($name, $attendance, $information, $jobType, $status));
         return redirect()->route('user.attendance.index');
     }
 }
