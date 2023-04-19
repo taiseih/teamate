@@ -8,8 +8,7 @@
                         <div class="container px-5 py-24 mx-auto flex">
                             <div
                                 class="lg:w-1/3 md:w-1/2 bg-white rounded-lg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0 relative z-10 shadow-md mx-auto">
-                                <h2 class="text-gray-900 text-lg mb-1 font-medium title-font">業務登録</h2>
-                                <p class="leading-relaxed mb-5 text-gray-600">本日の業務を登録してください</p>
+                                <p class="leading-relaxed mb-5 text-gray-900 text-lg">本日の業務を登録してください</p>
                                 <form method="POST" action="{{ route('user.task.store') }}">
                                     @csrf
                                     <div class="relative mb-4">
