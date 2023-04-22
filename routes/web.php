@@ -4,6 +4,7 @@ use App\Http\Controllers\User\ProfileController;
 use App\Http\Controllers\User\Task\TaskController;
 use App\Http\Controllers\User\Attendance\AttendanceController;
 use App\Http\Controllers\User\Top\TopPageController;
+use App\Http\Controllers\User\Work\WorkController;
 use GuzzleHttp\Promise\Create;
 use Illuminate\Support\Facades\Route;
 
@@ -25,6 +26,9 @@ Route::middleware(['auth:users'])->group(function () {
     Route::get('/absence/create', [AttendanceController::class, 'absenceCreate'])->name('absence.create');
     Route::post('/absence', [AttendanceController::class, 'absenceStore'])->name('absence.store');
 });
+
+Route::resource('work', WorkController::class)
+->middleware(['auth:users']);
 
 Route::resource('profile', ProfileController::class)
 ->middleware('auth:users');

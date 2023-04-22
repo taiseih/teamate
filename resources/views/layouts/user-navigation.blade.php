@@ -26,6 +26,8 @@
                                     <a class="font-medium text-gray-500 hover:text-gray-400"
                                         href="{{ route('user.task.create') }}">社内業務</a>
                                     <a class="font-medium text-gray-500 hover:text-gray-400"
+                                        href="{{ route('user.work.index') }}">稼働実績</a>
+                                    <a class="font-medium text-gray-500 hover:text-gray-400"
                                         href="{{ route('user.profile.index') }}"><svg xmlns="http://www.w3.org/2000/svg"
                                             fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
                                             class="w-6 h-6">
@@ -45,9 +47,11 @@
                                     <a class="font-medium text-gray-500 hover:text-gray-400"
                                         href="{{ route('user.task.create') }}">社内業務</a>
                                     <a class="font-medium text-gray-500 hover:text-gray-400"
-                                        href="{{ route('user.profile.index') }}"><svg xmlns="http://www.w3.org/2000/svg"
-                                            fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-                                            class="w-6 h-6">
+                                        href="{{ route('user.work.index') }}">稼働実績</a>
+                                    <a class="font-medium text-gray-500 hover:text-gray-400"
+                                        href="{{ route('user.profile.index') }}"><svg
+                                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                            stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                                             <path stroke-linecap="round" stroke-linejoin="round"
                                                 d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" />
                                         </svg>
@@ -63,6 +67,29 @@
                                         href="{{ route('user.attendance.index') }}">勤怠</a>
                                     <a class="font-bold text-blue-500 hover:text-blue-400"
                                         href="{{ route('user.task.create') }}">社内業務</a>
+                                    <a class="font-medium text-gray-500 hover:text-gray-400"
+                                        href="{{ route('user.work.index') }}">稼働実績</a>
+                                    <a class="font-medium text-gray-500 hover:text-gray-400"
+                                        href="{{ route('user.profile.index') }}"><svg
+                                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                            stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" />
+                                        </svg>
+                                    </a>
+                                </div>
+                                {{-- リクエストされたURLがworkのもの全て、このナビメニューを表示 --}}
+                            @elseif (Request::is('work*'))
+                                <div
+                                    class="flex flex-col gap-5 mt-5 sm:flex-row sm:items-center sm:justify-end sm:mt-0 sm:pl-5">
+                                    <a class="font-medium text-gray-500 hover:text-gray-400"
+                                        href="{{ route('user.top.index') }}">トップページ</a>
+                                    <a class="font-medium text-gray-500 hover:text-gray-400"
+                                        href="{{ route('user.attendance.index') }}">勤怠</a>
+                                    <a class="font-medium text-gray-500 hover:text-gray-400"
+                                        href="{{ route('user.task.create') }}">社内業務</a>
+                                    <a class="font-bold text-blue-500 hover:text-blue-400"
+                                        href="{{ route('user.work.index') }}">稼働実績</a>
                                     <a class="font-medium text-gray-500 hover:text-gray-400"
                                         href="{{ route('user.profile.index') }}"><svg
                                             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -82,6 +109,8 @@
                                         href="{{ route('user.attendance.index') }}">勤怠</a>
                                     <a class="font-medium text-gray-500 hover:text-gray-400"
                                         href="{{ route('user.task.create') }}">社内業務</a>
+                                    <a class="font-medium text-gray-500 hover:text-gray-400"
+                                        href="{{ route('user.work.index') }}">稼働実績</a>
                                     <a class="font-bold text-blue-500 hover:text-blue-400"
                                         href="{{ route('user.profile.index') }}"><svg
                                             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -125,6 +154,9 @@
                     <x-responsive-nav-link :href="route('user.task.create')" :active="request()->routeIs('user.task.create')">
                         {{ __('社内業務') }}
                     </x-responsive-nav-link>
+                    <x-responsive-nav-link :href="route('user.work.index')" :active="request()->routeIs('user.work.index')">
+                        {{ __('稼働実績') }}
+                    </x-responsive-nav-link>                    
                     <x-responsive-nav-link :href="route('user.profile.index')" :active="request()->routeIs('user.profile.index')">
                         {{ __('プロフィール') }}
                     </x-responsive-nav-link>
