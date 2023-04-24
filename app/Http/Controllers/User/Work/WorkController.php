@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\User\Work;
 
 use App\Http\Controllers\Controller;
+use App\Models\Attendance;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class WorkController extends Controller
 {
@@ -14,9 +16,9 @@ class WorkController extends Controller
      */
     public function index()
     {
-        
+        $works = Attendance::where('user_id', Auth::id())->get();
 
-        return view('user.work.index');
+        return view('user.work.index', compact('works'));
     }
 
     /**

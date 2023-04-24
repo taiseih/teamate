@@ -32,9 +32,12 @@
                         </tr>
                     </thead>
                     <tbody>
+
+                        @foreach ($works as $work)
                         <tr class="bg-white border-b">
+                            {{$work->id}}<br>
                             <th scope="row" class="px-6 py-4 font-medium">
-                                12/31
+                                {{$work->created_at->format('m/d')}}
                             </th>
                             <td class=" py-4">
                                 <label for="job_type" class="sr-only"></label>
@@ -49,10 +52,10 @@
                                 </select>
                             </td>
                             <td class="px-6 py-4">
-                                10:00
+                                {{$work->attendance_time}}
                             </td>
                             <td class="px-6 py-4">
-                                19:00
+                                {{$work->leaving_time}}
                             </td>
                             <td class="px-6 py-4">
                                 1:00
@@ -64,21 +67,12 @@
                                 <input class="w-full border-gray-200" type="text" name="work_detail">
                             </td>
                         </tr>
+                        @endforeach
 
                     </tbody>
                 </table>
             </div>
 
-            <div class="flex pl-4 mt-4 lg:w-2/3 w-full mx-auto">
-                <a class="text-blue-500 inline-flex items-center md:mb-2 lg:mb-0">Learn More
-                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                        stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
-                        <path d="M5 12h14M12 5l7 7-7 7"></path>
-                    </svg>
-                </a>
-                <button
-                    class="flex ml-auto text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-blue-600 rounded">Button</button>
-            </div>
         </div>
     </section>
 </x-app-layout>
