@@ -141,9 +141,6 @@
                     <x-responsive-nav-link :href="route('user.attendance.index')" :active="request()->routeIs('user.attendance.index')">
                         {{ __('勤怠') }}
                     </x-responsive-nav-link>
-                    <x-responsive-nav-link :href="route('user.task.create')" :active="request()->routeIs('user.task.create')">
-                        {{ __('社内業務') }}
-                    </x-responsive-nav-link>
                     <x-responsive-nav-link :href="route('user.work.index')" :active="request()->routeIs('user.work.index')">
                         {{ __('稼働実績') }}
                     </x-responsive-nav-link>                    
