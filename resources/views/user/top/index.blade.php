@@ -53,9 +53,9 @@
                                 <span class="absolute inset-0 text-gray-700"></span>
                                 @if ($at_info)
                                     @if ($at_info->job_type === 1)
-                                        <p>自社内業務</p>
-                                    @elseif ($at_info->job_type === 2)
                                         <p>案件先業務</p>
+                                    @elseif ($at_info->job_type === 2)
+                                        <p>自社内業務</p>
                                     @endif
 
                                 @endif

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User\Attendance;
 use App\Http\Controllers\Controller;
 use App\Mail\AttendanceMail;
 use App\Models\Attendance;
+use App\Models\Task;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -60,13 +61,20 @@ class AttendanceController extends Controller
             'status' => $request->status,
         ]);
 
+        if($_POST['title'])
+        Task::create([
+            'user_id' => Auth::id(),
+            'title' => $request->title,
+            'information' => $request->information,
+        ]);
+
         //メール送信部分
         $name = User::where('id', Auth::id())->value('name'); //valueメソッドでnameカラムから取得している（日本語で採れた〜！）データベースからデータを取得したら数列になる
         $attendance = $request->attendance;
         if ($request->jobType == 1) {
-            $jobType = '自社業務';
-        } elseif ($request->jobType == 2) {
             $jobType = '案件業務';
+        } elseif ($request->jobType == 2) {
+            $jobType = '自社業務';
         }
         $status = $request->status;
         $information = null;

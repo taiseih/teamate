@@ -24,8 +24,6 @@
                                     <a class="font-medium text-gray-500 hover:text-gray-400"
                                         href="{{ route('user.attendance.index') }}">勤怠</a>
                                     <a class="font-medium text-gray-500 hover:text-gray-400"
-                                        href="{{ route('user.task.create') }}">社内業務</a>
-                                    <a class="font-medium text-gray-500 hover:text-gray-400"
                                         href="{{ route('user.work.index') }}">稼働実績</a>
                                     <a class="font-medium text-gray-500 hover:text-gray-400"
                                         href="{{ route('user.profile.index') }}"><svg xmlns="http://www.w3.org/2000/svg"
@@ -45,8 +43,6 @@
                                     <a class="font-bold text-blue-500 hover:text-blue-400"
                                         href="{{ route('user.attendance.index') }}">勤怠</a>
                                     <a class="font-medium text-gray-500 hover:text-gray-400"
-                                        href="{{ route('user.task.create') }}">社内業務</a>
-                                    <a class="font-medium text-gray-500 hover:text-gray-400"
                                         href="{{ route('user.work.index') }}">稼働実績</a>
                                     <a class="font-medium text-gray-500 hover:text-gray-400"
                                         href="{{ route('user.profile.index') }}"><svg
@@ -65,8 +61,6 @@
                                         href="{{ route('user.top.index') }}">トップページ</a>
                                     <a class="font-medium text-gray-500 hover:text-gray-400"
                                         href="{{ route('user.attendance.index') }}">勤怠</a>
-                                    <a class="font-bold text-blue-500 hover:text-blue-400"
-                                        href="{{ route('user.task.create') }}">社内業務</a>
                                     <a class="font-medium text-gray-500 hover:text-gray-400"
                                         href="{{ route('user.work.index') }}">稼働実績</a>
                                     <a class="font-medium text-gray-500 hover:text-gray-400"
@@ -86,8 +80,6 @@
                                         href="{{ route('user.top.index') }}">トップページ</a>
                                     <a class="font-medium text-gray-500 hover:text-gray-400"
                                         href="{{ route('user.attendance.index') }}">勤怠</a>
-                                    <a class="font-medium text-gray-500 hover:text-gray-400"
-                                        href="{{ route('user.task.create') }}">社内業務</a>
                                     <a class="font-bold text-blue-500 hover:text-blue-400"
                                         href="{{ route('user.work.index') }}">稼働実績</a>
                                     <a class="font-medium text-gray-500 hover:text-gray-400"
@@ -107,8 +99,6 @@
                                         href="{{ route('user.top.index') }}">トップページ</a>
                                     <a class="font-medium text-gray-500 hover:text-gray-400"
                                         href="{{ route('user.attendance.index') }}">勤怠</a>
-                                    <a class="font-medium text-gray-500 hover:text-gray-400"
-                                        href="{{ route('user.task.create') }}">社内業務</a>
                                     <a class="font-medium text-gray-500 hover:text-gray-400"
                                         href="{{ route('user.work.index') }}">稼働実績</a>
                                     <a class="font-bold text-blue-500 hover:text-blue-400"

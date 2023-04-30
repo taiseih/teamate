@@ -41,7 +41,7 @@ class TaskController extends Controller
      */
     public function create()
     {
-        return view('user.task.create');
+        // return view('user.task.create');
     }
 
     /**
@@ -52,13 +52,13 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        Task::create([
-            'user_id' => Auth::id(),
-            'title' => $request->title,
-            'information' => $request->information,
-        ]);
+        // Task::create([
+        //     'user_id' => Auth::id(),
+        //     'title' => $request->title,
+        //     'information' => $request->information,
+        // ]);
 
-        return redirect()->route('user.top.index');
+        // return redirect()->route('user.top.index');
     }
 
     /**
