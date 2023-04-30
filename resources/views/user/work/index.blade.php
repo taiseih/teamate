@@ -34,39 +34,43 @@
                     <tbody>
 
                         @foreach ($works as $work)
-                        <tr class="bg-white border-b">
-                            {{$work->id}}<br>
-                            <th scope="row" class="px-6 py-4 font-medium">
-                                {{$work->created_at->format('m/d')}}
-                            </th>
-                            <td class=" py-4">
-                                <label for="job_type" class="sr-only"></label>
-                                <select id="job_type" name="job_type"
-                                    class="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 appearance-none focus:outline-none focus:ring-0 peer">
-                                    <option value="0" selected>出勤</option>
-                                    <option value="1">欠勤</option>
-                                    <option value="2">有給休暇</option>
-                                    <option value="3">特別休暇</option>
-                                    <option value="4">遅刻早退</option>
-                                    <option value="5">待機</option>
-                                </select>
-                            </td>
-                            <td class="px-6 py-4">
-                                {{$work->attendance_time}}
-                            </td>
-                            <td class="px-6 py-4">
-                                {{$work->leaving_time}}
-                            </td>
-                            <td class="px-6 py-4">
-                                1:00
-                            </td>
-                            <td class="px-6 py-4">
-                                8:00
-                            </td>
-                            <td class="px-6 py-4">
-                                <input class="w-full border-gray-200" type="text" name="work_detail">
-                            </td>
-                        </tr>
+                            <tr class="bg-white border-b">
+                                <th scope="row" class="px-6 py-4 font-medium">
+                                    {{ $work->created_at->format('m/d') }}
+                                </th>
+                                <td class=" py-4">
+                                    <label for="job_type" class="sr-only"></label>
+                                    <select id="job_type" name="job_type"
+                                        class="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 appearance-none focus:outline-none focus:ring-0 peer">
+                                        @if ($work->attendance_time == '欠勤')
+                                            <option value="1">欠勤</option>
+                                        @else
+                                            <option value="0" selected>出勤</option>
+                                            <option value="1">欠勤</option>
+                                            <option value="2">有給休暇</option>
+                                            <option value="3">特別休暇</option>
+                                            <option value="4">遅刻早退</option>
+                                            <option value="5">待機</option>
+                                        @endif
+                                    </select>
+
+                                </td>
+                                <td class="px-6 py-4">
+                                    {{ $work->attendance_time }}
+                                </td>
+                                <td class="px-6 py-4">
+                                    {{ substr($work->leaving_time, 11, 5) }}
+                                </td>
+                                <td class="px-6 py-4">
+                                    <input class="border-0 border-b-2 border-gray-200 p-0" type="time" name="leaving_time" @if($work->attendance_time == '欠勤') value=" " @else value="01:00" @endif>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <input class="border-0 border-b-2 border-gray-200 p-0" type="time" name="leaving_time" @if($work->attendance_time == '欠勤') value=" " @else value="08:00" @endif>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <input class="w-full border-gray-200" type="text" name="work_detail">
+                                </td>
+                            </tr>
                         @endforeach
 
                     </tbody>
