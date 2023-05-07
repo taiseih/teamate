@@ -15,12 +15,13 @@ class CreateAttendancesTable extends Migration
     {
         Schema::create('attendances', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id');
-            $table->string('attendance_time');
-            $table->tinyInteger('job_type')->nullable();
-            $table->string('leaving_time')->nullable();
-            $table->string('status')->nullable();
-            $table->string('information')->nullable();
+            $table->foreignId('user_id'); //ユーザーのid
+            $table->string('attendance_time'); //出勤時刻
+            $table->tinyInteger('job_type')->nullable(); //業務種別
+            $table->string('leaving_time')->nullable(); //退勤時刻
+            $table->string('status')->nullable(); //体調
+            $table->string('information')->nullable(); //業務報告
+            $table->string('rest_time')->nullable(); //休憩時間
             $table->timestamps();
         });
     }
