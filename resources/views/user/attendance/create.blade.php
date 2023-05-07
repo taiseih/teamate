@@ -14,21 +14,7 @@
                                 @csrf
                                 <div class="relative mb-4">
                                     <label for="attendance" class="leading-7 text-sm text-gray-600">出勤時間</label>
-                                    <select type="attendance" id="attendance" name="attendance" required
-                                        class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
-                                        <option value="8:00">8:00</option>
-                                        <option value="8:30">8:30</option>
-                                        <option value="8:50">8:50</option>
-                                        <option value="9:00">9:00</option>
-                                        <option value="9:30">9:30</option>
-                                        <option value="10:00">10:00</option>
-                                        <option value="10:30">10:30</option>
-                                        <option value="11:00">11:00</option>
-                                        <option value="11:30">11:30</option>
-                                        <option value="12:00">12:00</option>
-                                        <option value="12:30">12:30</option>
-                                        <option value="13:00">13:00</option>
-                                    </select>
+                                    <input type="time" name="attendance" required class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                                 </div>
                                 <div class="relative mb-4">
                                     <label for="status" class="leading-7 text-sm text-gray-600">体調</label>
@@ -43,7 +29,7 @@
                                     <label for="jobType" class="leading-7 text-sm text-gray-600">種別</label>
                                     <select id="task_selector" type="jobType" id="jobType" name="jobType" required
                                         class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
-                                        <option value="1">案件先業務</option>
+                                        <option selected value="1">案件先業務</option>
                                         <option value="2">自社内業務</option>
                                     </select>
                                 </div>
