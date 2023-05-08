@@ -14,9 +14,16 @@ class WorkController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $works = Attendance::where('user_id', Auth::id())->get();
+        $search = $request->search;
+
+        if($search === "全件"){
+            $works = Attendance::where('user_id', Auth::id())->get();
+        }else{
+            $works = Attendance::whereMonth('created_at', $search)->get();
+        }
+
 
         return view('user.work.index', compact('works'));
     }
@@ -61,7 +68,9 @@ class WorkController extends Controller
      */
     public function edit($id)
     {
-        //
+        $work = Attendance::where('id', $id)->first();
+
+        return view('user.work.edit', compact('work'));
     }
 
     /**

@@ -1,18 +1,29 @@
 <x-app-layout>
     <section class="text-gray-600 body-font">
-        <div class="container py-24 mx-auto">
+        <div class="sm:w-4/5 py-24 mx-auto">
             <div class="flex flex-col text-center w-full mb-20">
                 <h1 class="sm:text-4xl text-3xl font-medium title-font mb-2 text-gray-900">稼働実績表</h1>
             </div>
+            <form action="{{route('user.work.index')}}" method="get">
+                @csrf
+                <select name="search">
+                    <option value="全件">全て</option>
+                        @for($i = 1; $i <= 12; $i++)
+                        <option value="{{$i}}">{{$i}}月分</option>
+                        @endfor
+
+                </select>
+                <button type="submit">
+                    検索
+                </button>
+            </form>
+
             <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
                 <table class="w-full text-midium text-left text-gray-500">
                     <thead class="text-xs text-gray-700 uppercase bg-gray-50">
                         <tr>
                             <th scope="col" class="pl-6 py-3">
                                 月/日
-                            </th>
-                            <th scope="col" class="py-3">
-                                種別
                             </th>
                             <th scope="col" class="pl-6 py-3">
                                 出勤時刻
@@ -27,7 +38,6 @@
                                 稼働時間
                             </th>
                             <th scope="col" class="pl-6 py-3">
-                                作業内容
                             </th>
                         </tr>
                     </thead>
@@ -38,37 +48,47 @@
                                 <th scope="row" class="px-6 py-4 font-medium">
                                     {{ $work->created_at->format('m/d') }}
                                 </th>
-                                <td class=" py-4">
-                                    <label for="job_type" class="sr-only"></label>
-                                    <select id="job_type" name="job_type"
-                                        class="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 appearance-none focus:outline-none focus:ring-0 peer">
-                                        @if ($work->attendance_time == '欠勤')
-                                            <option value="1">欠勤</option>
-                                        @else
-                                            <option value="0" selected>出勤</option>
-                                            <option value="1">欠勤</option>
-                                            <option value="2">有給休暇</option>
-                                            <option value="3">特別休暇</option>
-                                            <option value="4">遅刻早退</option>
-                                            <option value="5">待機</option>
-                                        @endif
-                                    </select>
-
-                                </td>
+                               
                                 <td class="px-6 py-4">
                                     {{ $work->attendance_time }}
                                 </td>
                                 <td class="px-6 py-4">
-                                    {{ substr($work->leaving_time, 11, 5) }}
+                                    {{ $work->leaving_time}}
                                 </td>
                                 <td class="px-6 py-4">
-                                    <input class="border-0 border-b-2 border-gray-200 p-0" type="time" name="leaving_time" @if($work->attendance_time == '欠勤') value=" " @else value="01:00" @endif>
+                                    {{ $work->rest_time }}
                                 </td>
                                 <td class="px-6 py-4">
-                                    <input class="border-0 border-b-2 border-gray-200 p-0" type="time" name="leaving_time" @if($work->attendance_time == '欠勤') value=" " @else value="08:00" @endif>
+                                    @php
+                                        // 出勤時刻と退勤時刻が両方とも存在する場合
+                                        if ($work->attendance_time !== '欠勤') {
+                                            // 出勤時間と退勤時間をDateTimeオブジェクトに変換する
+                                            $attendanceTime = new DateTime($work->attendance_time);
+                                            $leavingTime = new DateTime($work->leaving_time);
+
+                                            if ($work->rest_time !== null) { //休憩時間がnullじゃない時に$restTimeに休憩時間を格納
+                                            $restTime = strtotime($work->rest_time) - strtotime('00:00:00'); //休憩時間をstrtotimeで秒数変換して、00:00:00からrest_timeの数値を引いて秒数を格納(int型)
+                                            }else { //休憩時間がない時は0を格納する
+                                                $restTime = 0; 
+                                            }
+
+                                            // 稼働時間を計算する
+                                            $diff = $attendanceTime->diff($leavingTime);//出勤時刻と退勤時刻の差分を求める(object(DateInterval)型)
+                                            $diffSeconds = $diff->h * 3600 + $diff->i * 60 + $diff->s; //DateIntervalオブジェクトから、時間、分、秒の値を取得し、それぞれを3600秒、60秒で乗算し、すべての値を合計して、差を秒数に変換。最終的に計算された秒数を変数$diffSecondsに格納する。(int型)
+                                            $workingSeconds = $diffSeconds - $restTime; //int型 変数diffSecondsで算出した勤務時間から休憩時間の秒数を引いて変数に格納
+                                            $workingHours = sprintf('%01d時間%02d分', floor($workingSeconds / 3600), floor(($workingSeconds % 3600) / 60)); //時間は0埋め1桁、分数は0埋め2桁、floor関数で小数点切り捨て3600で割った結果を時間に、分数は余った数字を60で割る
+                                        } else { //ない時はなにも入れない
+                                            $workingHours = ' ';
+                                        }
+                                    @endphp
+
+                                    <p>{{ $workingHours }}</p>
                                 </td>
                                 <td class="px-6 py-4">
-                                    <input class="w-full border-gray-200" type="text" name="work_detail">
+                                     <button onclick="location.href='{{ route('user.work.edit', ['work' => $work->id]) }}'"
+                                        class="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border-2 border-blue-200 font-semibold text-blue-500 hover:text-white hover:bg-blue-500 hover:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800">
+                                        編集
+                                    </button>
                                 </td>
                             </tr>
                         @endforeach
