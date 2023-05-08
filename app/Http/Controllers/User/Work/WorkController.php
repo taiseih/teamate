@@ -18,6 +18,12 @@ class WorkController extends Controller
     {
         $search = $request->search;
 
+        $searchMonths =
+        Attendance::where('user_id', Auth::id())
+        ->selectRaw('MONTH(created_at) as month')//MONTHメソッドを使用してcreated_atのmonth部分のみを配列にしてmonthに格納
+        ->groupByRaw('MONTH(created_at)')//MONTHメソッドで取得した各データの同じ月をグループ化
+        ->get();
+
         if ($search === "全件") {
             $works = Attendance::where('user_id', Auth::id())->get();
         } else {
@@ -25,7 +31,7 @@ class WorkController extends Controller
         }
 
 
-        return view('user.work.index', compact('works'));
+        return view('user.work.index', compact('works', 'searchMonths'));
     }
 
     /**

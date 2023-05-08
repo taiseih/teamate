@@ -6,18 +6,18 @@
             </div>
 
 
-            <form class="sm:w-1/2 md:w-1/4 w-full" action="{{ route('user.work.index') }}" method="get">
+            <form class="sm:w-1/2 md:w-1/4 w-full mb-4" action="{{ route('user.work.index') }}" method="get">
                 @csrf
                 <div class="flex">
                     <label
-                        class="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-gray-300 rounded-l-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-300 ">稼働月を選択</label>
+                        class="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-gray-300 rounded-l-lg focus:ring-4 focus:outline-none ">稼働月を選択</label>
                     <div class="relative w-full">
                         <select name="search"
-                            class="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-r-lg border-l-gray-100 border-l-2 border border-gray-300 focus:ring-blue-500 focus:border-blue-500">
+                            class="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-r-lg border-l-gray-100 border-l-2 border border-gray-300 hover:bg-gray-200 focus:ring-blue-500 focus:border-blue-500">
                             <option value="全件">全て</option>
-                            @for ($i = 1; $i <= 12; $i++)
-                                <option value="{{ $i }}">{{ $i }}月分</option>
-                            @endfor
+                           @foreach ($searchMonths as $month)
+                               <option value="{{$month->month}}">{{$month->month}}月分</option>
+                           @endforeach
 
                         </select>
                         <button type="submit"
