@@ -109,7 +109,7 @@ class AttendanceController extends Controller
         if ($attendance) {
             $attendance->update([
                 'leaving_time' => substr($now, 11,5),
-                'rest_time' => "1:00", //退勤時に１時間の休憩時間を設ける
+                'rest_time' => "01:00", //退勤時に１時間の休憩時間を設ける
                 'information' => $request->information,
             ]);
         }

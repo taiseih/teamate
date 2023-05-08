@@ -6,14 +6,14 @@
             </div>
             <form action="{{route('user.work.index')}}" method="get">
                 @csrf
-                <select name="search">
+                <select name="search" class="border-2 border-gray-200 font-semibold">
                     <option value="全件">全て</option>
                         @for($i = 1; $i <= 12; $i++)
                         <option value="{{$i}}">{{$i}}月分</option>
                         @endfor
 
                 </select>
-                <button type="submit">
+                <button type="submit" class="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border-2 border-gray-200 font-semibold text-gray-500 hover:text-white hover:bg-gray-500 hover:border-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-200 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800">
                     検索
                 </button>
             </form>

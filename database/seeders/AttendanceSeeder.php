@@ -21,7 +21,7 @@ class AttendanceSeeder extends Seeder
                 'job_type' => 1,
                 'leaving_time' => '19:00',
                 'status' => '良好',
-                'rest_time' => '1:00',
+                'rest_time' => '01:00',
                 'created_at' => '2023-02-01 10:00:00'
             ],
             [
@@ -30,7 +30,7 @@ class AttendanceSeeder extends Seeder
                 'job_type' => 1,
                 'leaving_time' => '19:00',
                 'status' => '良好',
-                'rest_time' => '1:00',
+                'rest_time' => '01:00',
                 'created_at' => '2023-02-02 10:00:00'
             ],
             [
@@ -39,7 +39,7 @@ class AttendanceSeeder extends Seeder
                 'job_type' => 1,
                 'leaving_time' => '19:00',
                 'status' => '良好',
-                'rest_time' => '1:00',
+                'rest_time' => '01:00',
                 'created_at' => '2023-02-03 10:00:00'
             ],
             [
@@ -48,7 +48,7 @@ class AttendanceSeeder extends Seeder
                 'job_type' => 1,
                 'leaving_time' => '19:00',
                 'status' => '良好',
-                'rest_time' => '1:00',
+                'rest_time' => '01:00',
                 'created_at' => '2023-02-04 10:00:00'
             ],
             [
@@ -57,7 +57,7 @@ class AttendanceSeeder extends Seeder
                 'job_type' => 1,
                 'leaving_time' => '19:00',
                 'status' => '良好',
-                'rest_time' => '1:00',
+                'rest_time' => '01:00',
                 'created_at' => '2023-02-05 10:00:00'
             ],
             [
@@ -66,7 +66,7 @@ class AttendanceSeeder extends Seeder
                 'job_type' => 1,
                 'leaving_time' => '19:00',
                 'status' => '良好',
-                'rest_time' => '1:00',
+                'rest_time' => '01:00',
                 'created_at' => '2023-02-06 10:00:00'
             ],
             [
@@ -75,7 +75,7 @@ class AttendanceSeeder extends Seeder
                 'job_type' => 1,
                 'leaving_time' => '19:00',
                 'status' => '良好',
-                'rest_time' => '1:00',
+                'rest_time' => '01:00',
                 'created_at' => '2023-02-07 10:00:00'
             ],
             [
@@ -84,7 +84,7 @@ class AttendanceSeeder extends Seeder
                 'job_type' => 1,
                 'leaving_time' => '19:00',
                 'status' => '良好',
-                'rest_time' => '1:00',
+                'rest_time' => '01:00',
                 'created_at' => '2023-02-08 10:00:00'
             ],
             [
@@ -93,7 +93,7 @@ class AttendanceSeeder extends Seeder
                 'job_type' => 1,
                 'leaving_time' => '19:00',
                 'status' => '良好',
-                'rest_time' => '1:00',
+                'rest_time' => '01:00',
                 'created_at' => '2023-02-09 10:00:00'
             ],
             [
@@ -102,7 +102,7 @@ class AttendanceSeeder extends Seeder
                 'job_type' => 1,
                 'leaving_time' => '19:00',
                 'status' => '良好',
-                'rest_time' => '1:00',
+                'rest_time' => '01:00',
                 'created_at' => '2023-02-10 10:00:00'
             ],
             [
@@ -111,7 +111,7 @@ class AttendanceSeeder extends Seeder
                 'job_type' => 1,
                 'leaving_time' => '19:00',
                 'status' => '良好',
-                'rest_time' => '1:00',
+                'rest_time' => '01:00',
                 'created_at' => '2023-02-11 10:00:00'
             ],
             [
@@ -120,7 +120,7 @@ class AttendanceSeeder extends Seeder
                 'job_type' => 1,
                 'leaving_time' => '19:00',
                 'status' => '良好',
-                'rest_time' => '1:00',
+                'rest_time' => '01:00',
                 'created_at' => '2023-02-12 10:00:00'
             ],
             [
@@ -129,7 +129,7 @@ class AttendanceSeeder extends Seeder
                 'job_type' => 1,
                 'leaving_time' => '19:00',
                 'status' => '良好',
-                'rest_time' => '1:00',
+                'rest_time' => '01:00',
                 'created_at' => '2023-02-13 10:00:00'
             ],
             [
@@ -138,7 +138,7 @@ class AttendanceSeeder extends Seeder
                 'job_type' => 1,
                 'leaving_time' => '19:00',
                 'status' => '良好',
-                'rest_time' => '1:00',
+                'rest_time' => '01:00',
                 'created_at' => '2023-02-14 10:00:00'
             ],
             [
@@ -147,7 +147,7 @@ class AttendanceSeeder extends Seeder
                 'job_type' => 1,
                 'leaving_time' => '19:00',
                 'status' => '良好',
-                'rest_time' => '1:00',
+                'rest_time' => '01:00',
                 'created_at' => '2023-02-15 10:00:00'
             ],
             [
@@ -156,7 +156,7 @@ class AttendanceSeeder extends Seeder
                 'job_type' => 1,
                 'leaving_time' => '13:00',
                 'status' => '良好',
-                'rest_time' => '1:00',
+                'rest_time' => '01:00',
                 'created_at' => '2023-02-16 10:00:00'
             ],
             [
@@ -165,7 +165,7 @@ class AttendanceSeeder extends Seeder
                 'job_type' => 1,
                 'leaving_time' => '13:00',
                 'status' => '良好',
-                'rest_time' => '1:00',
+                'rest_time' => '01:00',
                 'created_at' => '2023-02-17 10:00:00'
             ],
             [
@@ -174,7 +174,7 @@ class AttendanceSeeder extends Seeder
                 'job_type' => 1,
                 'leaving_time' => '13:00',
                 'status' => '良好',
-                'rest_time' => '1:00',
+                'rest_time' => '01:00',
                 'created_at' => '2023-02-18 10:00:00'
             ],
             [
@@ -201,7 +201,7 @@ class AttendanceSeeder extends Seeder
                 'job_type' => 2,
                 'leaving_time' => '19:00',
                 'status' => '良好',
-                'rest_time' => '1:00',
+                'rest_time' => '01:00',
                 'created_at' => '2023-02-01 10:00:00'
             ],
             [
@@ -210,7 +210,7 @@ class AttendanceSeeder extends Seeder
                 'job_type' => 2,
                 'leaving_time' => '19:00',
                 'status' => '良好',
-                'rest_time' => '1:00',
+                'rest_time' => '01:00',
                 'created_at' => '2023-02-02 10:00:00'
             ],
             [
@@ -219,7 +219,7 @@ class AttendanceSeeder extends Seeder
                 'job_type' => 2,
                 'leaving_time' => '19:00',
                 'status' => '良好',
-                'rest_time' => '1:00',
+                'rest_time' => '01:00',
                 'created_at' => '2023-02-03 10:00:00'
             ],
             [
@@ -228,7 +228,7 @@ class AttendanceSeeder extends Seeder
                 'job_type' => 2,
                 'leaving_time' => '19:00',
                 'status' => '良好',
-                'rest_time' => '1:00',
+                'rest_time' => '01:00',
                 'created_at' => '2023-02-04 10:00:00'
             ],
             [
@@ -237,7 +237,7 @@ class AttendanceSeeder extends Seeder
                 'job_type' => 2,
                 'leaving_time' => '19:00',
                 'status' => '良好',
-                'rest_time' => '1:00',
+                'rest_time' => '01:00',
                 'created_at' => '2023-02-05 10:00:00'
             ],
             [
@@ -246,7 +246,7 @@ class AttendanceSeeder extends Seeder
                 'job_type' => 2,
                 'leaving_time' => '19:00',
                 'status' => '良好',
-                'rest_time' => '1:00',
+                'rest_time' => '01:00',
                 'created_at' => '2023-02-06 10:00:00'
             ],
             [
@@ -255,7 +255,7 @@ class AttendanceSeeder extends Seeder
                 'job_type' => 2,
                 'leaving_time' => '19:00',
                 'status' => '良好',
-                'rest_time' => '1:00',
+                'rest_time' => '01:00',
                 'created_at' => '2023-02-07 10:00:00'
             ],
             [
@@ -264,7 +264,7 @@ class AttendanceSeeder extends Seeder
                 'job_type' => 2,
                 'leaving_time' => '19:00',
                 'status' => '良好',
-                'rest_time' => '1:00',
+                'rest_time' => '01:00',
                 'created_at' => '2023-02-08 10:00:00'
             ],
             [
@@ -273,7 +273,7 @@ class AttendanceSeeder extends Seeder
                 'job_type' => 2,
                 'leaving_time' => '19:00',
                 'status' => '良好',
-                'rest_time' => '1:00',
+                'rest_time' => '01:00',
                 'created_at' => '2023-02-09 10:00:00'
             ],
             [
@@ -282,7 +282,7 @@ class AttendanceSeeder extends Seeder
                 'job_type' => 2,
                 'leaving_time' => '19:00',
                 'status' => '良好',
-                'rest_time' => '1:00',
+                'rest_time' => '01:00',
                 'created_at' => '2023-02-10 10:00:00'
             ],
             [
@@ -291,7 +291,7 @@ class AttendanceSeeder extends Seeder
                 'job_type' => 2,
                 'leaving_time' => '19:00',
                 'status' => '良好',
-                'rest_time' => '1:00',
+                'rest_time' => '01:00',
                 'created_at' => '2023-02-11 10:00:00'
             ],
             [
@@ -300,7 +300,7 @@ class AttendanceSeeder extends Seeder
                 'job_type' => 2,
                 'leaving_time' => '19:00',
                 'status' => '良好',
-                'rest_time' => '1:00',
+                'rest_time' => '01:00',
                 'created_at' => '2023-02-12 10:00:00'
             ],
             [
@@ -309,7 +309,7 @@ class AttendanceSeeder extends Seeder
                 'job_type' => 2,
                 'leaving_time' => '19:00',
                 'status' => '良好',
-                'rest_time' => '1:00',
+                'rest_time' => '01:00',
                 'created_at' => '2023-02-13 10:00:00'
             ],
             [
@@ -318,7 +318,7 @@ class AttendanceSeeder extends Seeder
                 'job_type' => 2,
                 'leaving_time' => '19:00',
                 'status' => '良好',
-                'rest_time' => '1:00',
+                'rest_time' => '01:00',
                 'created_at' => '2023-02-14 10:00:00'
             ],
             [
@@ -327,7 +327,7 @@ class AttendanceSeeder extends Seeder
                 'job_type' => 2,
                 'leaving_time' => '19:00',
                 'status' => '良好',
-                'rest_time' => '1:00',
+                'rest_time' => '01:00',
                 'created_at' => '2023-02-15 10:00:00'
             ],
             [
@@ -336,7 +336,7 @@ class AttendanceSeeder extends Seeder
                 'job_type' => 2,
                 'leaving_time' => '13:00',
                 'status' => '良好',
-                'rest_time' => '1:00',
+                'rest_time' => '01:00',
                 'created_at' => '2023-02-16 10:00:00'
             ],
             [
@@ -345,7 +345,7 @@ class AttendanceSeeder extends Seeder
                 'job_type' => 2,
                 'leaving_time' => '13:00',
                 'status' => '良好',
-                'rest_time' => '1:00',
+                'rest_time' => '01:00',
                 'created_at' => '2023-02-17 10:00:00'
             ],
             [
@@ -354,7 +354,7 @@ class AttendanceSeeder extends Seeder
                 'job_type' => 2,
                 'leaving_time' => '13:00',
                 'status' => '良好',
-                'rest_time' => '1:00',
+                'rest_time' => '01:00',
                 'created_at' => '2023-02-18 10:00:00'
             ],
             [

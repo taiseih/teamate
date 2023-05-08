@@ -18,10 +18,10 @@ class WorkController extends Controller
     {
         $search = $request->search;
 
-        if($search === "全件"){
+        if ($search === "全件") {
             $works = Attendance::where('user_id', Auth::id())->get();
-        }else{
-            $works = Attendance::whereMonth('created_at', $search)->get();
+        } else {
+            $works = Attendance::where('user_id', Auth::id())->whereMonth('created_at', $search)->get();
         }
 
 
@@ -82,7 +82,14 @@ class WorkController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $attendance = Attendance::where('user_id', Auth::id())->where('id', $id)->first();
+
+        $attendance->attendance_time = $request->attendance;
+        $attendance->leaving_time = $request->leaving;
+        $attendance->rest_time = $request->rest;
+        $attendance->save();
+
+        return redirect()->route('user.work.index');
     }
 
     /**
