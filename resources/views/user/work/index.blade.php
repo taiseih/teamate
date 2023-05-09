@@ -2,35 +2,17 @@
     <section class="text-gray-600 body-font">
         <div class="sm:w-4/5 py-24 mx-auto">
             <div class="flex flex-col text-center w-full mb-20">
-                <h1 class="sm:text-4xl text-3xl font-medium title-font mb-2 text-gray-900">稼働実績表</h1>
+                <h1 class="sm:text-4xl text-3xl font-bold title-font mb-2 text-gray-600">稼働実績</h1>
             </div>
 
 
-            <form class="sm:w-1/2 md:w-1/4 w-full mb-4" action="{{ route('user.work.index') }}" method="get">
-                @csrf
-                <div class="flex">
-                    <label
-                        class="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-gray-300 rounded-l-lg focus:ring-4 focus:outline-none ">稼働月を選択</label>
-                    <div class="relative w-full">
-                        <select name="search"
-                            class="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-r-lg border-l-gray-100 border-l-2 border border-gray-300 hover:bg-gray-200 focus:ring-blue-500 focus:border-blue-500">
-                            <option value="全件">全て</option>
-                           @foreach ($searchMonths as $month)
-                               <option value="{{$month->month}}">{{$month->month}}月分</option>
-                           @endforeach
+            <div class="flex mb-4">
 
-                        </select>
-                        <button type="submit"
-                            class="absolute top-0 right-0 p-2.5 text-sm font-medium text-white bg-blue-700 rounded-r-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"><svg
-                                aria-hidden="true" class="w-5 h-5" fill="none" stroke="currentColor"
-                                viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-                            </svg></button>
-                    </div>
-                </div>
-            </form>
-
+                @foreach ($searchMonths as $month)
+                        <a href="{{ route('user.work.index', ['search' => $month->month]) }}"
+                            class="@if (request("search") == $month->month) bg-blue-500 text-white @endif p-0.5 h-12 w-12 hover:bg-blue-600 hover:text-white mx-2 rounded-full"><span class="text-3xl mx-1">{{ $month->month }}</span><span class="font-bold">月</span></a>
+                @endforeach
+            </div>
 
             <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
                 <table class="w-full text-midium text-left text-gray-500">
