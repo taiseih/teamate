@@ -28,7 +28,7 @@ class MembersController extends Controller
             ->whereNull('leaving_time')
             ->get();
 
-        return view('admin.members.index', compact('users', 'at_info'));
+        return view('admin.workers.index', compact('users', 'at_info'));//現在出勤しているメンバー
     }
 
     /**
@@ -38,7 +38,7 @@ class MembersController extends Controller
      */
     public function create()
     {
-        return view('admin.members.create');
+        return view('admin.members.create');//社員の登録
     }
 
     /**
@@ -56,7 +56,7 @@ class MembersController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        return redirect()->route('admin.members.index');
+        return redirect()->route('admin.members.index');//社員の登録
     }
 
     /**
@@ -80,7 +80,7 @@ class MembersController extends Controller
     {
         $users = User::findOrFail($id);
 
-        return view('admin.members.edit', compact('users'));
+        return view('admin.members.edit', compact('users'));//社員情報編集
     }
 
     /**
@@ -97,7 +97,7 @@ class MembersController extends Controller
         $users->job = $request->job;
         $users->save();
 
-        return redirect()->route('admin.members.index');
+        return redirect()->route('admin.members.index');//更新
 
     }
 
@@ -111,7 +111,7 @@ class MembersController extends Controller
     {
         User::findOrFail($id)->delete();
 
-        return redirect()->route('admin.members.index');
+        return redirect()->route('admin.members.index');//社員の削除
 
     }
 }

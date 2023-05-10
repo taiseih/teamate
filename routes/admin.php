@@ -29,17 +29,18 @@ Route::get('/', function () {
     return redirect()->route('admin.login');
 });
 
-Route::resource('tasks', TaskManagerController::class)
+Route::resource('members', TaskManagerController::class)//社員名簿の部分
 ->middleware('auth:admin');
 
 Route::resource('profile', AdminController::class)
 ->middleware('auth:admin');
 
-Route::resource('members', MembersController::class)
+Route::resource('workers', MembersController::class)//出勤しているメンバー
 ->middleware('auth:admin');
 
 Route::get('/dashboard', function () {
-    return view('admin.dashboard');
+    // return view('admin.dashboard');
+    return redirect()->route('admin.workers.index');
 })->middleware(['auth:admin'])->name('dashboard');
 
 

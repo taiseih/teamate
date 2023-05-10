@@ -23,7 +23,7 @@ class TaskManagerController extends Controller
         $tasks = Task::with(['user'])->whereDate('created_at', $now->toDateString())->get();
 
         
-        return view('admin.task.index', compact('users', 'tasks'));
+        return view('admin.members.index', compact('users', 'tasks'));//社員一覧を表示
     }
 
     /**
