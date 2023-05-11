@@ -10,17 +10,18 @@
             </div>
             <table class="text-left w-full border-collapse">
                 <!--Border collapse doesn't work on this site yet but it's available in newer tailwind versions -->
-                <thead>
+                <thead class="bg-gray-800">
                     <tr>
                         <th
-                            class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
+                            class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-white border-b border-grey-light">
                             名前</th>
                         <th
-                            class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
+                            class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-white border-b border-grey-light">
                             役職</th>
                         <th
-                            class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
+                            class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-white border-b border-grey-light">
                             メールアドレス</th>
+                            <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light"></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -29,6 +30,11 @@
                             <td class="py-4 px-6 border-b border-grey-light">{{ $user->name }}</td>
                             <td class="py-4 px-6 border-b border-grey-light">{{ $user->job }}</td>
                             <td class="py-4 px-6 border-b border-grey-light">{{ $user->email }}</td>
+                            <td class="py-4 px-6 border-b border-grey-light">
+                                <button onclick="location.href='{{route('admin.workers.edit', ['worker' => $user->id])}}'" class="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border-2 border-blue-200 font-semibold text-blue-500 hover:text-white hover:bg-blue-500 hover:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800">
+                                    編集
+                                </button>
+                            </td>
                         </tr>
                     @endforeach
 

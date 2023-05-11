@@ -95,6 +95,7 @@ class MembersController extends Controller
         $users = User::findOrFail($id);
         $users->name = $request->name;
         $users->job = $request->job;
+        $users->password = $request->password;
         $users->save();
 
         return redirect()->route('admin.members.index');//更新
