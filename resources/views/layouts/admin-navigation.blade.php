@@ -12,7 +12,7 @@
                 <i class="fas fa-table mr-3"></i>
                 社員名簿
             </a>
-            <a href="forms.html" class="flex items-center text-white hover:opacity-100 py-4 pl-6 nav-item">
+            <a href="{{route('admin.achievement.index')}}" class="flex items-center text-white hover:opacity-100 py-4 pl-6 nav-item">
                 <i class="fas fa-align-left mr-3"></i>
                 稼働実績
             </a>
@@ -72,7 +72,7 @@
                     <i class="fas fa-sticky-note mr-3"></i>
                     社員名簿
                 </a>
-                <a href="tables.html"
+                <a href="{{route('admin.achievement.index')}}"
                     class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
                     <i class="fas fa-table mr-3"></i>
                     稼働実績

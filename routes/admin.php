@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\Achievement\AchievementController;
 use App\Http\Controllers\Admin\AdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\Auth\AuthenticatedSessionController;
@@ -27,6 +28,11 @@ use App\Http\Controllers\Admin\Task\TaskManagerController;
 Route::get('/', function () {
     // return view('admin.welcome');
     return redirect()->route('admin.login');
+});
+
+Route::middleware('auth:admin')->group(function () {
+    Route::get('worker', [AchievementController::class, 'index'])->name('achievement.index');
+    Route::get('achievement/', [AchievementController::class, 'workerAchievement'])->name('achievement.achievement');
 });
 
 Route::resource('members', TaskManagerController::class)//社員名簿の部分
