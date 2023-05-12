@@ -35,6 +35,26 @@
                                 @endif
                             @endif
                         @endforeach
+
+                        <thead class="bg-orange-400 text-white">
+                            <tr>
+                                <th class="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm">名前</th>
+                                <th class="text-left py-3 px-4 uppercase font-semibold text-sm">業務名</th>
+                                <th class="text-left py-3 px-4 uppercase font-semibold text-sm">詳細</th>
+                            </tr>
+                        </thead>
+                        @foreach ($tasks as $task)
+                            <tbody class="text-gray-700">
+                                <tr class="border-2">
+                                    <td class="w-1/3 text-left py-3 px-4 font-bold text-gray-600">
+                                        {{ $task->user->name }}</td>
+                                    <td class="w-1/3 text-left py-3 px-4 font-bold text-gray-600">
+                                        {{ $task->title }}</td>
+                                    <td class="text-left py-3 px-4 font-bold text-gray-600">
+                                        {{ $task->information }}
+                                </tr>
+                        @endforeach
+
                         </tbody>
                     </table>
                 </div>
@@ -101,8 +121,8 @@
                                         <tr class="border-2">
                                             <td class="w-1/3 text-left py-3 px-4 font-bold text-gray-600">
                                                 {{ $user->name }}</td>
-                                                    <td class="text-left py-3 px-4 font-bold text-gray-600">
-                                                        {{ $at_info->where('user_id', $user->id)->first()->information }}</td>
+                                            <td class="text-left py-3 px-4 font-bold text-gray-600">
+                                                {{ $at_info->where('user_id', $user->id)->first()->information }}</td>
                                         </tr>
                                     @endif
                                 </tbody>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin\Members;
 
 use App\Http\Controllers\Controller;
 use App\Models\Attendance;
+use App\Models\Task;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -28,7 +29,9 @@ class MembersController extends Controller
             ->whereNull('leaving_time')
             ->get();
 
-        return view('admin.workers.index', compact('users', 'at_info'));//現在出勤しているメンバー
+        $tasks = Task::with(['user'])->whereDate('created_at', $now->toDateString())->get();
+
+        return view('admin.workers.index', compact('users', 'at_info', 'tasks'));//現在出勤しているメンバー
     }
 
     /**

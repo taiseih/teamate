@@ -9,7 +9,7 @@
             <div class="flex mb-4">
 
                 @foreach ($searchMonths as $month)
-                        <a href="{{ route('admin.achievement.achievement', ['achievement' => $achieve, 'search' => $month->month]) }}" {{--$achieveにはindexから受け取ったrequestパラメータ--}}
+                        <a href="{{ route('admin.achievement.achievement', ['achievement' => $achieve, 'search' => $month->month]) }}" {{--$achieveにはindexから受け取ったrequestパラメータ、searchにはcontrollerから受け取ったmonth 二つパラメータを送れるのは盲点だったよ！--}}
                             class="@if (request("search") == $month->month) bg-blue-500 text-white @endif p-0.5 h-12 w-12 hover:bg-blue-600 hover:text-white mx-2 rounded-full"><span class="text-3xl mx-1">{{ $month->month }}</span><span class="font-bold">月</span></a>
                 @endforeach
             </div>
