@@ -2,9 +2,8 @@
         <section class="text-gray-600 body-font">
         <div class="sm:w-4/5 py-24 mx-auto">
             <div class="flex flex-col text-center w-full mb-20">
-                <h1 class="sm:text-4xl text-3xl font-bold title-font mb-2 text-gray-600">稼働実績</h1>
+                <h1 class="sm:text-4xl text-3xl font-bold title-font mb-2 text-gray-600">{{$user->name}}の稼働実績</h1>
             </div>
-
 
             <div class="flex mb-4">
 
@@ -32,8 +31,6 @@
                             </th>
                             <th scope="col" class="pl-6 py-3">
                                 稼働時間
-                            </th>
-                            <th scope="col" class="pl-6 py-3">
                             </th>
                         </tr>
                     </thead>
@@ -82,13 +79,6 @@
                                     @endphp
 
                                     <p>{{ $workingHours }}</p>
-                                </td>
-                                <td class="px-6 py-4">
-                                    <button
-                                        onclick="location.href='{{ route('user.work.edit', ['work' => $work->id]) }}'"
-                                        class="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border-2 border-blue-200 font-semibold text-blue-500 hover:text-white hover:bg-blue-500 hover:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800">
-                                        編集
-                                    </button>
                                 </td>
                             </tr>
                         @endforeach

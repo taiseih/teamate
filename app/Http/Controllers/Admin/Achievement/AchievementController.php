@@ -38,7 +38,9 @@ class AchievementController extends Controller
         ->groupByRaw('MONTH(created_at)') //MONTHメソッドで取得した各データの同じ月をグループ化
         ->get();
 
-        return view('admin.achievement.list', compact('achieve', 'at_achieve', 'searchMonths'));
+        $user = User::where('id', $achieve)->first();
+
+        return view('admin.achievement.list', compact('achieve', 'at_achieve', 'searchMonths', 'user'));
     }
 
 
