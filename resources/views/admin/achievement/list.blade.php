@@ -89,9 +89,11 @@
                     </tbody>
                 </table>
             </div>
-            @if ($search){{--$search（検索された値が存在しない場合は表示しない）--}}
-                <a href="{{ route('admin.csv.download', ['user' => $achieve, 'month' => $search]) }}">Download CSV</a>
-            @endif
+            <div class="w-full text-center mt-8">
+                @if ($search){{--$search（検索された値が存在しない場合は表示しない）--}}
+                    <a href="{{ route('admin.csv.download', ['user' => $achieve, 'month' => $search]) }}" class="w-1/2 md:text-lg py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border-2 border-gray-200 font-semibold text-gray-500 hover:text-white hover:bg-gray-500 hover:border-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-200 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800">CSVダウンロード</a>
+                @endif
+            </div>
         </div>
     </section>
 
