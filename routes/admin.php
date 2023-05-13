@@ -34,7 +34,7 @@ Route::get('/', function () {
 Route::middleware('auth:admin')->group(function () {
     Route::get('worker', [AchievementController::class, 'index'])->name('achievement.index');
     Route::get('achievement/', [AchievementController::class, 'workerAchievement'])->name('achievement.personal');
-    Route::get('download-csv/{$user}/{$month}', [CSVController::class, 'download'])->name('csv.download');
+    Route::get('download-csv/', [CSVController::class, 'download'])->name('csv.download');
 });
 
 Route::resource('members', TaskManagerController::class)//社員名簿の部分

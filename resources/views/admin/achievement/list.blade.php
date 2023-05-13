@@ -56,7 +56,11 @@
                                 <td class="px-6 py-4">
                                     @php
                                         // 出勤時刻と退勤時刻が両方とも存在する場合
-                                        if ($work->attendance_time !== '欠勤') {
+                                        if( $work->attendance_time === '欠勤' || $work->leaving_time == null ) {
+                                            //ない時はなにも入れない
+                                            $workingHours = ' ';
+                                        }
+                                        else {
                                             // 出勤時間と退勤時間をDateTimeオブジェクトに変換する
                                             $attendanceTime = new DateTime($work->attendance_time);
                                             $leavingTime = new DateTime($work->leaving_time);
@@ -74,10 +78,7 @@
                                             $diffSeconds = $diff->h * 3600 + $diff->i * 60 + $diff->s; //DateIntervalオブジェクトから、時間、分、秒の値を取得し、それぞれを3600秒、60秒で乗算し、すべての値を合計して、差を秒数に変換。最終的に計算された秒数を変数$diffSecondsに格納する。(int型)
                                             $workingSeconds = $diffSeconds - $restTime; //int型 変数diffSecondsで算出した勤務時間から休憩時間の秒数を引いて変数に格納
                                             $workingHours = sprintf('%01d時間%02d分', floor($workingSeconds / 3600), floor(($workingSeconds % 3600) / 60)); //時間は0埋め1桁、分数は0埋め2桁、floor関数で小数点切り捨て3600で割った結果を時間に、分数は余った数字を60で割る
-                                        } else {
-                                            //ない時はなにも入れない
-                                            $workingHours = ' ';
-                                        }
+                                        } 
                                     @endphp
 
                                     <p>{{ $workingHours }}</p>
@@ -89,7 +90,7 @@
                 </table>
             </div>
             @if ($search){{--$search（検索された値が存在しない場合は表示しない）--}}
-                <a href="{{ route('admin.csv.download', [$achieve, $search]) }}">Download CSV</a>
+                <a href="{{ route('admin.csv.download', ['user' => $achieve, 'month' => $search]) }}">Download CSV</a>
             @endif
         </div>
     </section>
