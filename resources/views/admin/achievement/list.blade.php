@@ -1,15 +1,17 @@
 <x-admin-layout>
-        <section class="text-gray-600 body-font">
+    <section class="text-gray-600 body-font">
         <div class="sm:w-4/5 py-24 mx-auto">
             <div class="flex flex-col text-center w-full mb-20">
-                <h1 class="sm:text-4xl text-3xl font-bold title-font mb-2 text-gray-600">{{$user->name}}の稼働実績</h1>
+                <h1 class="sm:text-4xl text-3xl font-bold title-font mb-2 text-gray-600">{{ $user->name }}の稼働実績</h1>
             </div>
 
             <div class="flex mb-4">
 
                 @foreach ($searchMonths as $month)
-                        <a href="{{ route('admin.achievement.achievement', ['achievement' => $achieve, 'search' => $month->month]) }}" {{--$achieveにはindexから受け取ったrequestパラメータ、searchにはcontrollerから受け取ったmonth 二つパラメータを送れるのは盲点だったよ！--}}
-                            class="@if (request("search") == $month->month) bg-blue-500 text-white @endif p-0.5 h-12 w-12 hover:bg-blue-600 hover:text-white mx-2 rounded-full"><span class="text-3xl mx-1">{{ $month->month }}</span><span class="font-bold">月</span></a>
+                    <a href="{{ route('admin.achievement.personal', ['achievement' => $achieve, 'search' => $month->month]) }}"
+                        {{-- $achieveにはindexから受け取ったrequestパラメータ、searchにはcontrollerから受け取ったmonth 二つパラメータを送れるのは盲点だったよ！ --}}
+                        class="@if (request('search') == $month->month) bg-blue-500 text-white @endif p-0.5 h-12 w-12 hover:bg-blue-600 hover:text-white mx-2 rounded-full"><span
+                            class="text-3xl mx-1">{{ $month->month }}</span><span class="font-bold">月</span></a>
                 @endforeach
             </div>
 
@@ -86,7 +88,9 @@
                     </tbody>
                 </table>
             </div>
-
+            @if ($search){{--$search（検索された値が存在しない場合は表示しない）--}}
+                <a href="{{ route('admin.csv.download', [$achieve, $search]) }}">Download CSV</a>
+            @endif
         </div>
     </section>
 

@@ -31,7 +31,7 @@ class AchievementController extends Controller
         $achieve = $request->achievement;//index.blade.phpから送られたパラメータ
         $search = $request->search;//list.blade.phpから送られたパラメータ
         
-        $at_achieve = Attendance::where('user_id', $achieve)->whereMonth('created_at', $search)->get();//検索するときには改めてlist.blade.phpからachieveとsearchのパラメータを受け取って渡す
+        $at_achieve = Attendance::where('user_id', $achieve)->whereMonth('created_at', $search)->get();//検索するときには改めてlist.blade.phpからachieveとsearchのパラメータを受け取って渡す list.blade.phpの月選択でパラメータが二つ渡ってきたときに初めて変数が格納される
 
         $searchMonths = Attendance::where('user_id', $achieve)
         ->selectRaw('MONTH(created_at) as month') //MONTHメソッドを使用してcreated_atのmonth部分のみを配列にしてmonthに格納
@@ -40,7 +40,7 @@ class AchievementController extends Controller
 
         $user = User::where('id', $achieve)->first();
 
-        return view('admin.achievement.list', compact('achieve', 'at_achieve', 'searchMonths', 'user'));
+        return view('admin.achievement.list', compact('achieve', 'search', 'at_achieve', 'searchMonths', 'user'));
     }
 
 

@@ -2,7 +2,7 @@
     <div class="flex flex-wrap">
         @foreach ($users as $user)
             <div class="p-2 lg:w-1/3 md:w-1/2 w-full">
-                <a href="{{ route('admin.achievement.achievement', ['achievement' => $user->id]) }}">
+                <a href="{{ route('admin.achievement.personal', ['achievement' => $user->id]) }}">
                     <div class="h-full flex items-center bg-white border-gray-200 border p-4 rounded-lg">
 
                         <div class="flex-grow">
