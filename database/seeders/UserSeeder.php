@@ -17,19 +17,41 @@ class UserSeeder extends Seeder
     public function run()
     {
         DB::table('users')->insert([
-            ['name' => '木下',
-            'email' => 'test@test.com',
-            'job' => 'エンジニア',
-            'password' => Hash::make('password'),
-            'created_at' => '2023/1/1 11:11:11'
-        ],
-        [
-            'name' => '山田',
-            'email' => 'tst@tst.com',
-            'job' => 'エンジニア',
-            'password' => Hash::make('password'),
-            'created_at' => '2023/1/1 11:11:11'
-            ]
+            [
+                'name' => '山田太郎',
+                'email' => 'test@test.com',
+                'job' => 'エンジニア',
+                'password' => Hash::make('password'),
+                'created_at' => '2023/1/1 11:11:11'
+            ],
+            [
+                'name' => '鈴木花子',
+                'email' => 'hanako.suzuki@example.com',
+                'job' => 'エンジニア',
+                'password' => Hash::make('password'),
+                'created_at' => '2023/1/1 11:11:11'
+            ],
+            [
+                'name' => '田中健太',
+                'email' => 'kenta.tanaka@example.com',
+                'job' => 'エンジニア',
+                'password' => Hash::make('password'),
+                'created_at' => '2023/1/1 11:11:11'
+            ],
+            [
+                'name' => '高橋佳子',
+                'email' => 'yoshiko.takahashi@example.com',
+                'job' => 'エンジニア',
+                'password' => Hash::make('password'),
+                'created_at' => '2023/1/1 11:11:11'
+            ],
+            [
+                'name' => '渡辺裕樹',
+                'email' => 'yuki.watanabe@example.com',
+                'job' => 'エンジニア',
+                'password' => Hash::make('password'),
+                'created_at' => '2023/1/1 11:11:11'
+            ],
         ]);
     }
 }
