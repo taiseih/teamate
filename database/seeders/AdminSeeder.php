@@ -17,8 +17,14 @@ class AdminSeeder extends Seeder
     {
         Admin::insert([
             [
-                'name' => 'admin',
+                'name' => '管理者',
                 'email' => 'admin@admin.com',
+                'password' => Hash::make('password'),
+                'created_at' => '2023/1/1 11:11:11',
+            ],
+            [
+                'name' => '人事部',
+                'email' => 'hr@example.com',
                 'password' => Hash::make('password'),
                 'created_at' => '2023/1/1 11:11:11',
             ]
