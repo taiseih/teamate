@@ -24,6 +24,10 @@ class User extends Authenticatable
         'email',
         'job',
         'password',
+        'project',
+        'project_info',
+        'project_attend',
+        'company',
     ];
 
     /**

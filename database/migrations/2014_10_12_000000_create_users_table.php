@@ -20,6 +20,10 @@ class CreateUsersTable extends Migration
             $table->string('job')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('project')->nullable();
+            $table->string('project_info')->nullable();
+            $table->string('project_attend')->nullable();
+            $table->string('company')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
