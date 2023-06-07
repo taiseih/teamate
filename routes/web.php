@@ -5,6 +5,7 @@ use App\Http\Controllers\User\Task\TaskController;
 use App\Http\Controllers\User\Attendance\AttendanceController;
 use App\Http\Controllers\User\Top\TopPageController;
 use App\Http\Controllers\User\Work\WorkController;
+use App\Models\Attendance;
 use GuzzleHttp\Promise\Create;
 use Illuminate\Support\Facades\Route;
 
@@ -18,6 +19,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('work/error', [AttendanceController::class, 'errorIndex'])->name('error.index')->middleware(['auth:users']);
 
 Route::resource('attendance', AttendanceController::class)
 ->middleware('auth:users');

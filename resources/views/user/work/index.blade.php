@@ -97,7 +97,8 @@
                     </tbody>
                 </table>
             </div>
-
+            
         </div>
+        <a href="{{route('user.error.index')}}">エラー一覧</a>
     </section>
 </x-app-layout>

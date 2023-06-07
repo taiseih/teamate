@@ -158,4 +158,10 @@ class AttendanceController extends Controller
         //  Mail::send(new AttendanceMail($name, $attendance, $information, $jobType, $status));
         return redirect()->route('user.attendance.index');
     }
+
+    public function errorIndex(){
+        $errors = AttendanceError::where('user_id', Auth::id())->get();
+
+        return view('user.errors.index', compact('errors'));
+    }
 }
