@@ -35,6 +35,9 @@ Route::middleware('auth:admin')->group(function () {
     Route::get('worker', [AchievementController::class, 'index'])->name('achievement.index');
     Route::get('achievement/', [AchievementController::class, 'workerAchievement'])->name('achievement.personal');
     Route::get('download-csv/', [CSVController::class, 'download'])->name('csv.download');
+    Route::get('project/{project}', [TaskManagerController::class, 'show'])->name('project.show');
+    Route::get('project/{project}/edit', [TaskManagerController::class, 'project'])->name('project.edit');
+    Route::put('project/{project}', [TaskManagerController::class, 'update'])->name('project.update');
 });
 
 Route::resource('members', TaskManagerController::class)//社員名簿の部分

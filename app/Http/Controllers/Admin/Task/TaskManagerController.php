@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\Task;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin;
 use App\Models\Task;
 use App\Models\User;
 use Carbon\Carbon;
@@ -19,12 +20,41 @@ class TaskManagerController extends Controller
     {
         $now = Carbon::now();
         $users = User::all();
+        $admin = Admin::find(1);
 
         $tasks = Task::with(['user'])->whereDate('created_at', $now->toDateString())->get();
 
         
-        return view('admin.members.index', compact('users', 'tasks'));//社員一覧を表示
+        return view('admin.members.index', compact('users', 'tasks', 'admin'));//社員一覧を表示
     }
+
+    public function show($id)
+    {
+        $user = User::findOrFail($id);
+
+        return view('admin.project.show', compact('user'));
+    }
+    
+    public function project($id)
+    {
+        $users = User::findOrFail($id);
+
+        return view('admin.project.edit', compact('users'));
+    }
+    
+    public function update(Request $request, $id)
+    {
+        $user = User::findOrFail($id);
+
+        $user->project = $request->project;
+        $user->project_info = $request->info;
+        $user->company = $request->company;
+        $user->project_attend = $request->attend;
+        $user->save();
+
+        return redirect()->route('admin.members.index');
+    }    
+
 
     /**
      * Show the form for creating a new resource.
@@ -47,16 +77,6 @@ class TaskManagerController extends Controller
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -76,10 +96,6 @@ class TaskManagerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
-    }
 
     /**
      * Remove the specified resource from storage.

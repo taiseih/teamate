@@ -63,30 +63,32 @@
             <!-- Dropdown Nav -->
             <nav :class="isOpen ? 'flex' : 'hidden'" class="flex flex-col pt-4">
                 <a href="{{ route('admin.workers.index') }}"
-                    class="flex items-center active-nav-link text-white py-2 pl-4 nav-item">
+                    class="flex items-center text-white py-2 pl-4 nav-item">
                     <i class="fas fa-tachometer-alt mr-3"></i>
                     出勤メンバー
                 </a>
                 <a href="{{ route('admin.members.index') }}"
-                    class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
+                    class="flex items-center text-white hover:opacity-100 py-2 pl-4 nav-item">
                     <i class="fas fa-sticky-note mr-3"></i>
                     社員名簿
                 </a>
                 <a href="{{route('admin.achievement.index')}}"
-                    class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
+                    class="flex items-center text-white hover:opacity-100 py-2 pl-4 nav-item">
                     <i class="fas fa-table mr-3"></i>
                     稼働実績
                 </a>
                 <a href="{{ route('admin.profile.index') }}"
-                    class="block px-4 py-2 account-link hover:text-white text-base text-gray-600">アカウント</a>
+                    class="block px-4 py-2 account-link hover:text-white text-base text-gray-300 font-bold">アカウント</a>
                 <form method="POST" action="{{ route('admin.logout') }}">
                     @csrf
 
                     <x-dropdown-link :href="route('admin.logout')"
                         onclick="event.preventDefault();
                                                 this.closest('form').submit();"
-                        class="block text-base account-link hover:bg-blue-400 hover:text-white text-gray-600">
-                        {{ __('サインアウト') }}
+                        class="block text-base account-link hover:bg-blue-400 hover:text-white text-gray-300 font-bold">
+                        <p class="font-bold text-gray-300">
+                            サインアウト
+                        </p>
                     </x-dropdown-link>
                 </form>
             </nav>

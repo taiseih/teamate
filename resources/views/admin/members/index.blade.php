@@ -21,7 +21,12 @@
                         <th
                             class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-white border-b border-grey-light">
                             メールアドレス</th>
-                            <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light"></th>
+                        <th
+                            class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-white border-b border-grey-light">
+                            案件内容</th>
+                        <th
+                            class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -30,8 +35,24 @@
                             <td class="py-4 px-6 border-b border-grey-light">{{ $user->name }}</td>
                             <td class="py-4 px-6 border-b border-grey-light">{{ $user->job }}</td>
                             <td class="py-4 px-6 border-b border-grey-light">{{ $user->email }}</td>
+                            @if ($admin->id === Auth::id())
+                                @if ($user->project)
+                                    <td class="py-4 px-6 border-b border-grey-light text-gray-800"><a href="{{route('admin.project.show', ['project' => $user->id])}}">{{ $user->project }}</a></td>
+                                @else
+                                    <td class="py-4 px-6 border-b border-grey-light"><button
+                                    onclick="location.href='{{ route('admin.workers.edit', ['worker' => $user->id]) }}'"
+                                    class="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border-2 border-green-200 font-semibold text-green-500 hover:text-white hover:bg-green-500 hover:border-green-500 focus:outline-none focus:ring-2 focus:ring-green-200 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800">
+                                    登録
+                                </button></td>
+                                @endif
+                            @else
+                                <td class="py-4 px-6 border-b border-grey-light font-bold text-gray-400"><i
+                                        class="fas fa-key mr-3"></i>閲覧権限がありません</td>
+                            @endif
                             <td class="py-4 px-6 border-b border-grey-light">
-                                <button onclick="location.href='{{route('admin.workers.edit', ['worker' => $user->id])}}'" class="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border-2 border-blue-200 font-semibold text-blue-500 hover:text-white hover:bg-blue-500 hover:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800">
+                                <button
+                                    onclick="location.href='{{ route('admin.workers.edit', ['worker' => $user->id]) }}'"
+                                    class="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border-2 border-blue-200 font-semibold text-blue-500 hover:text-white hover:bg-blue-500 hover:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800">
                                     編集
                                 </button>
                             </td>

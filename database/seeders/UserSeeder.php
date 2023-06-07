@@ -22,10 +22,10 @@ class UserSeeder extends Seeder
                 'email' => 'test@test.com',
                 'job' => 'エンジニア',
                 'password' => Hash::make('password'),
-                'project' => '',
+                'project' => '自社業務',
                 'project_info' => '',
                 'project_attend' => '10:00',
-                'company' => '',
+                'company' => '社内',
                 'created_at' => '2023/1/1 11:11:11',
             ],
             [
