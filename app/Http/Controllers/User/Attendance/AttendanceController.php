@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User\Attendance;
 use App\Http\Controllers\Controller;
 use App\Mail\AttendanceMail;
 use App\Models\Attendance;
+use App\Models\AttendanceError;
 use App\Models\Task;
 use App\Models\User;
 use Carbon\Carbon;
@@ -54,12 +55,23 @@ class AttendanceController extends Controller
      */
     public function store(Request $request)
     {
+
+        $user_attend = User::where('id', Auth::id())->select('project_attend')->first();
+        $req_attend = $request->attendance;
+
         Attendance::create([
             'user_id' => Auth::id(),
             'attendance_time' => $request->attendance,
             'job_type' => $request->jobType,
             'status' => $request->status,
         ]);
+
+        if($user_attend->project_attend != $req_attend){
+            AttendanceError::create([
+                'user_id' => Auth::id(),
+                'attendance' => $request->attendance,
+            ]);
+        }
 
         if($_POST['title'])
         Task::create([
