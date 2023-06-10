@@ -17,6 +17,7 @@ class CreateAttendanceErrorsTable extends Migration
             $table->id();
             $table->foreignId('user_id');
             $table->string('attendance');
+            $table->string('error_info')->nullable();
             $table->timestamps();
         });
     }

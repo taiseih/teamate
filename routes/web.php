@@ -6,6 +6,7 @@ use App\Http\Controllers\User\Attendance\AttendanceController;
 use App\Http\Controllers\User\Top\TopPageController;
 use App\Http\Controllers\User\Work\WorkController;
 use App\Models\Attendance;
+use App\Models\AttendanceError;
 use GuzzleHttp\Promise\Create;
 use Illuminate\Support\Facades\Route;
 
@@ -19,7 +20,11 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('work/error', [AttendanceController::class, 'errorIndex'])->name('error.index')->middleware(['auth:users']);
+Route::middleware(['auth:users'])->group(function(){
+    Route::get('work/error', [AttendanceController::class, 'errorIndex'])->name('error.index');
+    Route::get('work/error/{error}/info', [AttendanceController::class, 'errorCreate'])->name('error.create');
+    Route::put('work/error/{error}', [AttendanceController::class, 'errorUpdate'])->name('error.update');
+});
 
 Route::resource('attendance', AttendanceController::class)
 ->middleware('auth:users');

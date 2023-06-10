@@ -164,4 +164,21 @@ class AttendanceController extends Controller
 
         return view('user.errors.index', compact('errors'));
     }
+
+    public function errorCreate($id){
+        $errors_info = AttendanceError::findOrFail($id)->first();
+        $user = User::where('id', Auth::id())->first();
+
+        return view('user.errors.create', compact('errors_info', 'user'));
+    }
+
+    public function errorUpdate(Request $request, $id){
+        $errors = AttendanceError::where('id', $id);
+
+        $errors->update([
+            'error_info' => $request->info,
+        ]);
+
+        return redirect()->route('user.error.index');
+    }
 }

@@ -28,12 +28,17 @@
                                 {{ $date }}
                             </h3>
                         </div>
+                        
                         <div class="group relative">
                             <h3 class="mt-3 text-lg font-semibold leading-6 text-gray-700">
                                 <p class="mt-5 text-sm leading-6 text-gray-600 line-clamp-3">就業時刻</p>
                                 <span class="absolute inset-0 text-gray-700"></span>
                                 @if ($at_info)
-                                    {{ $at_info->attendance_time }}
+                                    @if ($at_info->attendance_time != $users->project_attend)
+                                        <p class="text-red-500">{{ $at_info->attendance_time }}<span class="ml-6 text-xl">!</span><span class="ml-1">登録情報と時刻が違います</span></p>
+                                    @else
+                                        {{ $at_info->attendance_time }}
+                                    @endif
                                 @endif
                             </h3>
                         </div>

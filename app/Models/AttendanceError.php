@@ -13,6 +13,7 @@ class AttendanceError extends Model
     [
         'user_id',
         'attendance',
+        'error_info',
     ];
 
     public function user(){
