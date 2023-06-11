@@ -20,14 +20,23 @@ class AdminSeeder extends Seeder
                 'name' => '管理者',
                 'email' => 'admin@admin.com',
                 'password' => Hash::make('password'),
+                'access_level' => 1,
                 'created_at' => '2023/1/1 11:11:11',
             ],
             [
                 'name' => '人事部',
                 'email' => 'hr@example.com',
                 'password' => Hash::make('password'),
+                'access_level' => 3,
                 'created_at' => '2023/1/1 11:11:11',
-            ]
+            ],
+            [
+                'name' => '営業部',
+                'email' => 'sl@example.com',
+                'password' => Hash::make('password'),
+                'access_level' => 2,
+                'created_at' => '2023/1/1 11:11:11',
+            ],
             ]);
     }
 }

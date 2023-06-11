@@ -8,6 +8,7 @@ use App\Models\Task;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TaskManagerController extends Controller
 {
@@ -20,7 +21,7 @@ class TaskManagerController extends Controller
     {
         $now = Carbon::now();
         $users = User::all();
-        $admin = Admin::find(1);
+        $admin = Admin::where('id', Auth::id())->first();
 
         $tasks = Task::with(['user'])->whereDate('created_at', $now->toDateString())->get();
 
