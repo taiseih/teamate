@@ -56,11 +56,10 @@
                                 <td class="px-6 py-4">
                                     @php
                                         // 出勤時刻と退勤時刻が両方とも存在する場合
-                                        if( $work->attendance_time === '欠勤' || $work->leaving_time == null ) {
+                                        if ($work->attendance_time === '欠勤' || $work->leaving_time == null) {
                                             //ない時はなにも入れない
                                             $workingHours = ' ';
-                                        }
-                                        else {
+                                        } else {
                                             // 出勤時間と退勤時間をDateTimeオブジェクトに変換する
                                             $attendanceTime = new DateTime($work->attendance_time);
                                             $leavingTime = new DateTime($work->leaving_time);
@@ -78,7 +77,7 @@
                                             $diffSeconds = $diff->h * 3600 + $diff->i * 60 + $diff->s; //DateIntervalオブジェクトから、時間、分、秒の値を取得し、それぞれを3600秒、60秒で乗算し、すべての値を合計して、差を秒数に変換。最終的に計算された秒数を変数$diffSecondsに格納する。(int型)
                                             $workingSeconds = $diffSeconds - $restTime; //int型 変数diffSecondsで算出した勤務時間から休憩時間の秒数を引いて変数に格納
                                             $workingHours = sprintf('%01d時間%02d分', floor($workingSeconds / 3600), floor(($workingSeconds % 3600) / 60)); //時間は0埋め1桁、分数は0埋め2桁、floor関数で小数点切り捨て3600で割った結果を時間に、分数は余った数字を60で割る
-                                        } 
+                                        }
                                     @endphp
 
                                     <p>{{ $workingHours }}</p>
@@ -90,8 +89,10 @@
                 </table>
             </div>
             <div class="w-full text-center mt-8">
-                @if ($search){{--$search（検索された値が存在しない場合は表示しない）--}}
-                    <a href="{{ route('admin.csv.download', ['user' => $achieve, 'month' => $search]) }}" class="w-1/2 md:text-lg py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border-2 border-gray-200 font-semibold text-gray-500 hover:text-white hover:bg-gray-500 hover:border-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-200 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800">CSVダウンロード</a>
+                @if ($search)
+                    {{-- $search（検索された値が存在しない場合は表示しない） --}}
+                    <a href="{{ route('admin.csv.download', ['user' => $achieve, 'month' => $search]) }}"
+                        class="w-1/2 md:text-lg py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border-2 border-gray-200 font-semibold text-gray-500 hover:text-white hover:bg-gray-500 hover:border-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-200 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800">CSVダウンロード</a>
                 @endif
             </div>
         </div>

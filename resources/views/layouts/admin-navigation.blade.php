@@ -16,6 +16,10 @@
                 <i class="fas fa-align-left mr-3"></i>
                 稼働実績
             </a>
+            <a href="{{route('admin.error.index')}}" class="flex items-center text-white hover:opacity-100 py-4 pl-6 nav-item">
+                <i class="fas fa-align-left mr-3"></i>
+                勤怠エラー @if($errorNum !== 0)<span class="text-white bg-red-400 rounded-full ml-12 w-6 items-center text-center">{{$errorNum}}</span>@endif
+            </a>
     </aside>
 
     <div class="w-full flex flex-col h-screen overflow-y-hidden">
@@ -76,6 +80,11 @@
                     class="flex items-center text-white hover:opacity-100 py-2 pl-4 nav-item">
                     <i class="fas fa-table mr-3"></i>
                     稼働実績
+                </a>
+                <a href="{{route('admin.error.index')}}"
+                    class="flex items-center text-white hover:opacity-100 py-2 pl-4 nav-item">
+                    <i class="fas fa-table mr-3"></i>
+                    勤怠エラー@if($errorNum !== 0)<span class="text-white bg-red-400 rounded-full ml-12 w-6 items-center text-center">{{$errorNum}}</span>@endif
                 </a>
                 <a href="{{ route('admin.profile.index') }}"
                     class="block px-4 py-2 account-link hover:text-white text-base text-gray-300 font-bold">アカウント</a>

@@ -2,6 +2,7 @@
 
 namespace App\View\Components;
 
+use App\Models\AttendanceError;
 use Illuminate\View\Component;
 
 class AdminLayout extends Component
@@ -14,6 +15,9 @@ class AdminLayout extends Component
     // アドミン用
     public function render()
     {
-        return view('layouts.admin');
+        $userError = AttendanceError::where('error_info', '')->get();
+        $errorNum = $userError->count();
+        
+        return view('layouts.admin', compact('errorNum'));
     }
 }

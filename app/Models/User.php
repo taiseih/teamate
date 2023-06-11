@@ -61,6 +61,6 @@ class User extends Authenticatable
 
     public function attendanceError()
     {
-        return $this->hasMany(AttendanceError::class);
+        return $this->belongsToMany(AttendanceError::class);
     }
 }

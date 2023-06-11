@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\Auth\VerifyEmailController;
 use App\Http\Controllers\Admin\CSV\CSVController;
 use App\Http\Controllers\Admin\Members\MembersController;
 use App\Http\Controllers\Admin\Task\TaskManagerController;
+use App\Http\Controllers\User\Attendance\AttendanceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,6 +39,7 @@ Route::middleware('auth:admin')->group(function () {
     Route::get('project/{project}', [TaskManagerController::class, 'show'])->name('project.show');
     Route::get('project/{project}/edit', [TaskManagerController::class, 'project'])->name('project.edit');
     Route::put('project/{project}', [TaskManagerController::class, 'update'])->name('project.update');
+    Route::get('errors/', [AchievementController::class, 'errorAttendance'])->name('error.index');
 });
 
 Route::resource('members', TaskManagerController::class)//社員名簿の部分

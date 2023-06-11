@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin\Achievement;
 
 use App\Http\Controllers\Controller;
 use App\Models\Attendance;
+use App\Models\AttendanceError;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -40,63 +41,17 @@ class AchievementController extends Controller
 
         $user = User::where('id', $achieve)->first();
 
+
+
         return view('admin.achievement.list', compact('achieve', 'search', 'at_achieve', 'searchMonths', 'user'));
     }
 
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function errorAttendance()
     {
-        //
+        $errors = AttendanceError::all();
+
+        return view('admin.error.index', compact('errors'));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }
