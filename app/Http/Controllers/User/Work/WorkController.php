@@ -4,6 +4,8 @@ namespace App\Http\Controllers\User\Work;
 
 use App\Http\Controllers\Controller;
 use App\Models\Attendance;
+use App\Models\AttendanceError;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -23,10 +25,14 @@ class WorkController extends Controller
         ->groupByRaw('MONTH(created_at)')//MONTHメソッドで取得した各データの同じ月をグループ化
         ->get();
 
-            $works = Attendance::where('user_id', Auth::id())->whereMonth('created_at', $search)->get();
+        $works = Attendance::where('user_id', Auth::id())->whereMonth('created_at', $search)->get();
 
+        $error_number = AttendanceError::where('user_id', Auth::id())->where('error_info', '')->get();
+        $user_attend = User::where('id', Auth::id())->first();
 
-        return view('user.work.index', compact('works', 'searchMonths'));
+        $number = $error_number->count();
+
+        return view('user.work.index', compact('works', 'searchMonths', 'number', 'user_attend'));
     }
 
     /**

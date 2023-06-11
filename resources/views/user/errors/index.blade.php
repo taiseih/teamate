@@ -26,12 +26,12 @@
                     <tbody>
 
                         @foreach ($errors as $error)
-                            <tr class="bg-white border-b">
+                            <tr class="border-b @if(!$error->error_info) bg-red-400 text-white @else bg-white @endif">
                                 <th scope="row" class="px-6 py-4 font-medium">
                                     {{ $error->created_at->format('m/d') }}
                                 </th>
 
-                                <td class="px-6 py-4 font-bold text-red-500">
+                                <td class="px-6 py-4">
                                     {{ $error->attendance }}
                                 </td>
                                 
@@ -39,11 +39,14 @@
                                     @if ($error->error_info)    
                                         {{$error->error_info}}
                                     @else
-                                        <button
-                                    onclick="location.href='{{route('user.error.create', ['error' => $error->id])}}'"
-                                    class="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border-2 border-green-200 font-semibold text-green-500 hover:text-white hover:bg-green-500 hover:border-green-500 focus:outline-none focus:ring-2 focus:ring-green-200 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800">
-                                    登録
-                                </button>
+                                    <div class="flex items-center">
+                                        <p class="mr-3 font-bold">エラー理由を登録してください</p>
+                                            <button
+                                        onclick="location.href='{{route('user.error.create', ['error' => $error->id])}}'"
+                                        class="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border-2 border-white font-semibold text-white hover:text-red-400 hover:bg-white hover:border-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800">
+                                        登録
+                                    </button>
+                                    </div>
                                     @endif
                                 </td>
                             </tr>
