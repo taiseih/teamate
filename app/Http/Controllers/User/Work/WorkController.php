@@ -27,7 +27,7 @@ class WorkController extends Controller
 
         $works = Attendance::where('user_id', Auth::id())->whereMonth('created_at', $search)->get();
 
-        $error_number = AttendanceError::where('user_id', Auth::id())->where('error_info', '')->get();
+        $error_number = AttendanceError::where('user_id', Auth::id())->where('error_info', '')->orWhere('error_info', null)->get();
         $user_attend = User::where('id', Auth::id())->first();
 
         $number = $error_number->count();

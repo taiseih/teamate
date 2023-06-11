@@ -15,9 +15,9 @@ class AdminLayout extends Component
     // アドミン用
     public function render()
     {
-        $userError = AttendanceError::where('error_info', '')->get();
+        $userError = AttendanceError::where('error_info', '')->orWhere('error_info', null)->get();
         $errorNum = $userError->count();
-        
+
         return view('layouts.admin', compact('errorNum'));
     }
 }

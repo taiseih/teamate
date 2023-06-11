@@ -13,7 +13,7 @@
                             class="@if (request("search") == $month->month) bg-blue-500 text-white @endif p-0.5 h-12 w-12 hover:bg-blue-600 hover:text-white mx-2 rounded-full"><span class="text-3xl mx-1">{{ $month->month }}</span><span class="font-bold">月</span></a>
                 @endforeach
                 <div class="my-auto ml-auto">
-                    <a class="w-1/8 md:text-lg py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md font-semibold text-gray-500 hover:opacity-60 focus:outline-none focus:ring-2 focus:ring-gray-200 focus:ring-offset-2 transition-all text-sm" href="{{route('user.error.index')}}">@if($number == 0) 勤怠エラー&#8658; @else <span class="bg-red-500 text-white rounded-full w-7 text-center">{{$number}}</span>勤怠エラー&#8658; @endif</a>
+                    <a class="w-1/8 md:text-lg py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md font-semibold text-gray-500 hover:opacity-60 focus:outline-none focus:ring-2 focus:ring-gray-200 focus:ring-offset-2 transition-all text-sm" href="{{route('user.error.index')}}">@if($number == 0 || $number == null) 勤怠エラー&#8658; @else <span class="bg-red-500 text-white rounded-full w-7 text-center">{{$number}}</span>勤怠エラー&#8658; @endif</a>
                 </div>
             </div>
 
