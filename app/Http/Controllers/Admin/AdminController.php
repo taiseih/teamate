@@ -91,7 +91,7 @@ class AdminController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'access_level' => $request->level,
-            'password' => $request->password,
+            'password' => Hash::make($request->password),
         ]);
 
         return redirect()->route('admin.manager.index');

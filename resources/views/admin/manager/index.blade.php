@@ -32,7 +32,13 @@
                         <tr class="hover:bg-grey-lighter">
                             <td class="py-4 px-6 border-b border-grey-light">{{ $manager->name }}</td>
                             <td class="py-4 px-6 border-b border-grey-light">{{ $manager->email }}</td>
-                            <td class="py-4 px-6 border-b border-grey-light">{{ $manager->access_level }}</td>
+                            @if ($manager->access_level === "1")
+                                <td class="py-4 px-6 border-b border-grey-light">閲覧・編集</td>
+                            @elseif ($manager->access_level === "2")
+                                <td class="py-4 px-6 border-b border-grey-light">案件閲覧のみ</td>
+                            @elseif ($manager->access_level === "3")
+                                <td class="py-4 px-6 border-b border-grey-light">社員情報の編集・閲覧</td>
+                            @endif
                             @if ($admin->access_level === "1")       
                             <td class="py-4 px-6 border-b border-grey-light">
                                 <button onclick="location.href='{{ route('admin.manager.edit', ['manager' => $manager->id]) }}'"
