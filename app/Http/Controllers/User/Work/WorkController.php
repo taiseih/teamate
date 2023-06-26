@@ -27,7 +27,12 @@ class WorkController extends Controller
 
         $works = Attendance::where('user_id', Auth::id())->whereMonth('created_at', $search)->get();
 
-        $error_number = AttendanceError::where('user_id', Auth::id())->where('error_info', '')->orWhere('error_info', null)->get();
+        $error_number = AttendanceError::where('user_id', Auth::id())
+        ->where(function ($query) { //条件をグループ化して最初の条件文を適用させる
+            $query->where('error_info', ' ') // 空白文字
+            ->orWhereNull('error_info'); // NULL
+        })
+            ->get();
         $user_attend = User::where('id', Auth::id())->first();
 
         $number = $error_number->count();
