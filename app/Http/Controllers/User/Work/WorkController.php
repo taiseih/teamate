@@ -18,7 +18,7 @@ class WorkController extends Controller
     {
         $works = Attendance::where('user_id', Auth::id())->get();
 
-        return view('user.work.index', compact('works'));
+        return abort(404);
     }
 
     /**
