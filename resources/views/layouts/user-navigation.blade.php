@@ -24,8 +24,6 @@
                                     <a class="font-medium text-gray-500 hover:text-gray-400"
                                         href="{{ route('user.attendance.index') }}">勤怠</a>
                                     <a class="font-medium text-gray-500 hover:text-gray-400"
-                                        href="{{ route('user.work.index') }}">稼働実績</a>
-                                    <a class="font-medium text-gray-500 hover:text-gray-400"
                                         href="{{ route('user.profile.index') }}"><svg xmlns="http://www.w3.org/2000/svg"
                                             fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
                                             class="w-6 h-6">
@@ -42,8 +40,6 @@
                                         href="{{ route('user.top.index') }}">トップページ</a>
                                     <a class="font-bold text-blue-500 hover:text-blue-400"
                                         href="{{ route('user.attendance.index') }}">勤怠</a>
-                                    <a class="font-medium text-gray-500 hover:text-gray-400"
-                                        href="{{ route('user.work.index') }}">稼働実績</a>
                                     <a class="font-medium text-gray-500 hover:text-gray-400"
                                         href="{{ route('user.profile.index') }}"><svg
                                             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -62,8 +58,6 @@
                                     <a class="font-medium text-gray-500 hover:text-gray-400"
                                         href="{{ route('user.attendance.index') }}">勤怠</a>
                                     <a class="font-medium text-gray-500 hover:text-gray-400"
-                                        href="{{ route('user.work.index') }}">稼働実績</a>
-                                    <a class="font-medium text-gray-500 hover:text-gray-400"
                                         href="{{ route('user.profile.index') }}"><svg
                                             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                             stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -80,8 +74,6 @@
                                         href="{{ route('user.top.index') }}">トップページ</a>
                                     <a class="font-medium text-gray-500 hover:text-gray-400"
                                         href="{{ route('user.attendance.index') }}">勤怠</a>
-                                    <a class="font-bold text-blue-500 hover:text-blue-400"
-                                        href="{{ route('user.work.index') }}">稼働実績</a>
                                     <a class="font-medium text-gray-500 hover:text-gray-400"
                                         href="{{ route('user.profile.index') }}"><svg
                                             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -99,8 +91,6 @@
                                         href="{{ route('user.top.index') }}">トップページ</a>
                                     <a class="font-medium text-gray-500 hover:text-gray-400"
                                         href="{{ route('user.attendance.index') }}">勤怠</a>
-                                    <a class="font-medium text-gray-500 hover:text-gray-400"
-                                        href="{{ route('user.work.index') }}">稼働実績</a>
                                     <a class="font-bold text-blue-500 hover:text-blue-400"
                                         href="{{ route('user.profile.index') }}"><svg
                                             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -141,9 +131,6 @@
                     <x-responsive-nav-link :href="route('user.attendance.index')" :active="request()->routeIs('user.attendance.index')">
                         {{ __('勤怠') }}
                     </x-responsive-nav-link>
-                    <x-responsive-nav-link :href="route('user.work.index')" :active="request()->routeIs('user.work.index')">
-                        {{ __('稼働実績') }}
-                    </x-responsive-nav-link>                    
                     <x-responsive-nav-link :href="route('user.profile.index')" :active="request()->routeIs('user.profile.index')">
                         {{ __('プロフィール') }}
                     </x-responsive-nav-link>
